@@ -1,0 +1,63 @@
+<div id="nodejs">
+    <div class="price">
+        <span class="title">금시세</span>
+        <table>
+            <thead>
+                <th>대분류</th>
+                <th>중분류</th>
+                <th>API</th>
+                <th>값</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>금</td>
+                    <td>소매 살 때</td>
+                    <td>http://www.koreagoldx.co.kr/include/lineup.asp</td>
+                    <td><%=goldBuy%></td>
+                </tr>
+                <tr>
+                    <td>금</td>
+                    <td>소매 팔 때</td>
+                    <td>http://www.koreagoldx.co.kr/include/lineup.asp</td>
+                    <td><%=goldSell%></td>
+                </tr>
+                <tr>
+                    <td>e금</td>
+                    <td>기준시세</td>
+                    <td>http://www.exgold.co.kr/chart/subjson.php?s_gubun=Au</td>
+                    <td><%=peg%></td>
+                </tr>
+                <tr>
+                    <td>BitCoin</td>
+                    <td>Bithumb시세</td>
+                    <td>https://api.bithumb.com/public/ticker/BTC</td>
+                    <td><%=btc%></td>
+                </tr>
+                <tr>
+                    <td>환율</td>
+                    <td>원/달러 환율</td>
+                    <td>http://ecos.bok.or.kr/EIndex.jsp</td>
+                    <td><%=excRate%></td>
+                </tr>
+                <tr>
+                    <td>금리</td>
+                    <td>국고채 3년만기</td>
+                    <td>http://ecos.bok.or.kr/EIndex.jsp</td>
+                    <td><%=investRate%></td>
+                </tr>
+                <tr>
+                    <td>주가지수</td>
+                    <td>KOSPI</td>
+                    <td>http://ecos.bok.or.kr/EIndex.jsp</td>
+                    <td><%=kospi%></td>
+                </tr>
+                <tr>
+                    <td>주가지수</td>
+                    <td>KOSDAQ</td>
+                    <td>http://ecos.bok.or.kr/EIndex.jsp</td>
+                    <td><%=kosdaq%></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

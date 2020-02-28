@@ -1,0 +1,77 @@
+<div class="priceTbl">
+    <table>
+        <thead>
+            <th><p>대분류</p></th>
+            <th><p>중분류</p></th>
+            <th><p>단위</p></th>
+            <th><p>값</p></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><p>금</p></td>
+                <td><p>소매 살 때</p></td>
+                <td><p>돈(3.75g)</p></td>
+                <td><p><%=goldBuy%></p></td>
+            </tr>
+            <tr>
+                <td><p>금</p></td>
+                <td><p>소매 팔 때</p></td>
+                <td><p>돈(3.75g)</p></td>
+                <td><p><%=goldSell%></p></td>
+            </tr>
+            <tr>
+                <td><p>e금</p></td>
+                <td><p>기준시세</p></td>
+                <td><p>g</p></td>
+                <td><p><%=pegGram%></p></td>
+            </tr>
+            <tr>
+                <td><p>e금</p></td>
+                <td><p>기준시세</p></td>
+                <td><p>돈</p></td>
+                <td><p><%=pegDon%></p></td>
+            </tr>
+            <tr>
+                <td><p>BitCoin</p></td>
+                <td><p>Bithumb시세</p></td>
+                <td><p>btc</p></td>
+                <td><p><%=btc%></p></td>
+            </tr>
+            <tr>
+                <td><p>환율</p></td>
+                <td><p>원/달러 환율</p></td>
+                <td><p></p></td>
+                <td><p><%=excRate%></p></td>
+            </tr>
+            <tr>
+                <td><p>금리</p></td>
+                <td><p>국고채 3년만기</p></td>
+                <td><p></p></td>
+                <td><p><%=investRate%></p></td>
+            </tr>
+            <tr>
+                <td><p>주가지수</p></td>
+                <td><p>KOSPI</p></td>
+                <td><p></p></td>
+                <td><p><%=kospi%></p></td>
+            </tr>
+            <tr>
+                <td><p>주가지수</p></td>
+                <td><p>KOSDAQ</p></td>
+                <td><p></p></td>
+                <td><p><%=kosdaq%></p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br><br>
+<div class="fbNewsTbl">
+    <table>
+        <% for(var i=0; i < fbNews.length; i++) { %>
+            <tr>
+              <td><p><img src="<%=fbNews[i].picture%>"></p></td>
+              <td><p><%=fbNews[i].message.substring(0,30)+"....."%><a href='<%=fbNews[i].permalink_url%>'>더 알아보기</a></p></td>
+            </tr>
+         <% } %>
+        </table>
+</div>
