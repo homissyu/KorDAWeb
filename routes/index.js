@@ -180,8 +180,6 @@ function getFbMainNews() {
     })
 }
 
-
-
 function getData(req, res){
     var promise1 = getGoldPrice();
     var promise2 = getPegPrice();
