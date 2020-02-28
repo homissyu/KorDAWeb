@@ -4,6 +4,31 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const xmldomParser = require("xmldom").DOMParser;
 
+const goldPriceOption = { 
+    method:'GET', 
+    url:'http://www.koreagoldx.co.kr/include/lineup.asp'
+}
+
+const pegPriceOpton = { 
+    method:'GET', 
+    url:'http://www.exgold.co.kr/chart/subjson.php?s_gubun=Au'
+}
+
+const btcPriceOption = { 
+    method:'GET', 
+    url:'https://api.bithumb.com/public/ticker/BTC'
+}
+
+const ETCAssetPriceOption = "http://ecos.bok.or.kr/EIndex.jsp";
+
+const fbFeedListOption = { 
+    method:'GET', 
+    url:'https://graph.facebook.com/v6.0/2819705001436386/feed?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD'
+}
+const feedCnt = 10;
+
+var promises;
+
 var retArr = new Array();
 var objArr;
 
@@ -18,7 +43,7 @@ var kospi;
 var kosdaq;
 
 function custom_sort(a, b) {
-    return new Date(b.updated_time).getTime() - new Date(a.updated_time).getTime();
+    return new Date(b.created_time).getTime() - new Date(a.created_time).getTime();
 }
 
 function getGoldPrice() {
@@ -26,10 +51,7 @@ function getGoldPrice() {
         resolve(
             // console.log("getGoldPrice");
             request(
-                { 
-                    method:'GET', 
-                    url:'http://www.koreagoldx.co.kr/include/lineup.asp'
-                }, 
+                goldPriceOption, 
                 function(error, response, body) { 
                     if(error){throw error;} 
                     // console.error('error', error);
@@ -55,10 +77,7 @@ function getPegPrice(){
         resolve(
             // console.log("getPegPrice");
             request(
-                { 
-                    method:'GET', 
-                    url:'http://www.exgold.co.kr/chart/subjson.php?s_gubun=Au'
-                }, 
+                pegPriceOpton, 
                 function(error, response, body) { 
                     if(error){throw error;} 
                     // console.error('error', error);
@@ -87,10 +106,7 @@ function getBTCPrice() {
         resolve(
             // console.log("getBTCPrice");
             request(
-                { 
-                    method:'GET', 
-                    url:'https://api.bithumb.com/public/ticker/BTC'
-                }, 
+                btcPriceOption, 
                 function(error, response, body) { 
                     if(error){throw error;} 
                     // console.error('error', error);
@@ -112,7 +128,7 @@ function getEtcAssetPrice() {
     return new Promise(function(resolve, reject){
         resolve(
             // console.log("getEtcAssetPrice");
-            JSDOM.fromURL("http://ecos.bok.or.kr/EIndex.jsp").then(dom => {
+            JSDOM.fromURL(ETCAssetPriceOption).then(dom => {
                 var obj = dom.window.document.getElementsByClassName("ESdaily")[0].getElementsByTagName("table")[0].getElementsByTagName("tr");
                 investRate = obj[1].getElementsByTagName("a")[1].innerHTML.trim()+"%";
                 // investRate = new Intl.NumberFormat('en-IN', { style: 'percent'}).format(investRate);
@@ -131,64 +147,69 @@ function getEtcAssetPrice() {
     })
 }
 
-
-
-function getFbMainNews() {
+function getFbFeedList() {
     return new Promise(function(resolve, reject){
         resolve(
-            // console.log("getFbNews");
             request(
-                { 
-                    method:'GET', 
-                    url:'https://graph.facebook.com/v6.0/2819705001436386/feed?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD'
-                }, 
+                fbFeedListOption,
                 function (error, response, body) { 
                     if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
                     // console.log(body);
-                    return new Promise(function(resolve, reject){
-                        var i = 0;
-                        objArr = JSON.parse(body);
-                        var tempId = new Array();
-                        for(var subKey in objArr["data"]){
-                            if(subKey<5){
-                                tempId[subKey] = objArr["data"][subKey]["id"];
-                                request(
-                                    {
-                                        method:'GET', 
-                                        uri:'https://graph.facebook.com/v6.0/'+tempId[subKey]+'?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD&fields=permalink_url,picture,message,updated_time' 
-                                    }, 
-                                    function(error, response, body) { 
-                                        if(error){throw error;} 
-                                        // console.error('error', error);
-                                        // console.log('statusCode:', response && response.statusCode); 
-                                        // console.log(body);
-                                        retArr[i] = JSON.parse(body);
-                                        i++;
-                                    }
-                                );
-                            }else{
-                                break;
-                            }
+                    objArr = JSON.parse(body);
+                    for(var subKey in objArr["data"]){
+                        if(subKey<feedCnt){
+                            promises.push(getFbFeed(objArr["data"][subKey]["id"], subKey));
+                        }else{
+                            break;
                         }
-                        console.log("fbSubNews:"+retArr.sort(custom_sort));
-                    })
+                    }
+                    console.log("fbFeed:"+retArr);
+                    console.log(promises.length);
                 }
             )
         )
     })
 }
 
-function getData(req, res){
-    var promise1 = getGoldPrice();
-    var promise2 = getPegPrice();
-    var promise3 = getBTCPrice();
-    var promise4 = getEtcAssetPrice();
-    var promise5 = getFbMainNews();
+function getFbFeed(feedId, id) { 
+    // console.log(feedId);
+    return new Promise(function(resolve, reject){
+        resolve(
+            request(
+                {
+                    method:'GET', 
+                    uri:'https://graph.facebook.com/v6.0/'+feedId+'?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD&fields=permalink_url,picture,message,updated_time,created_time' 
+                }, 
+                function(error, response, body) { 
+                    if(error){throw error;} 
+                    // console.error('error', error);
+                    // console.log('statusCode:', response && response.statusCode); 
+                    // console.log(body);
+                    retArr[id] = JSON.parse(body);
+                }
+            )
+        )
+    });
+}
 
-    Promise.all([promise1, promise2, promise3, promise4, promise5]).then(function(values){
+function getData(req, res){
+    promises = [];
+
+    console.log(promises.length); 
+    promises.push(getGoldPrice());
+    promises.push(getPegPrice());
+    promises.push(getBTCPrice());
+    promises.push(getEtcAssetPrice());
+    promises.push(getFbFeedList());
+    console.log(promises.length);
+
+    Promise.all(promises).then(function(values){
         res.render('index', {goldBuy:goldBuy, goldSell:goldSell, pegGram:pegGram, pegDon:pegDon, btc:btc, excRate:excRate, investRate:investRate, kospi:kospi, kosdaq:kosdaq, fbNews:retArr.sort(custom_sort) })
+        // console.log("All done", values);
+    }).catch((e) => {
+        // Handle errors here
     });
 };
 

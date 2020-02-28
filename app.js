@@ -23,7 +23,6 @@ app.listen(PORT, function(){
     console.log('Example app listening on port', PORT);
 });
 
-
-app.get('/', function (req, res) {
-    res.render('index')
-});
+// app.get('/', function (req, res) {
+//     res.render('index')
+// });
