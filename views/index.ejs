@@ -7,28 +7,21 @@
     <script src="https://koreada.kr:443/home/js/html5.js"></script>
     <![endif]-->
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-
+    <!-- <link rel="stylesheet" href="../Site/css/jquery.fullpage.min.css"> -->
+    <!-- <script type="text/javascript" src="../Site/js/jquery.fullpage.min.js"></script> -->
     <title>한국금거래소디지털에셋</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.6/jquery.fullPage.css" rel="stylesheet"> 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <script type="text/javascript">
-        if($(window).width() > 768){ 
-            document.write(
-            '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.6/jquery.fullPage.min.js"><\/script>'); 
-            }
-            if($(window).width() <= 768){ 
-                document.write( ''); 
-            }
-    </script>
     <script type="text/javascript" src="../js/fullpage.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/checkDeviceSize.js"></script>
+    <script type="text/javascript" src="../js/device.js.js"></script>
+    <script type="text/javascript" src="../js/leftBanner.js"></script>
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/font.css">
-
-    
 
 </head>
   <body>
@@ -58,26 +51,15 @@
             afterLoad: function(origin, destination, direction) {
                 console. log('afterLoad');
             }
-
-
         });
-
         $( '.left-menu-bar__category-list--list02' ).addClass( 'active' );
-
-
-
-
-
-        
-
-
-    
 </script>
-
 
     <!-- html에 include 하는 script -->
     <div id="wrap">
-         <header role="header" data-include="../inc/header_inc.html"></header>
+         <header role="header">
+            <%- include('./inc/header_inc.ejs') %>
+         </header>
          <!-- html에 include 하는 script -->
         <div id="fullpage">
             <div id="contents--section0" class="section m1 main contents--outer-wrap is-first section fp-section fp-table"  data-fp-styles="null" data-anchor="is-first" ><!-- data-anchor="is-first" firstPage -->
@@ -86,315 +68,293 @@
                     <p>다양한 실물자산(금, 은 등)을 디지털화하여 누구나  <br>
                         실생활 속에서 소액으로 쉽게 금을 거래할 수 있습니다.
                     </p>
-                    <div class="priceTbl">
-                        <table>
-                            <thead>
-                                <th><p>대분류</p></th>
-                                <th><p>중분류</p></th>
-                                <th><p>단위</p></th>
-                                <th><p>값</p></th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><p>금</p></p></td>
-                                    <td><p>소매 살 때</p></td>
-                                    <td><p>돈(3.75g)</p></td>
-                                    <td><p><%=goldBuy%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>금</p></td>
-                                    <td><p>소매 팔 때</p></td>
-                                    <td><p>돈(3.75g)</p></td>
-                                    <td><p><%=goldSell%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>e금</p></td>
-                                    <td><p>기준시세</p></td>
-                                    <td><p>g</p></td>
-                                    <td><p><%=pegGram%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>e금</p></td>
-                                    <td><p>기준시세</p></td>
-                                    <td><p>돈</p></td>
-                                    <td><p><%=pegDon%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>BitCoin</p></td>
-                                    <td><p>Bithumb시세</p></td>
-                                    <td><p>btc</p></td>
-                                    <td><p><%=btc%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>환율</p></td>
-                                    <td><p>원/달러 환율</p></td>
-                                    <td><p></p></td>
-                                    <td><p><%=excRate%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>금리</p></td>
-                                    <td><p>국고채 3년만기</p></td>
-                                    <td><p></p></td>
-                                    <td><p><%=investRate%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>주가지수</p></td>
-                                    <td><p>KOSPI</p></td>
-                                    <td><p></p></td>
-                                    <td><p><%=kospi%></p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>주가지수</p></td>
-                                    <td><p>KOSDAQ</p></td>
-                                    <td><p></p></td>
-                                    <td><p><%=kosdaq%></p></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
             <div id="contents--section1" class="section m2 contents--outer-wrap is-second section fp-section fp-table"  data-fp-styles="null" data-anchor="is-second" ><!-- data-anchor="is-first" firstPage -->
-                <div class="left_top">
-                    <div class="mtit">CenGold</div>
-                    <div class="stit">센골드</div>
-                </div>        
-                <div class="content">
-                    <h2>Life is Gold, 생활투자 서비스 </h2>
-                    <div class="ul_list">
-                        <ul>
-                            <li>모바일 금 교환권 거래 (e금 1g = 金 1g)</li>
-                            <li>살때/팔때 단일 시세 (호가거래 없음)</li>
-                            <li>최소 거래단위 0.0001 g</li>
-                            <li>거래내역 투명한 관리</li>
-                            <li>한국금거래소 실물 金 예치 & 감사</li>         
-                        </ul>
-                        <p>※ e금은 물품 제공형 신유형 상품권임. (공정거래위원회 표준약관 제100073호 제2조 제1항 및 제2항) </p>
-                    </div>
-                    <div class="mobile_bg">
-                        <img src="../img/m_bg_app_2.png" alt="센골드 앱이미지">
-                    </div>
-                    <div id="actions">
-                        <a href="#is-third" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">CenGold</div>
+                        <div class="stit">센골드</div>
+                    </div>        
+                    <div class="content contents--inner-wrap">
+                        <div class="mobile_bg">
+                            <img src="../img/m_bg_app_2.png" alt="센골드 앱이미지">
+                        </div>
+                        <div class="contents_text">
+                            <h2>Life is Gold,</br>생활투자 서비스 </h2>
+                            <div class="ul_list">
+                                <ul>
+                                    <li>모바일 금 교환권 거래 (e금 1g =  <em class="ctt">金</em> 1g)</li>
+                                    <li>살때/팔때 단일 시세 (호가거래 없음)</li>
+                                    <li>최소 거래단위 0.0001 g</li>
+                                    <li>거래내역 투명한 관리</li>
+                                    <li><span class="co_y">한국금거래소 실물 <em class="ctt">金</em>  예치 & 감사</span> </li>         
+                                </ul>
+                                <div class="store_wrap p_view"><img src="../img/img_store_1.png" alt="센골드 플레이 스토어"><img src="../img/img_store_2.png" alt="센골드 앱스토어"></div>
+                                <div class="store_wrap m_view"><img src="../img/img_store_1_mobile.png" alt="센골드 플레이 스토어"><img src="../img/img_store_2_mobile.png" alt="센골드 앱스토어"></div>
+                                <p class="ex_stt">※ e금은 물품 제공형 신유형 상품권임. (공정거래위원회 표준약관 제100073호 제2조 제1항 및 제2항) </p>
+                            </div>
+                            
+                            <div id="actions">
+                                <a href="#is-third" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
                     
             <div id="contents--section2" class="section m3 contents--outer-wrap is-third section fp-section fp-table" data-fp-styles="null" data-anchor="is-third" > <!-- data-anchor="is-second"secondPage  -->
-                <div class="left_top">
-                    <div class="mtit">SEVICE 01</div>
-                    <div class="stit">서비스</div>
-                </div>        
-                <div class="content">
-                    <p class="tit_ex">잠자거나 사라지는 포인트</p>
-                    <h2>포인트 투자 서비스</h2>      
-                    <div class="ul_list">
-                        <ul>
-                            <li>잠자는 포인트 ! 아깝지 않나요 !  </li>
-                            <li>포인트도 금金에 투자할 수 있습니다. </li>
-                            <li>흩어진 포인트를 e금으로 교환하실 수 있습니다. </li>
-                        </ul>
-                    </div>
-                    <div class="mobile_bg">
-                        <img src="../img/m_bg_app_2_1.png" alt="센골드 앱이미지">
-                    </div>
-                    <div id="actions">
-                        <a href="#is-fourth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">SEVICE 01</div>
+                        <div class="stit">서비스</div>
+                    </div>        
+                    <div class="content contents--inner-wrap">
+                        <div class="mobile_bg">
+                            <img src="../img/m_bg_app_2_1.png" alt="센골드 앱이미지">
+                        </div>
+                        <div class="contents_text">
+                            <p class="tit_ex">잠자거나 사라지는 포인트</p>
+                            <h2>포인트 투자 서비스</h2>      
+                            <div class="ul_list">
+                                <ul>
+                                    <li>잠자는 포인트 ! 아깝지 않나요 !  </li>
+                                    <li>포인트도 금金에 투자할 수 있습니다. </li>
+                                    <li>흩어진 포인트를 e금으로 교환하실 수 있습니다. </li>
+                                </ul>
+                            </div>
+                            <div id="actions">
+                                <a href="#is-fourth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                            </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
 
             <div id="contents--section3" class="section m4 contents--outer-wrap is-fourth section fp-section fp-table"  data-fp-styles="null" data-anchor="is-fourth" ><!-- data-anchor="is-first"3rdPage -->
-                <div class="left_top">
-                    <div class="mtit">SEVICE 02</div>
-                    <div class="stit">서비스</div>
-                </div>        
-                <div class="content">
-                    <p class="tit_ex">간편하고 안전하게 보관해온 e금</p>
-                    <h2>골드바, 실버바 인출(교환) 서비스 </h2>      
-                    <div class="ul_list">
-                        <ul>
-                            <li>e금은 모바일 금 교환권으로 실물로 인출(교환)할 수 있습니다. </li>
-                            <li>믿을 수 있는 99.99% 한국금거래소 금,은으로 </li>
-                            <li>교환(인출)하실 수 있습니다.( 3월 출시 예정 ) </li>
-                        </ul>
-                    </div>
-                    <div class="mobile_bg">
-                        <img src="../img/m_bg_app_2_2.png" alt="센골드 앱이미지">
-                    </div>
-                    <div id="actions">
-                        <a href="#is-fifth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">SEVICE 02</div>
+                        <div class="stit">서비스</div>
+                    </div>        
+                    <div class="content contents--inner-wrap">
+                        <div class="mobile_bg">
+                            <img src="../img/m_bg_app_2_2.png" alt="센골드 앱이미지">
+                        </div>
+                        <div class="contents_text">
+                            <p class="tit_ex">간편하고 안전하게 보관해온 e금</p>
+                        <h2>골드바, 실버바</br>인출(교환) 서비스 </h2>      
+                        <div class="ul_list">
+                            <ul>
+                                <li>e금은 모바일 금 교환권으로 실물로 인출(교환)할 수 있습니다. </li>
+                                <li>믿을 수 있는 99.99% 한국금거래소 금,은으로 </li>
+                                <li>교환(인출)하실 수 있습니다.( 3월 출시 예정 ) </li>
+                            </ul>
+                        </div>
+                        
+                        <div id="actions">
+                            <a href="#is-fifth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                        </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
             <div id="contents--section4" class="section m5 contents--outer-wrap is-fifth section fp-section fp-table"  data-fp-styles="null" data-anchor="is-fifth" >
-                <div class="left_top">
-                    <div class="mtit">SEVICE 03</div>
-                    <div class="stit">서비스</div>
-                </div>        
-                <div class="content">
-                    <p class="tit_ex">e금으로 전하는 돌반지 축하 서비스</p>
-                    <h2>돌 반지 교환 서비스 </h2>      
-                    <div class="ul_list">
-                        <ul>
-                            <li>아기의 건강과 행복을 기원합니다.</li>
-                            <li>e금 수량만큼 돌반지로 교환 가능합니다. </li>
-                            <li>이제 돌반지 선물은 e금으로 주세요. </li>
-                            <li>1돈, 1g 다양한 디자인을 선택하세요.</li>
-                        </ul>
-                    </div>
-                    <div class="mobile_bg">
-                        <img src="../img/m_bg_app_2_3.png" alt="센골드 앱이미지">
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">SEVICE 03</div>
+                        <div class="stit">서비스</div>
+                    </div>        
+                    <div class="content contents--inner-wrap">
+                        <div class="mobile_bg">
+                            <img src="../img/m_bg_app_2_3.png" alt="센골드 앱이미지">
+                        </div>
+                        <div class="contents_text">
+                            <p class="tit_ex">e금으로 전하는 돌반지 축하 서비스</p>
+                        <h2>돌 반지 교환 서비스 </h2>      
+                        <div class="ul_list">
+                            <ul>
+                                <li>아기의 건강과 행복을 기원합니다.</li>
+                                <li>e금 수량만큼 돌반지로 교환 가능합니다. </li>
+                                <li>이제 돌반지 선물은 e금으로 주세요. </li>
+                                <li>1돈, 1g 다양한 디자인을 선택하세요.</li>
+                            </ul>
+                        </div>           
+                        <div id="actions">
+                            <a href="#is-seventh" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                        </div>
+                        </div>    
+                        
                     </div>
                 </div>
             </div>
-            <div id="contents--section5" class="section m6 contents--outer-wrap is-sixth section fp-section fp-table"  data-fp-styles="null" data-anchor="is-sixth" >
-                <div class="left_top">
-                    <div class="mtit">SEVICE 04</div>
-                    <div class="stit">서비스</div>
-                </div>        
-                <div class="content">
-                    <p class="tit_ex">반지, 목걸이, 팔찌 등의 가치를 교환하세요</p>
-                    <h2>이실직고, 고금교환 서비스</h2>      
-                    <div class="ul_list">
-                        <ul>
-                            <li>집안 구석구석 방치되고 있는 반지, 목걸이, 팔찌</li>
-                            <li>쉽고 간편하게 진짜 가치를 알아보세요.</li>
-                            <li>이제 금은방을 찾아가는 일은 Stop</li>
-                            <li>많은 사람들이 경험한 서비스 함께 참여해 보세요.</li>
-                        </ul>
-                    </div>
-                    <div class="mobile_bg">
-                        <img src="../img/m_bg_app_2_4.png" alt="센골드 앱이미지">
+            <div id="contents--section5" class="section m6 contents--outer-wrap is-seventh section fp-section fp-table"  data-fp-styles="null" data-anchor="is-sixth" >
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">SEVICE 04</div>
+                        <div class="stit">서비스</div>
+                    </div>        
+                    <div class="content contents--inner-wrap">
+                        <div class="mobile_bg">
+                            <img src="../img/m_bg_app_2_4.png" alt="센골드 앱이미지">
+                        </div>
+                        <div class="contents_text">
+                            <p class="tit_ex">반지, 목걸이, 팔찌 등의 가치를 교환하세요</p>
+                            <h2>이실직고, 고금교환 서비스</h2>      
+                            <div class="ul_list">
+                                <ul>
+                                    <li>집안 구석구석 방치되고 있는 반지, 목걸이, 팔찌</li>
+                                    <li>쉽고 간편하게 진짜 가치를 알아보세요.</li>
+                                    <li>이제 금은방을 찾아가는 일은 Stop</li>
+                                    <li>많은 사람들이 경험한 서비스 함께 참여해 보세요.</li>
+                                </ul>
+                            </div>             
+                            <div id="actions">
+                                <a href="#is-seventh" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
             <div id="contents--section6" class="section m7 contents--outer-wrap is-seventh section fp-section fp-table"  data-fp-styles="null" data-anchor="is-seventh" >
-                <div class="left_top">
-                    <div class="mtit">CULTURE</div>
-                    <div class="stit">문화</div>
-                </div>        
-                <div class="content">
-                    <h2>우리가 일하는 방식</h2>
-                    <div class="ul_list">
-                        <ul>
-                            <li>
-                                <p class="mtit"> <span class="num">01</span><span class="tit">공유와 협력</span></p>
-                                <p class="stit">
-                                    개개인의 성과는 모든 구성원과 공유합니다.</br>
-                                    나의 일보다 팀의 일이 중요하고 팀의 일보다 조직이 더 중요합니다.
-                                </p>
-                            </li>
-                            <li>
-                                <p class="mtit"> <span class="num">02</span><span class="tit">도전과 성과</span></p>
-                                <p class="stit">
-                                    리스크가 있는 곳에 기회가 있습니다.</br>
-                                    합리적인 시도와 실패는 권장하며, 실패 속에 배움이 있습니다.
-                                </p>
-                            </li>
-                            <li>
-                                <p class="mtit"> <span class="num">03</span><span class="tit">계획과 실행</span></p>
-                                <p class="stit">
-                                    모든 업무는 항상 고객 중심으로 생각합니다.</br>
-                                    치열하게 논의하고 빠르게 의사결정 합니다.</br>
-                                    복잡함은 스케일과 속도, 고객 경험을 망치는 주범입니다.
-                                </p>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p class="mtit"> <span class="num">04</span><span class="tit">리더쉽과 팔로우쉽</span></p>
-                                <p class="stit">
-                                    지시를 기다리지 않고 리더처럼 행동합니다.</br>
-                                    아이디어를 명확하게 커뮤니케이션할 수 있어야 합니다.
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">CULTURE</div>
+                        <div class="stit">문화</div>
+                    </div>        
+                    <div class="content contents--inner-wrap">
+                        <h2>우리가 일하는 방식</h2>
+                        <div class="ul_list">
+                            <ul>
+                                <li>
+                                    <p class="mtit"> <span class="num">01</span><span class="tit">공유와 협력</span></p>
+                                    <p class="stit">
+                                        개개인의 성과는 모든 구성원과 공유합니다.</br>
+                                        나의 일보다 팀의 일이 중요하고 팀의 일보다 조직이 더 중요합니다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="mtit"> <span class="num">02</span><span class="tit">도전과 성과</span></p>
+                                    <p class="stit">
+                                        리스크가 있는 곳에 기회가 있습니다.</br>
+                                        합리적인 시도와 실패는 권장하며, 실패 속에 배움이 있습니다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="mtit"> <span class="num">03</span><span class="tit">계획과 실행</span></p>
+                                    <p class="stit">
+                                        모든 업무는 항상 고객 중심으로 생각합니다.</br>
+                                        치열하게 논의하고 빠르게 의사결정 합니다.</br>
+                                        복잡함은 스케일과 속도, 고객 경험을 망치는 주범입니다.
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>
+                                    <p class="mtit"> <span class="num">04</span><span class="tit">리더쉽과 팔로우쉽</span></p>
+                                    <p class="stit">
+                                        지시를 기다리지 않고 리더처럼 행동합니다.</br>
+                                        아이디어를 명확하게 커뮤니케이션할 수 있어야 합니다.
 
-                                </p>
-                            </li>
-                            <li>
-                                <p class="mtit"> <span class="num">05</span><span class="tit">권한과 책임</span></p>
-                                <p class="stit">
-                                    위임과 신뢰가 업무의 핵심입니다.</br>
-                                    책임은 실행한 사람이 아닌 결정한 사람이 집니다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="mtit"> <span class="num">05</span><span class="tit">권한과 책임</span></p>
+                                    <p class="stit">
+                                        위임과 신뢰가 업무의 핵심입니다.</br>
+                                        책임은 실행한 사람이 아닌 결정한 사람이 집니다.
 
-                                </p>
-                            </li>
-                            <li>
-                                <p class="mtit"> <span class="num">06</span><span class="tit">발전과 참여</span></p>
-                                <p class="stit">
-                                    스스로 높은 기준을 세우고, 마지막까지 끊임없이 개선하고자 노력합니다.</br>
-                                    개인과 조직의 성장을 위해 지속적으로 학습하고 토론합니다.
-
-                                </p>
-                            </li>
-                        </ul>
-
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="mtit"> <span class="num">06</span><span class="tit">발전과 참여</span></p>
+                                    <p class="stit">
+                                        스스로 높은 기준을 세우고, 마지막까지 끊임없이 개선하고자 노력합니다.</br>
+                                        개인과 조직의 성장을 위해 지속적으로 학습하고 토론합니다.
+                                    </p>
+                                </li>
+                            </ul>
+                            <div class="both"></div>
+                        </div>
+                        <div id="actions">
+                            <a href="#is-eighth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="contents--section7" class="section m8 contents--outer-wrap is-eighth section fp-section fp-table"  data-fp-styles="null" data-anchor="is-eighth" >
-                <div class="left_top">
-                    <div class="mtit">NOTICE</div>
-                    <div class="stit">소식</div>
-                </div>     
-                <div class="content">
-                    <h2>소식</h2>
-                    <p>한국금거래소디지털에셋의 가장 빠르고 정확한 소식을 전달합니다.  </p>
-
-                    <div class="fbNewsTbl">
-                        <table>
-                            <% for(var i=0; i < fbNews.length; i++) { %>
-                                <tr>
-                                    <td><p><img src="<%=fbNews[i].picture%>"></p></td>
-                                    <td><p><%=fbNews[i].message.substring(0,30)+"....."%><a href='<%=fbNews[i].permalink_url%>'>더 알아보기</a></p></td>
-                                </tr>
-                            <% } %>
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">NOTICE</div>
+                        <div class="stit">소식</div>
+                    </div>     
+                    <div class="content contents--inner-wrap">
+                        <h2>소식</h2>
+                        <p>한국금거래소디지털에셋의 가장 빠르고 정확한 소식을 전달합니다.  
+                            <table>
+                                <% for(var i=0; i < fbNews.length; i+=2) { %>
+                                    <tr>
+                                        <td><img src="<%=fbNews[i].picture%>"></td>
+                                        <td><%=fbNews[i].message.substring(0,30)+"....."%><a href='<%=fbNews[i].permalink_url%>'>더 알아보기</a></td>
+                                        <td><img src="<%=fbNews[i+1].picture%>"></td>
+                                        <td><%=fbNews[i+1].message.substring(0,30)+"....."%><a href='<%=fbNews[i+1].permalink_url%>'>더 알아보기</a></td>
+                                    </tr>
+                                <% } %>
                             </table>
-                    </div>
-                    <div id="actions">
-                        <a href="#is-nineth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
-                    </div>
-                </div>   
+                        </p>
+                        <div id="actions">
+                            <a href="#is-nineth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                        </div>
+                    </div>   
+                </div>
             </div>
             <div id="contents--section8" class="section m9 contents--outer-wrap is-nineth section fp-section fp-table"  data-fp-styles="null" data-anchor="is-nineth" >
-                <div class="left_top">
-                    <div class="mtit">CONTACT US</div>
-                    <div class="stit">문의</div>
-                </div>    
-                <div class="content">
-                    <h2>Contact Us</h2>
-                    <div class="ul_list">
-                        <ul></br>
-                            <li>
-                                <p class="mtit"> <span class="tit">서비스 이용 문의 </span></p>
-                                <p class="stit">
-                                    메일 : help@koreada.kr
-                                    전화 : 02-1670-8456 (운영시간 AM 09:00~PM18:00, 주말,공휴일 휴무) 
-                                </p>
-                            </li>
-                            <li>
-                                <p class="mtit"> <span class="tit">사업제휴 문의</span></p>
-                                <p class="stit">
-                                    contact@koreada.kr 
-                                </p>
-                            </li>
-                            <li>
-                                <p class="mtit"> <span class="tit">인재채용 문의</span></p>
-                                <p class="stit">
-                                    인재채용 제안하기(recruit@koreada.kr)
-                                    인재채용 공고 확인하기 (사람인 채용공고)
-                                </p>
-                            </li>
-                            <li>
-                                <p class="mtit"> <span class="tit">찾아오시는 길</span></p>
-                                <p class="stit">
-                                    서울특별시 중구 종로 3가역 2-1번 출구 피카디리플러스 7층
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>    
+                <div class="fp-tableCell">
+                    <div class="left_top">
+                        <div class="mtit">CONTACT US</div>
+                        <div class="stit">문의</div>
+                    </div>    
+                    <div class="content contents--inner-wrap">
+                        <div class="ul_list">
+                            <ul></br>
+                                <li>
+                                    <p class="mtit"> <span class="tit">서비스 이용 문의 </span></p>
+                                    <p class="stit">
+                                        메일 : help@koreada.kr</br>
+                                        전화 : 02-1670-8456 (운영시간 AM 09:00~PM18:00, 주말,공휴일 휴무) 
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="mtit"> <span class="tit">사업제휴 문의</span></p>
+                                    <p class="stit">
+                                        contact@koreada.kr 
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="mtit"> <span class="tit">인재채용 문의</span></p>
+                                    <p class="stit">
+                                        인재채용 제안하기(recruit@koreada.kr)</br>
+                                        인재채용 공고 확인하기 (사람인 채용공고)
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="mtit"> <span class="tit">찾아오시는 길</span></p>
+                                    <p class="stit">
+                                        서울특별시 중구 종로 3가역 2-1번 출구 피카디리플러스 7층
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>    
+                </div>
             </div>
-            
+            <!-- // E: contents--section8 -->
+
          </div>
     </div>
 

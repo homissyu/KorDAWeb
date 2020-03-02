@@ -1,2 +1,3 @@
 /* 2020-02-22 Web STANDARD CSS by JJI */
 body {margin:0;padding:0;}
+.both {content: "";display:block;float:none;clear:both;}

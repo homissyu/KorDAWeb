@@ -1,16 +1,79 @@
 /* 2020-02-22 Web STANDARD CSS by JJI */
 
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+         ㅡ  공통
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+.m_view {display:none;}
+
+@media all and (max-width: 1630px) {
+
+}
+@media all and (max-width: 1300px) {
+
+}
+@media all and (max-width: 768px){ 
+    .p_view {display:none;}
+    .m_view {display:block;}
+}
+
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+         ㅡ  PC
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 @media all and (max-width: 1630px) {
     .section .content .mobile_bg {top: auto;bottom: 0; width: 40%;}
+    .section .left_top .mtit {left: 100px;}
+    .section .left_top .stit {left: 100px;}
+    .section .content.contents--inner-wrap {padding: 200px 50px 200px 100px;}
+    .section .content.contents--inner-wrap .contents_text {width:100%;}
+    /* #left-menu-wrapper {background-color: #fff;z-index: 101;} */
 }
 @media (max-width: 1630px) {
     
 }
-@media all and (max-width: 768px){ {
-
-}
-
 @media all and (max-width: 1300px) {
 
 }
+@media (max-width: 1300px) {
+    /*#left-menu-wrapper {position: absolute;border-right: 1px solid #e5e5e5;}*/
+}
+/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+         ㅡ  MOBILE & TABLET
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+@media all and (max-width: 768px){ 
+    #wrap {padding-left:0px;}
+    #left-menu-wrapper {left: -324px;width: 250px;}
+    .contents--outer-wrap.is-first { -webkit-box-sizing: border-box;box-sizing: border-box;height: 100vh;padding-top: 51px;background-color: #fff;}
+    .contents .contents--outer-wrap {height: auto !important;}
+    .contents .contents--outer-wrap{height:auto !important}
+    .contents .contents--outer-wrap .fp-tableCell{-webkit-box-sizing:border-box;box-sizing:border-box;display:block;height:auto !important}
+    .section .left_top .mtit {display:none;}
+    .section .left_top .stit {display:none;}
+    .section .content.contents--inner-wrap {padding: 0;}
+    .section .content .mobile_bg {position: relative;bottom: auto;width: 100%;height: 0;right:0;padding-top: 80%;background-size: cover;}
+    .section.m2 .content .mobile_bg {background: url(../img/m_bg_app_1_2_mobile.jpg) center center no-repeat;background-size: cover;}
+    .section.m3 .content .mobile_bg {background: url(../img/m_bg_app_2_1_mobile.jpg) center center no-repeat;background-size: cover;}
+    .section.m4 .content .mobile_bg {background: url(../img/m_bg_app_2_2_mobile.jpg) center center no-repeat;background-size: cover;}
+    .section.m5 .content .mobile_bg {background: url(../img/m_bg_app_2_3_mobile.jpg) center center no-repeat;background-size: cover;}
+    .section.m6 .content .mobile_bg {background: url(../img/m_bg_app_2_4_mobile.jpg) center center no-repeat;background-size: cover;}
+    .section .content .mobile_bg img {display: none;}
+    .section .content.contents--inner-wrap .contents_text {-webkit-box-sizing: border-box;box-sizing: border-box;
+        padding: 30px 20px 20px;padding-bottom: 60px;background-color: #fff;color: #000;}
+    .section h2 {display:none;}
+        .section p {color:#000;}
+    .section .ul_list ul li {background:url(../img/bg_blet_b.png) no-repeat 0 center;background-size:3px;padding-left:10px;
+        font-size: 18px; font-family: 'NanumSquare', sans-serif; font-style: normal;  font-weight: 700;color:#000;margin-top:10px;}
+    .contents__move-next-button {display: none;}
+    }
+
+@media (max-width: 768px) {
+
+}
+
+
+
+.fp-responsive {}
+
+
+
+
 

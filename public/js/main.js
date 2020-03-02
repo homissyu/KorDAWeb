@@ -7,12 +7,16 @@ $(document).ready(function(){
     slidesNavigation: true,
     css3: true,
     menu: '#menu',
-    controlArrows: true 
+    controlArrows: true ,
+    responsiveWidth: 768,
     
 
   }); 
   
 });
+
+
+    
 
 
 
