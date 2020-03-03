@@ -15,7 +15,6 @@ app.use(express.static(__dirname+"/public"));
 
 //use routes
 app.use("/", require(__dirname+"/routes/index"));
-app.use("/g", require(__dirname+"/routes/getData"));
 
 //listen
 app.listen(PORT, function(){

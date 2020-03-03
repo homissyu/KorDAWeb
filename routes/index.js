@@ -56,7 +56,7 @@ function getGoldPrice() {
             rp(
                 goldPriceOption
             ).then(
-                function(error, response, body) { 
+                function(body) { 
                     if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
@@ -149,8 +149,8 @@ function getBTCPrice() {
             rp(
                 btcPriceOption
             ).then( 
-                function(error, response, body) { 
-                    if(error){throw error;} 
+                function(body) { 
+                    // if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
                     // console.log(body);
@@ -195,7 +195,7 @@ async function getFbFeedList() {
     rp(
         fbFeedListOption
     ).then(
-        await function (err,response, body) { 
+        await function (body) { 
             // if(error){throw error;} 
             // console.error('error', error);
             // console.log('statusCode:', response && response.statusCode); 
@@ -223,7 +223,7 @@ async function getFbFeed(feedId, id) {
             uri:'https://graph.facebook.com/v6.0/'+feedId+'?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD&fields=permalink_url,picture,message,updated_time,created_time' 
         }
     ).then( 
-        await function(err,response, body) { 
+        await function(body) { 
             // if(error){throw error;} 
             // console.error('error', error);
             // console.log('statusCode:', response && response.statusCode); 
