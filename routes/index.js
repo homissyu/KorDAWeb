@@ -1,4 +1,3 @@
-const request = require('request');
 const convert = require('xml-js');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -6,7 +5,7 @@ const async = require('async');
 const rp = require('request-promise');
 
 const goldPriceOption = { 
-    method:'GET', 
+    // method:'GET', 
     url:'http://www.koreagoldx.co.kr/include/lineup.asp'
 }
 
@@ -21,14 +20,14 @@ const pesPriceOpton = {
 }
 
 const btcPriceOption = { 
-    method:'GET', 
+    // method:'GET', 
     url:'https://api.bithumb.com/public/ticker/BTC'
 }
 
 const ETCAssetPriceOption = "http://ecos.bok.or.kr/EIndex.jsp";
 
 const fbFeedListOption = { 
-    method:'GET', 
+    // method:'GET', 
     url:'https://graph.facebook.com/v6.0/2819705001436386/feed?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD'
 }
 const feedCnt = 8;
@@ -54,8 +53,9 @@ function getGoldPrice() {
     return new Promise(function(resolve, reject){
         resolve(
             // console.log("getGoldPrice");
-            request(
-                goldPriceOption, 
+            rp(
+                goldPriceOption
+            ).then(
                 function(error, response, body) { 
                     if(error){throw error;} 
                     // console.error('error', error);
@@ -71,7 +71,9 @@ function getGoldPrice() {
                     // console.log("금 소매 팔 때:"+goldSell);
                     // res.render('index')
                 }
-            )
+            ).catch(function(err){
+                throw err;
+            })
         )
     });
 }
@@ -82,7 +84,8 @@ function getPegPrice(){
             // console.log("getPegPrice");
             rp(
                 pegPriceOpton
-            ).then(function(body) { 
+            ).then(
+                function(body) { 
                     // if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
@@ -143,8 +146,9 @@ function getBTCPrice() {
     return new Promise(function(resolve, reject){
         resolve(
             // console.log("getBTCPrice");
-            request(
-                btcPriceOption, 
+            rp(
+                btcPriceOption
+            ).then( 
                 function(error, response, body) { 
                     if(error){throw error;} 
                     // console.error('error', error);
@@ -157,7 +161,9 @@ function getBTCPrice() {
                     // Bithum btc 기준시세
                     // console.log("Bithum btc 기준시세:"+btc);
                 }
-            )
+            ).catch(function(err){
+                throw err;
+            })
         )
     })
 }
@@ -186,8 +192,9 @@ function getEtcAssetPrice() {
 }
 
 async function getFbFeedList() {
-    request(
-        fbFeedListOption,
+    rp(
+        fbFeedListOption
+    ).then(
         await function (err,response, body) { 
             // if(error){throw error;} 
             // console.error('error', error);
@@ -203,16 +210,19 @@ async function getFbFeedList() {
             }
             // console.log("fbFeed:"+retArr);
         }
-    )
+    ).catch(function(err){
+        throw err;
+    })
 }
 
 async function getFbFeed(feedId, id) { 
     // console.log(feedId);
-    request(
+    rp(
         {
-            method:'GET', 
+            // method:'GET', 
             uri:'https://graph.facebook.com/v6.0/'+feedId+'?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD&fields=permalink_url,picture,message,updated_time,created_time' 
-        }, 
+        }
+    ).then( 
         await function(err,response, body) { 
             // if(error){throw error;} 
             // console.error('error', error);
@@ -220,7 +230,9 @@ async function getFbFeed(feedId, id) {
             // console.log(body);
             retArr[id] = JSON.parse(body);
         }
-    )
+    ).catch(function(err){
+        throw err;
+    })
 }
 
 function getData(req, res){
