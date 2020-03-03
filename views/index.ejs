@@ -23,6 +23,19 @@
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/font.css">
 
+
+    <style type="text/css">
+        a:link {text-decoration: none; color: #292828;}
+        a:visited {text-decoration: none; color: #292828;}
+        a:active {text-decoration: none; color: #292828;}
+        a:hover {text-decoration: underline; color: #292828;}
+        /* th,td {padding:5px;} */
+        div.feedLabel{text-decoration:none; color: #292828;}
+        div.companyName{text-decoration:none; color: #2b379c; font-size: smaller;}
+        div.feedDateTime{text-decoration:none; color: #6b6b6b; font-size: smaller;}
+        hr.feedLine{border: 0.5px solid #a3a3a3;}
+        img.feedImg{padding:5px}
+        </style>
 </head>
   <body>
     <script> 
@@ -54,7 +67,23 @@
         });
         $( '.left-menu-bar__category-list--list02' ).addClass( 'active' );
 </script>
-
+<script>
+    function getFormatDate(date){
+        var year = date.getFullYear();              //yyyy
+        var month = (1 + date.getMonth());          //M
+        month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+        var day = date.getDate();                   //d
+        day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+        var hour = date.getHours();
+        hour = hour >= 10 ? hour : '0' + hour;          //hour 두자리로 저장
+        var min = date.getMinutes();
+        min = min >= 10 ? min : '0' + min;          //min 두자리로 저장
+        var sec = date.getSeconds();
+        sec = sec >= 10 ? sec : '0' + sec;          //sec 두자리로 저장
+        
+        return  year + '년' + month + '월' + day + '일' + " " + hour + ":" + min;
+    }
+</script>
     <!-- html에 include 하는 script -->
     <div id="wrap">
          <header role="header">
@@ -295,18 +324,57 @@
                     </div>     
                     <div class="content contents--inner-wrap">
                         <h2>소식</h2>
-                        <p>한국금거래소디지털에셋의 가장 빠르고 정확한 소식을 전달합니다.  
-                            <table>
-                                <% for(var i=0; i < fbNews.length; i+=2) { %>
-                                    <tr>
-                                        <td><img src="<%=fbNews[i].picture%>"></td>
-                                        <td><%=fbNews[i].message.substring(0,30)+"....."%><a href='<%=fbNews[i].permalink_url%>'>더 알아보기</a></td>
-                                        <td><img src="<%=fbNews[i+1].picture%>"></td>
-                                        <td><%=fbNews[i+1].message.substring(0,30)+"....."%><a href='<%=fbNews[i+1].permalink_url%>'>더 알아보기</a></td>
-                                    </tr>
-                                <% } %>
-                            </table>
-                        </p>
+                        <p>한국금거래소디지털에셋의 가장 빠르고 정확한 소식을 전달합니다.</p>
+                        <br>
+                        <table width=900 bgcolor=white>
+                            <% for(var i=0; i < fbNews.length; i+=2) { %>
+                                <tr>
+                                    <td width=20></td>
+                                    <td colspan=2>
+                                        <hr class="feedLine">
+                                    </td>
+                                    <td width=20></td>
+                                    <td colspan=2>
+                                        <hr class="feedLine">
+                                    </td>
+                                    <td width=20></td>
+                                </tr>
+                                <tr>
+                                    <td width=20></td>
+                                    <td><img class="feedImg" height="80" width=120 src="<%=fbNews[i].picture%>"></td>
+                                    <td>
+                                        <div class='feedLabel'><a href='<%=fbNews[i].permalink_url%>'><%=fbNews[i].message.substring(0,15)+"....."%></a></div><br>
+                                        <div class='companyName'>한국금거래소디지털에셋</div>
+                                        <div class='feedDateTime' id='created_time<%=i%>'></div>
+                                    <script>
+                                        document.getElementById("created_time<%=i%>").innerText = getFormatDate(new Date('<%=fbNews[i].created_time%>'));
+                                    </script>
+                                    </td>
+                                    <td></td>
+                                    <td><img class="feedImg" height="80" width=120 src="<%=fbNews[i+1].picture%>"></td>
+                                    <td>
+                                        <div class='feedLabel'><a href='<%=fbNews[i+1].permalink_url%>'><%=fbNews[i+1].message.substring(0,15)+"....."%></a></div><br>
+                                        <div class='companyName'>한국금거래소디지털에셋</div>
+                                        <div class='feedDateTime' id='created_time<%=i+1%>'></div>
+                                    <script>
+                                        document.getElementById("created_time<%=i+1%>").innerText = getFormatDate(new Date('<%=fbNews[i+1].created_time%>'));
+                                    </script>
+                                    </td>
+                                    <td width=20></td>
+                                </tr>
+                            <% } %>
+                            <tr>
+                                <td width=20></td>
+                                <td colspan=2>
+                                    <hr class="feedLine">
+                                </td>
+                                <td width=20></td>
+                                <td colspan=2>
+                                    <hr class="feedLine">
+                                </td>
+                                <td width=20></td>
+                            </tr>
+                        </table>
                         <div id="actions">
                             <a href="#is-nineth" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
                         </div>

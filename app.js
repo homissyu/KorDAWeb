@@ -14,7 +14,8 @@ app.set('view engine', 'ejs');""
 app.use(express.static(__dirname+"/public"));
 
 //use routes
-app.use("/", require("./routes/index"));
+app.use("/", require(__dirname+"/routes/index"));
+app.use("/g", require(__dirname+"/routes/getData"));
 
 //listen
 app.listen(PORT, function(){

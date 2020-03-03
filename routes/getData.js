@@ -168,8 +168,8 @@ function getEtcAssetPrice() {
             // console.log("getEtcAssetPrice");
             JSDOM.fromURL(ETCAssetPriceOption).then(dom => {
                 var obj = dom.window.document.getElementsByClassName("ESdaily")[0].getElementsByTagName("table")[0].getElementsByTagName("tr");
-                investRate = obj[1].getElementsByTagName("a")[1].innerHTML.trim();
-                investRate = new Intl.NumberFormat('en-IN', { style: 'percent'}).format(investRate)+"%";
+                investRate = obj[1].getElementsByTagName("a")[1].innerHTML.trim()+"%";
+                investRate = new Intl.NumberFormat('en-IN', { style: 'percent'}).format(investRate);
                 // console.log("원/달러 환율:"+excRate);
                 excRate = obj[3].getElementsByTagName("a")[1].innerHTML.trim();
                 excRate = "₩"+new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(excRate);
@@ -223,7 +223,7 @@ async function getFbFeed(feedId, id) {
     )
 }
 
-function getData(req, res){
+function sendData(req, res){
     async.waterfall([
         // function(callback) {
         //     callback(null, getGoldPrice());
@@ -247,10 +247,10 @@ function getData(req, res){
         if(err){
             console.log('Error 발생');
         }else {
-            // res.render('index', {goldBuy:goldBuy, goldSell:goldSell, pegGram:pegGram, pesGram:pesGram, btc:btc, excRate:excRate, investRate:investRate, kospi:kospi, kosdaq:kosdaq,fbNews:retArr.
-            res.render('index', {pegGram:pegGram, pesGram:pesGram, fbNews:retArr.sort(custom_sort) });
+            // res.render('index', {goldBuy:goldBuy, goldSell:goldSell, pegGram:pegGram, pesGram:pesGram, btc:btc, excRate:excRate, investRate:investRate, kospi:kospi, kosdaq:kosdaq, fbNews:retArr.
+            res.render('getData', {pegGram:pegGram, pesGram:pesGram, fbNews:retArr.sort(custom_sort) });
         }  // 7
     });
 };
 
-module.exports = getData;
+module.exports = sendData;
