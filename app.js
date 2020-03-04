@@ -14,6 +14,7 @@ app.set('view engine', 'ejs');""
 app.use(express.static(__dirname+"/public"));
 
 //use routes
+app.use("/api", require(__dirname+"/routes/getData"));
 app.use("/", require(__dirname+"/routes/index"));
 
 //listen

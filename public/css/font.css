@@ -2,8 +2,6 @@
 @import url('https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
 
-/*   */
-
 /* body		{ font-family: 'NanumSquare', sans-serif; } */
 .light		{ font-weight: 300 }
 .normal		{ font-weight: 400 }
@@ -11,54 +9,4 @@
 .bolder		{ font-weight: 800 }
 .NS { font-family: 'Nanum Square'; font-style: normal;  font-weight: 400; }
 .NSB {  font-family: 'Nanum Square'; font-style: bold; font-weight: 700;}
-
-/*
-
-사용예시
-
-    html, body{margin:0;padding:0;height:100%}
-    body{background-color:#263238;font:1.2em/1.3em 'NanumSquare', sans-serif;color:#ECEFF1}
-    body > div{display:table;width:100%;height:100%}
-    body > div > div{display:table-cell;vertical-align:middle}
-    p{text-align:center}
-    p strong.extra{font-weight: 800}
-    p.light{font-weight: 300}
-  
-
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
-https://raw.githubusercontent.com/moonspam/NanumSquare/master/nanumsquare.css
-
-@font-face {
- font-family: 'NanumSquare';
- font-weight: 400;
- src: url(NanumSquareR.eot);
- src: url(NanumSquareR.eot?#iefix) format('embedded-opentype'),
-      url(NanumSquareR.woff) format('woff'),
-      url(NanumSquareR.ttf) format('truetype');
-}
-@font-face {
- font-family: 'NanumSquare';
- font-weight: 700;
- src: url(NanumSquareB.eot);
- src: url(NanumSquareB.eot?#iefix) format('embedded-opentype'),
-      url(NanumSquareB.woff) format('woff'),
-      url(NanumSquareB.ttf) format('truetype');
-}
-@font-face {
- font-family: 'NanumSquare';
- font-weight: 800;
- src: url(NanumSquareEB.eot);
- src: url(NanumSquareEB.eot?#iefix) format('embedded-opentype'),
-      url(NanumSquareEB.woff) format('woff'),
-      url(NanumSquareEB.ttf) format('truetype');
-}
-@font-face {
- font-family: 'NanumSquare';
- font-weight: 300;
- src: url(NanumSquareL.eot);
- src: url(NanumSquareL.eot?#iefix) format('embedded-opentype'),
-      url(NanumSquareL.woff) format('woff'),
-      url(NanumSquareL.ttf) format('truetype');
-}
-*/
 
