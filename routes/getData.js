@@ -34,15 +34,6 @@ const BOKAssetPriceOption = "http://ecos.bok.or.kr/EIndex.jsp";
 
 const KhanAssetPriceOption = "http://biz.khan.co.kr/";
 
-const fbFeedListOption = { 
-    method:'GET', 
-    url:'https://graph.facebook.com/v6.0/2819705001436386/feed?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD'
-}
-const feedCnt = 8;
-
-var retArr = new Array();
-var objArr;
-
 var goldBuy;
 var goldSell;
 var pegGram;
@@ -245,44 +236,6 @@ function getKhanAssetPrice() {
     })
 }
 
-async function getFbFeedList() {
-    request(
-        fbFeedListOption,
-        await function (err,response, body) { 
-            // if(error){throw error;} 
-            // console.error('error', error);
-            // console.log('statusCode:', response && response.statusCode); 
-            // console.log(body);
-            objArr = JSON.parse(body);
-            for(var subKey in objArr["data"]){
-                if(subKey<feedCnt){
-                    getFbFeed(objArr["data"][subKey]["id"], subKey);
-                }else{
-                    break;
-                }
-            }
-            // console.log("fbFeed:"+retArr);
-        }
-    )
-}
-
-async function getFbFeed(feedId, id) { 
-    // console.log(feedId);
-    request(
-        {
-            method:'GET', 
-            uri:'https://graph.facebook.com/v6.0/'+feedId+'?access_token=EAAkWsUhEDOUBAACZCgvRIsAk1xObIjGv1N5k8uetplXTJh8kWIEYj65u2YkgQb8RaxGxn1y8Pk1h1oMbfDBTZAFGVf3vHuKCWdIaYsZBA51vD5sxIJNR27cXcfh8DxFBMiPdgh1lsZCtNfz7NbCjMBQIZCPF0eD2Syz40lxRqM1ReX2XmQftSOK3W2Cj9u2EZD&fields=permalink_url,picture,message,updated_time,created_time' 
-        }, 
-        await function(err,response, body) { 
-            // if(error){throw error;} 
-            // console.error('error', error);
-            // console.log('statusCode:', response && response.statusCode); 
-            // console.log(body);
-            retArr[id] = JSON.parse(body);
-        }
-    )
-}
-
 function sendData(req, res){
     async.waterfall([
         function(callback) {
@@ -301,38 +254,28 @@ function sendData(req, res){
             callback(null, getBokAssetPrice());
         }, // 5
         function(arg, callback) {
-            callback(null, getFbFeedList());
-        }, // 6
-        function(arg, callback) {
             callback(null, getKhanAssetPrice());
-        }
+        } // 6
     ], function (err, result) {
         if(err){
             console.log('Error 발생');
             throw err;
         }else {
-            var ret = {
-                goldBuy:goldBuy, 
-                goldSell:goldSell, 
-                
-                // pegGram:pegGram, 
-                // pesGram:pesGram, 
-                
-                pegDon:pegDon, 
-                pesDon:pesDon, 
-                
-                excRate:excRate, 
-                investRate:investRate, 
-                
-                kospi:kospi, 
-                kosdaq:kosdaq, 
-                
-                dji:dji, 
-                nasdaq:nasdaq, 
-                
-                btc:btc, 
-                dubai:dubai
-            };
+            var ret = [];
+            var keys = ["pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","dubai","eth","pegGram","pesGram"];
+            var values = [pegDon, pesDon, goldBuy, goldSell, excRate, investRate, kospi, kosdaq, dji, nasdaq, btc, dubai, eth, pegGram, pesGram];
+            var unit = ["원/돈","원/돈","원/돈","원/돈","원/$","%","point","point", "point","point", "원/btc","$/배럴", "원/eth","원/g","원/g"];
+            for(var i=0; i<keys.length; i++){
+                var data;
+                data = {
+                    "label":keys[i], 
+                    "thisValue":values[i],
+                    "unit":unit[i], 
+                    "lastValue":""
+                }
+                ret.push(data);
+            }
+
             res.render('getData', {ret:ret});
         }  // 7
     });

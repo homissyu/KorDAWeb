@@ -10,38 +10,70 @@
          })
     })
 </script> 
+<style>
+    .blinkText {
+        animation: blinker 1s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
 <script type="text/javascript">
     var ajaxRet;
     
     function sendAjax(){
         // content-type을 설정하고 데이터 송신
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3000/api');
+        xhr.open('POST', document.URL.split("#")[0]+'api');
         xhr.setRequestHeader('Content-type', "application/json");
         xhr.send();
         
+        var tempObjArr = document.getElementsByClassName("left-menu-bar__contents-list")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+        var tempStr;
+        var tempObj;
+        
         // 데이터 수신이 완료되면 표시
         xhr.addEventListener('load', function(){
-            console.log(xhr.responseText);
             ajaxRet = JSON.parse(xhr.responseText);
-            document.getElementById("pegDon").innerText=ajaxRet.pegDon;
-            document.getElementById("pesDon").innerText=ajaxRet.pesDon;
-            document.getElementById("goldBuy").innerText=ajaxRet.goldBuy;
-            document.getElementById("goldSell").innerText=ajaxRet.goldSell;
-            document.getElementById("excRate").innerText=ajaxRet.excRate;
-            document.getElementById("investRate").innerText=ajaxRet.investRate;
-            document.getElementById("kospi").innerText=ajaxRet.kospi;
-            document.getElementById("kosdaq").innerText=ajaxRet.kosdaq;
-            document.getElementById("dji").innerText=ajaxRet.dji;
-            document.getElementById("nasdaq").innerText=ajaxRet.nasdaq;
-            document.getElementById("dubai").innerText=ajaxRet.dubai;
-            document.getElementById("btc").innerText=ajaxRet.btc;
-            alert(url);
+            //"pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","dubai","eth","pegGram","pesGram",
+            var tempClass;
+            var tempColor;
+            var tempFontWeight;
+            var tempVal = 0;
+            var tempStr;
+            for(var i=0 ; i<tempObjArr.length;i++){
+                tempObj = tempObjArr[i].getElementsByTagName("span")[1];
+                tempStr = tempObj.innerText;
+                tempVal = eval(tempStr) - eval(ajaxRet[i].thisValue);
+                if(eval(tempStr)==0){
+                    
+                }
+                if(eval(tempStr)!=0 && tempVal>0){
+                    tempColor = "blue";
+                    tempClass = "blinkText";
+                    tempFontWeight = "bold";
+                }else if(eval(tempStr)!=0 && tempVal<0){
+                    tempColor = "red";
+                    tempClass = "blinkText";
+                    tempFontWeight = "bold";
+                }else{
+                    tempColor = "black";
+                    tempClass = "";
+                    tempFontWeight = "normal";
+                }
+                tempObj.innerText =  ajaxRet[i].thisValue;
+                tempObj.style.color =  tempColor;
+                tempObj.className = tempClass;
+                tempObj.style.fontWeight = tempFontWeight
+            }
         });
     }
-    sendAjax();
-    window.setInterval("sendAjax()", 60000);
+    window.setInterval("sendAjax()", 10000);
 </script>
+
  <div id="gnb">
     <h1><a href="/" class="logo">한국금거래소디지털에셋 센골드</a></h1>
     <button data-gnb-active="mobile-button" type="button" id="ml_memu">메뉴 열기/닫기</button>
@@ -77,53 +109,52 @@
                     <!--new 아이콘 추가 시, span 태그 추가-->
                     <li>
                         <span>센골드 e금 시세</span></br>
-                        <span id='pegDon'><%=pegDon%></span><span>원/돈</span>
+                        <span id='pegDon'><%=pegDon%></span><span> 원/돈</span>
                     </li>
                     <li>
                         <span>센골드 e은 시세</span></br>
-                        <span id='pesDon'><%=pesDon%></span><span>원/돈</span>
+                        <span id='pesDon'><%=pesDon%></span><span> 원/돈</span>
                     </li> 
                     <li>
                         <span>금 살때 소매시세</span></br>
-                        <span id='goldBuy'><%=goldBuy%></span><span>원/돈</span>
+                        <span id='goldBuy'><%=goldBuy%></span><span> 원/돈</span>
                     </li>
                     <li>
                         <span>금 팔 때 소매시세</span></br>
-                        <span id='goldSell'><%=goldSell%></span><span>원/돈</span>
+                        <span id='goldSell'><%=goldSell%></span><span> 원/돈</span>
                     </li>
                     <li>
                         <span>원/달러 환율</span></br>
-                        <span id='excRate'><%=excRate%></span><span>원/$</span>
+                        <span id='excRate'><%=excRate%></span><span> 원/$</span>
                     </li>
                     <li>
                         <span>국고채3년 금리</span></br>
-                        <span id='investRate'><%=investRate%></span><span>%</span>
+                        <span id='investRate'><%=investRate%></span><span> %</span>
                     </li>
                     <li>
                         <span>KOSPI</span></br>
-                        <span id='kospi'><%=kospi%></span><span>point</span>
+                        <span id='kospi'><%=kospi%></span><span> point</span>
                     </li>
                     <li>
                         <span>KOSDAQ</span></br>
-                        <span id='kosdaq'><%=kosdaq%></span><span>point</span>
+                        <span id='kosdaq'><%=kosdaq%></span><span> point</span>
                     </li>
                     <li>
-                        <span>DOW</span></br>
-                        <span id='dji'><%=dji%></span><span>point</span>
+                        <span>Dow Jones</span></br>
+                        <span id='dji'><%=dji%></span><span> point</span>
                     </li>
                     <li>
                         <span>NASDAQ</span></br>
-                        <span id='nasdaq'><%=nasdaq%></span><span>point</span>
+                        <span id='nasdaq'><%=nasdaq%></span><span> point</span>
                     </li>
                     <li>
-                        <span>BitCoin 시세</span></br>
-                        <span id='btc'><%=btc%></span><span>원/btc</span>
+                        <span>BitCoin</span></br>
+                        <span id='btc'><%=btc%></span><span> 원/btc</span>
                     </li>
                     <li class="last">
-                        <span>Dubai 유가</span></br>
-                        <span id='dubai'><%=dubai%></span><span>$/베럴</span>
+                        <span>국제유가(두바이유)</span></br>
+                        <span id='dubai'><%=dubai%></span><span> $/배럴</span>
                     </li>
-                    
                 </ul>
             </div>
             <div class="left-menu-bar__sns-list">

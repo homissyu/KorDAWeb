@@ -20,6 +20,7 @@
     "jade": "~1.11.0",
     "jsdom": "^16.2.0",
     "morgan": "~1.9.0",
+    "remove-array-items": "^2.0.1",
     "reqeust": "^2.81.1",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
