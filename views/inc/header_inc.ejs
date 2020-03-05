@@ -48,9 +48,6 @@
                 tempObj = tempObjArr[i].getElementsByTagName("span")[1];
                 tempStr = tempObj.innerText;
                 tempVal = eval(tempStr) - eval(ajaxRet[i].thisValue);
-                if(eval(tempStr)==0){
-                    
-                }
                 if(eval(tempStr)!=0 && tempVal>0){
                     tempColor = "blue";
                     tempClass = "blinkText";

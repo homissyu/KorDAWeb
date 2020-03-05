@@ -61,14 +61,14 @@ function getGoldPrice() {
             request(
                 goldPriceOption, 
                 function(error, response, body) { 
-                    if(error){throw error;} 
+                    // if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
                     var result = JSON.parse(convert.xml2json(body, {compact: true, ignoreDeclaration: true, spaces: 4}));
                     goldBuy = result.Xml.data[0].buy.price._text;
-                    goldBuy = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(goldBuy);
+                    goldBuy = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(goldBuy).trim();
                     goldSell = result.Xml.data[0].sell.price._text;
-                    goldSell = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(goldSell);
+                    goldSell = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(goldSell).trim();
                     // 금 소매 살 때
                     // console.log("금 소매 살 때:"+goldBuy);
                     // 금 소매 팔 때
@@ -76,7 +76,7 @@ function getGoldPrice() {
                     // res.render('index')
                 }
             )
-        )
+        ).reject(new Error('fail')).catch(() => {});
     });
 }
 
@@ -90,7 +90,7 @@ function getPegPrice(){
                     // if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
-                    // console.log(body);
+                    console.log("_____________________________________"+body);
                     
                     // e금 기준시세
                     var doc = JSON.parse(convert.xml2json(body,{compact: true, ignoreDeclaration: true, spaces: 4}));
@@ -99,8 +99,8 @@ function getPegPrice(){
                     pegGram = pegGram.replace( regExp , ""); 
                     pegGram = parseInt(pegGram)*1.03;
                     pegDon = parseInt(pegGram)*3.75;
-                    pegGram = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pegGram);
-                    pegDon = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pegDon);
+                    pegGram = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pegGram).trim();
+                    pegDon = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pegDon).trim();
                     // console.log("e금 기준시세(g):"+pegGram);
                     
                     // console.log("e금 기준시세(돈):"+pegDon);
@@ -108,7 +108,7 @@ function getPegPrice(){
             ).catch(function(err){
                 throw err;
             })
-        )
+        ).reject(new Error('fail')).catch(() => {});
     })
 }
 
@@ -122,7 +122,7 @@ function getPesPrice(){
                     // if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
-                    // console.log(body);
+                    console.log("_____________________________________"+body);
                     
                     // e금 기준시세
                     var doc = JSON.parse(convert.xml2json(body,{compact: true, ignoreDeclaration: true, spaces: 4}));
@@ -131,15 +131,15 @@ function getPesPrice(){
                     pesGram = pesGram.replace( regExp , ""); 
                     pesGram = parseInt(pesGram)*1.05;
                     pesDon = parseInt(pesGram)*3.75;
-                    pesGram = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pesGram);
-                    pesDon = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pesDon);
+                    pesGram = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pesGram).trim();
+                    pesDon = new Intl.NumberFormat('en-IN', { style: 'decimal', maximumFractionDigits: 0}).format(pesDon).trim();
                     // console.log("e은 기준시세(g):"+pesGram);
                     // console.log("e금 기준시세(돈):"+pesDon);
                 }
             ).catch(function(err){
                 throw err;
             })
-        )
+        ).reject(new Error('fail')).catch(() => {});
     });
 }
 
@@ -150,19 +150,19 @@ function getBTCPrice() {
             request(
                 btcPriceOption, 
                 function(error, response, body) { 
-                    if(error){throw error;} 
+                    // if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
                     // console.log(body);
                     var result = JSON.parse(body);
                     // console.log(result);
                     btc = result.data.closing_price;
-                    btc = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(btc);
+                    btc = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(btc).trim();
                     // Bithum btc 기준시세
                     // console.log("Bithum btc 기준시세:"+btc);
                 }
             )
-        )
+        ).reject(new Error('fail')).catch(() => {});
     })
 }
 
@@ -173,19 +173,19 @@ function getETHPrice() {
             request(
                 ethPriceOption, 
                 function(error, response, body) { 
-                    if(error){throw error;} 
+                    // if(error){throw error;} 
                     // console.error('error', error);
                     // console.log('statusCode:', response && response.statusCode); 
                     // console.log(body);
                     var result = JSON.parse(body);
                     // console.log(result);
                     eth = result.data.closing_price;
-                    eth = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(eth);
+                    eth = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(eth).trim();
                     // Bithum btc 기준시세
                     // console.log("Bithum btc 기준시세:"+btc);
                 }
             )
-        )
+        ).reject(new Error('fail')).catch(() => {});
     })
 }
 
@@ -196,13 +196,15 @@ function getBokAssetPrice() {
             JSDOM.fromURL(BOKAssetPriceOption).then(dom => {
                 var obj = dom.window.document.getElementsByClassName("ESdaily")[0];
                 investRate = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
-                investRate = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(investRate);
+                investRate = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(investRate).trim();
 
                 dubai = obj.getElementsByTagName("table")[1].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
-                dubai = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(dubai);
+                dubai = new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(dubai).trim();
 
-            })   
-        )
+            }).catch(function(err){
+                throw err;
+            })
+        ).reject(new Error('fail')).catch(() => {});
     })
 }
 
@@ -214,25 +216,27 @@ function getKhanAssetPrice() {
                 var obj = dom.window.document.getElementsByClassName("economyBar")[0].getElementsByTagName("li");
                 kospi = obj[0].innerHTML.trim();
                 kospi = kospi.split("</span>")[1];
-                kospi = kospi.split("<em")[0];
+                kospi = kospi.split("<em")[0].trim();;
                 
                 kosdaq = obj[1].innerHTML.trim();
                 kosdaq = kosdaq.split("</span>")[1];
-                kosdaq = kosdaq.split("<em")[0];
+                kosdaq = kosdaq.split("<em")[0].trim();;
 
                 dji = obj[2].innerHTML.trim();
                 dji = dji.split("</span>")[1];
-                dji = dji.split("<em")[0];
+                dji = dji.split("<em")[0].trim();;
                 
                 nasdaq = obj[3].innerHTML.trim();
                 nasdaq = nasdaq.split("</span>")[1];
-                nasdaq = nasdaq.split("<em")[0];
+                nasdaq = nasdaq.split("<em")[0].trim();;
                 
                 excRate = obj[4].innerHTML.trim();
                 excRate = excRate.split("</span>")[1];
-                excRate = excRate.split("<em")[0];
-            })   
-        )
+                excRate = excRate.split("<em")[0].trim();;
+            }).catch(function(err){
+                throw err;
+            })
+        ).reject(new Error('fail')).catch(() => {});
     })
 }
 
