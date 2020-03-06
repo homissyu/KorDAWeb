@@ -31,6 +31,9 @@
             xhr.addEventListener('load', function(){
                 ajaxRet = JSON.parse(xhr.responseText);
                 //"pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","dubai","eth","pegGram","pesGram",
+                for(var i=0;i<ajaxRet.length;i++){
+                    ajaxRet[i].thisValue = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet[i].thisValue)
+                }
                 var contentsArr = [];
                 //금 소매 살 때 시세(원/돈) / 금 소매 팔 때 시세(원/돈)
                 contentsArr.push(ajaxRet[2].thisValue+" / "+ajaxRet[3].thisValue);
@@ -63,7 +66,7 @@
                     tempVal = contentsArr[(k/3)];
                     // tempObjArr[k].getElementsByTagName("h1")[0].innerText = contentsArr[(k/3)];
                     
-                    if(tempStr.valueOf().trim() != tempVal.valueOf().trim()){
+                    if(tempStr != tempVal){
                         // tempColor = "blue";
                         tempClass = "blinkText";
                         // alert(tempStr+":"+tempVal+"___"+tempStr.length+":"+tempVal.length);
@@ -79,7 +82,7 @@
                 }
             });
         }
-        window.setInterval("sendAjax()", 3000);
+        window.setInterval("sendAjax()", 10000);
     </script>
 </head>
 <body translate="no" onLoad="sendAjax()">

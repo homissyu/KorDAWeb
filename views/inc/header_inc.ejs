@@ -23,7 +23,9 @@
 </style>
 <script type="text/javascript">
     var ajaxRet;
-    
+    var originArr = new Array();
+    var newArr = new Array();
+
     function sendAjax(){
         // content-type을 설정하고 데이터 송신
         var xhr = new XMLHttpRequest();
@@ -32,8 +34,6 @@
         xhr.send();
         
         var tempObjArr = document.getElementsByClassName("left-menu-bar__contents-list")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
-        var tempStr;
-        var tempObj;
         
         // 데이터 수신이 완료되면 표시
         xhr.addEventListener('load', function(){
@@ -44,24 +44,32 @@
             var tempFontWeight;
             var tempVal = 0;
             var tempStr;
+            var tempObj;
+            
             for(var i=0 ; i<tempObjArr.length;i++){
+                // if(originArr.length>0)alert(tempStr +":"+originArr[i]+":"+ajaxRet[i].thisValue);
                 tempObj = tempObjArr[i].getElementsByTagName("span")[1];
-                tempStr = tempObj.innerText;
-                tempVal = eval(tempStr) - eval(ajaxRet[i].thisValue);
-                if(eval(tempStr)!=0 && tempVal>0){
+                tempStr = Number.parseFloat(tempObj.innerText);
+                tempVal = originArr[i] - ajaxRet[i].thisValue;
+                
+                originArr.reduce[i];
+
+                if(tempStr!=0 && tempVal>0){
                     tempColor = "blue";
                     tempClass = "blinkText";
                     tempFontWeight = "bold";
-                }else if(eval(tempStr)!=0 && tempVal<0){
+                }else if(tempStr!=0 && tempVal<0){
                     tempColor = "red";
                     tempClass = "blinkText";
                     tempFontWeight = "bold";
                 }else{
                     tempColor = "black";
                     tempClass = "";
-                    tempFontWeight = "normal";
+                    tempFontWeight = "";
                 }
-                tempObj.innerText =  ajaxRet[i].thisValue;
+
+                originArr[i] = ajaxRet[i].thisValue;
+                tempObj.innerText = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet[i].thisValue)
                 tempObj.style.color =  tempColor;
                 tempObj.className = tempClass;
                 tempObj.style.fontWeight = tempFontWeight
