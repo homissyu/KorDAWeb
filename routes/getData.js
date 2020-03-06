@@ -35,9 +35,9 @@ const ethPriceOption = {
 }
 
 const BOKAssetPriceOption = "http://ecos.bok.or.kr/EIndex.jsp";
-
-const KhanAssetPriceOption = "http://biz.khan.co.kr/";
-
+const ComoditiesPriceOption = "https://kr.investing.com/commodities/real-time-futures";
+const CurrencyPriceOption = "https://kr.investing.com/currencies/single-currency-crosses";
+const MajorIndicesOption = "https://kr.investing.com/indices/major-indices";
 const KospiPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSPI";
 const KosdaqPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSDAQ";
 
@@ -55,7 +55,8 @@ var kospi;
 var kosdaq;
 var dji;
 var nasdaq;
-var dubai;
+var s_p500;
+// var dubai;
 var wti;
 
 function custom_sort(a, b) {
@@ -259,14 +260,20 @@ function getBokAssetPrice() {
                 investRate = Number.parseFloat(investRate.replace(',',''));
                 // investRate = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(investRate).trim());
 
-                dubai = obj.getElementsByTagName("table")[1].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
-                dubai = Number.parseFloat(dubai.replace(',',''));
-                // dubai = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(dubai).trim());
+            }).catch(function(err){
+                throw err;
+            })
+        ).reject(new Error('fail')).catch(() => {});
+    })
+}
 
-                wti = obj.getElementsByTagName("table")[1].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+function getComoditiesPrice() {
+    return new Promise(function(resolve, reject){
+        resolve(
+            // console.log("getBokAssetPrice");
+            JSDOM.fromURL(ComoditiesPriceOption).then(dom => {
+                wti = dom.window.document.getElementsByClassName("pid-8849-last")[0].innerHTML.trim();
                 wti = Number.parseFloat(wti.replace(',',''));
-                // dubai = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(dubai).trim());
-
             }).catch(function(err){
                 throw err;
             })
@@ -329,39 +336,32 @@ function getKosdaqPrice() {
     })
 }
 
-function getKhanAssetPrice() {
+function getMajorIndices(){
     return new Promise(function(resolve, reject){
         resolve(
             // console.log("getEtcAssetPrice");
-            JSDOM.fromURL(KhanAssetPriceOption).then(dom => {
-                var obj = dom.window.document.getElementsByClassName("economyBar")[0].getElementsByTagName("li");
-                // kospi = obj[0].innerHTML.trim();
-                // kospi = kospi.split("</span>")[1];
-                // kospi = kospi.split("<em")[0];
-                // kospi = Number.parseFloat(kospi.replace(',',''));
-                // kospi = Number.parseFloat(kospi.split("<em")[0].trim());
-                
-                // kosdaq = obj[1].innerHTML.trim();
-                // kosdaq = kosdaq.split("</span>")[1];
-                // kosdaq = kosdaq.split("<em")[0];
-                // kosdaq = Number.parseFloat(kosdaq.replace(',',''));
-                 // kosdaq = Number.parseFloat(dji.split("<em")[0].trim());
-
-                dji = obj[2].innerHTML.trim();
-                dji = dji.split("</span>")[1];
-                dji = dji.split("<em")[0];
+            JSDOM.fromURL(MajorIndicesOption).then(dom => {
+                dji = dom.window.document.getElementsByClassName("pid-169-last")[0].innerHTML.trim();
                 dji = Number.parseFloat(dji.replace(',',''));
-                // dji = Number.parseFloat(dji.split("<em")[0].trim());
                 
-                nasdaq = obj[3].innerHTML.trim();
-                nasdaq = nasdaq.split("</span>")[1];
-                nasdaq = nasdaq.split("<em")[0];
+                nasdaq = dom.window.document.getElementsByClassName("pid-14958-last")[0].innerHTML.trim();
                 nasdaq = Number.parseFloat(nasdaq.replace(',',''));
-                // nasdaq = Number.parseFloat(nasdaq.split("<em")[0].trim());
-                
-                excRate = obj[4].innerHTML.trim();
-                excRate = excRate.split("</span>")[1];
-                excRate = excRate.split("<em")[0];
+
+                s_p500 = dom.window.document.getElementsByClassName("pid-166-last")[0].innerHTML.trim();
+                s_p500 = Number.parseFloat(s_p500.replace(',',''));
+            }).catch(function(err){
+                throw err;
+            })
+        ).reject(new Error('fail')).catch(() => {});
+    })
+}
+
+function getCurrencyPrice() {
+    return new Promise(function(resolve, reject){
+        resolve(
+            // console.log("getEtcAssetPrice");
+            JSDOM.fromURL(CurrencyPriceOption).then(dom => {
+                excRate = dom.window.document.getElementsByClassName("pid-650-bid")[0].innerHTML.trim();
                 excRate = Number.parseFloat(excRate.replace(',',''));
                 // excRate = Number.parseFloat(excRate.split("<em")[0].trim());
             }).catch(function(err){
@@ -389,24 +389,30 @@ function sendData(req, res){
             callback(null, getBokAssetPrice());
         }, // 5
         function(arg, callback) {
-            callback(null, getKhanAssetPrice());
+            callback(null, getCurrencyPrice());
         }, // 6
         function(arg, callback) {
-            callback(null, getKospiPrice());
+            callback(null, getMajorIndices());
         }, // 7
         function(arg, callback) {
+            callback(null, getComoditiesPrice());
+        }, // 8
+        function(arg, callback) {
+            callback(null, getKospiPrice());
+        }, // 9
+        function(arg, callback) {
             callback(null, getKosdaqPrice());
-        } // 8
+        } // 10
     ], function (err, result) {
         if(err){
             console.log('Error 발생');
             throw err;
         }else {
             var ret = [];
-            var keys = ["pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","wti","pegGram","pesGram","dubai"];
-            var values = [pegDon, pesDon, goldBuy, goldSell, excRate, investRate, kospi, kosdaq, dji, nasdaq, btc, wti, pegGram, pesGram, dubai];
+            var keys = ["pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","wti","pegGram","pesGram","s_p500"];
+            var values = [pegDon, pesDon, goldBuy, goldSell, excRate, investRate, kospi, kosdaq, dji, nasdaq, btc, wti, pegGram, pesGram, s_p500];
             // console.log(values);
-            var unit = ["원/돈","원/돈","원/돈","원/돈","원/$","%","point","point", "point","point", "원/btc","$/배럴", "원/g","원/g","$/배럴"];
+            var unit = ["원/돈","원/돈","원/돈","원/돈","원/$","%","point","point", "point","point", "원/btc","$/배럴", "원/g", "원/g", "point"];
             for(var i=0; i<keys.length; i++){
                 var data;
                 data = {
