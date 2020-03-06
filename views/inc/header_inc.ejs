@@ -38,7 +38,7 @@
         // 데이터 수신이 완료되면 표시
         xhr.addEventListener('load', function(){
             ajaxRet = JSON.parse(xhr.responseText);
-            //"pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","dubai","eth","pegGram","pesGram",
+            //"pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","wti","nasdaq","btc","dubai","eth","pegGram","pesGram",
             var tempClass;
             var tempColor;
             var tempFontWeight;
@@ -157,8 +157,8 @@
                         <span id='btc'><%=btc%></span><span> 원/btc</span>
                     </li>
                     <li class="last">
-                        <span>국제유가(두바이유)</span></br>
-                        <span id='dubai'><%=dubai%></span><span> $/배럴</span>
+                        <span>국제유가(WTI)</span></br>
+                        <span id='dubai'><%=wti%></span><span> $/배럴</span>
                     </li>
                 </ul>
             </div>

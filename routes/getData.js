@@ -38,6 +38,9 @@ const BOKAssetPriceOption = "http://ecos.bok.or.kr/EIndex.jsp";
 
 const KhanAssetPriceOption = "http://biz.khan.co.kr/";
 
+const KospiPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSPI";
+const KosdaqPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSDAQ";
+
 var goldBuy;
 var goldSell;
 var pegGram;
@@ -53,6 +56,7 @@ var kosdaq;
 var dji;
 var nasdaq;
 var dubai;
+var wti;
 
 function custom_sort(a, b) {
     return new Date(b.created_time).getTime() - new Date(a.created_time).getTime();
@@ -259,9 +263,68 @@ function getBokAssetPrice() {
                 dubai = Number.parseFloat(dubai.replace(',',''));
                 // dubai = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(dubai).trim());
 
+                wti = obj.getElementsByTagName("table")[1].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                wti = Number.parseFloat(wti.replace(',',''));
+                // dubai = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(dubai).trim());
+
             }).catch(function(err){
                 throw err;
             })
+        ).reject(new Error('fail')).catch(() => {});
+    })
+}
+
+function getKospiPrice() {
+    return new Promise(function(resolve, reject){
+        resolve(
+            // console.log("getBTCPrice");
+            request(
+                KospiPriceOption, 
+                function(error, response, body) { 
+                    // if(error){throw error;} 
+                    // console.error('error', error);
+                    // console.log('statusCode:', response && response.statusCode); 
+                    // console.log(body);
+                    try {
+                        // something bad happens here
+                        var result = JSON.parse(body);
+                        // console.log((result.result.areas[0].datas[0].nv)/100);
+                        kospi = (result.result.areas[0].datas[0].nv)/100;
+                    } catch (err) {
+                        console.error(err) // decide what you want to do here
+                        throw err;
+                    }
+                    // Bithum btc 기준시세
+                    // console.log("Bithum btc 기준시세:"+btc);
+                }
+            )
+        ).reject(new Error('fail')).catch(() => {});
+    })
+}
+
+function getKosdaqPrice() {
+    return new Promise(function(resolve, reject){
+        resolve(
+            // console.log("getBTCPrice");
+            request(
+                KosdaqPriceOption, 
+                function(error, response, body) { 
+                    // if(error){throw error;} 
+                    // console.error('error', error);
+                    // console.log('statusCode:', response && response.statusCode); 
+                    // console.log(body);
+                    try {
+                        // something bad happens here
+                        var result = JSON.parse(body);
+                        kosdaq = (result.result.areas[0].datas[0].nv)/100;
+                    } catch (err) {
+                        console.error(err) // decide what you want to do here
+                        throw err;
+                    }
+                    // Bithum btc 기준시세
+                    // console.log("Bithum btc 기준시세:"+btc);
+                }
+            )
         ).reject(new Error('fail')).catch(() => {});
     })
 }
@@ -272,16 +335,16 @@ function getKhanAssetPrice() {
             // console.log("getEtcAssetPrice");
             JSDOM.fromURL(KhanAssetPriceOption).then(dom => {
                 var obj = dom.window.document.getElementsByClassName("economyBar")[0].getElementsByTagName("li");
-                kospi = obj[0].innerHTML.trim();
-                kospi = kospi.split("</span>")[1];
-                kospi = kospi.split("<em")[0];
-                kospi = Number.parseFloat(kospi.replace(',',''));
+                // kospi = obj[0].innerHTML.trim();
+                // kospi = kospi.split("</span>")[1];
+                // kospi = kospi.split("<em")[0];
+                // kospi = Number.parseFloat(kospi.replace(',',''));
                 // kospi = Number.parseFloat(kospi.split("<em")[0].trim());
                 
-                kosdaq = obj[1].innerHTML.trim();
-                kosdaq = kosdaq.split("</span>")[1];
-                kosdaq = kosdaq.split("<em")[0];
-                kosdaq = Number.parseFloat(kosdaq.replace(',',''));
+                // kosdaq = obj[1].innerHTML.trim();
+                // kosdaq = kosdaq.split("</span>")[1];
+                // kosdaq = kosdaq.split("<em")[0];
+                // kosdaq = Number.parseFloat(kosdaq.replace(',',''));
                  // kosdaq = Number.parseFloat(dji.split("<em")[0].trim());
 
                 dji = obj[2].innerHTML.trim();
@@ -327,17 +390,23 @@ function sendData(req, res){
         }, // 5
         function(arg, callback) {
             callback(null, getKhanAssetPrice());
-        } // 6
+        }, // 6
+        function(arg, callback) {
+            callback(null, getKospiPrice());
+        }, // 7
+        function(arg, callback) {
+            callback(null, getKosdaqPrice());
+        } // 8
     ], function (err, result) {
         if(err){
             console.log('Error 발생');
             throw err;
         }else {
             var ret = [];
-            var keys = ["pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","dubai","pegGram","pesGram"];
-            var values = [pegDon, pesDon, goldBuy, goldSell, excRate, investRate, kospi, kosdaq, dji, nasdaq, btc, dubai, pegGram, pesGram];
+            var keys = ["pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","wti","pegGram","pesGram","dubai"];
+            var values = [pegDon, pesDon, goldBuy, goldSell, excRate, investRate, kospi, kosdaq, dji, nasdaq, btc, wti, pegGram, pesGram, dubai];
             // console.log(values);
-            var unit = ["원/돈","원/돈","원/돈","원/돈","원/$","%","point","point", "point","point", "원/btc","$/배럴", "원/g","원/g"];
+            var unit = ["원/돈","원/돈","원/돈","원/돈","원/$","%","point","point", "point","point", "원/btc","$/배럴", "원/g","원/g","$/배럴"];
             for(var i=0; i<keys.length; i++){
                 var data;
                 data = {
