@@ -1,12 +1,6 @@
 var mysql = require('mysql');
-var pool = mysql.createPool({
-    host     : 'db.korda.im',
-    user     : 'korda',
-    port     : '3306',
-    database : 'dbkorda',
-    password : 'korda0326!',
-    connectionLimit : 5
-})
+var config = require("./config");
+var pool = mysql.createPool(config.getConfig(2))
 var sql;
 var feCnt = 10;
 var ret;

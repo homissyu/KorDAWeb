@@ -1,14 +1,7 @@
 var mysql = require('mysql');
 var fbDatum = require("./fbDatum.js");
-
-var pool = mysql.createPool({
-    host     : 'db.korda.im',
-    user     : 'korda',
-    port     : '3306',
-    database : 'dbkorda',
-    password : 'korda0326!',
-    connectionLimit : 5
-})
+var config = require("./config");
+var pool = mysql.createPool(config.getConfig(1))
 var sql = "INSERT INTO FB_LIST (ID, MESSAGE, PICTURE, PERMALINK_URL, CREATED_TIME, UPDATE_TIME, STATUS_TYPE) VALUES (?,?,?,?,?,?,?)";
 async function insertData(value){
     console.log(value);

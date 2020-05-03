@@ -1,14 +1,7 @@
 var mysql = require('mysql');
 var newsDatum = require("./newsDatum.js");
-
-var pool = mysql.createPool({
-    host     : 'db.korda.im',
-    user     : 'korda',
-    port     : '3306',
-    database : 'dbkorda',
-    password : 'korda0326!',
-    connectionLimit : 20
-})
+var config = require("./config");
+var pool = mysql.createPool(config.getConfig(0))
 var sql = "INSERT INTO NEWS1 (NEWS_ID, TITLE, PROVIDER, BYLINE, LINK, CONTENT, PUB_DATE) VALUES (?,?,?,?,?,?,?)";
 var dateStr;
 var splitLength;
