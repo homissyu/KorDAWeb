@@ -1,0 +1,2667 @@
+{
+  "sftp://211.47.75.51:22@korda": {
+    "web": {
+      ".bash_profile": {
+        "type": "-",
+        "size": 201,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".bashrc": {
+        "type": "-",
+        "size": 1121,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".nvm": {},
+      ".redis": {},
+      ".vim": {},
+      ".vimrc": {
+        "type": "-",
+        "size": 1370,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".pki": {},
+      ".config": {},
+      ".DS_Store": {
+        "type": "-",
+        "size": 8196,
+        "lmtime": 0,
+        "modified": false
+      },
+      "package-lock.json": {
+        "type": "-",
+        "size": 131510,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".node_repl_history": {
+        "type": "-",
+        "size": 0,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".bash_history": {
+        "type": "-",
+        "size": 11460,
+        "lmtime": 0,
+        "modified": true
+      },
+      ".npm": {},
+      ".viminfo": {
+        "type": "-",
+        "size": 7778,
+        "lmtime": 0,
+        "modified": true
+      },
+      "package.json": {
+        "type": "-",
+        "size": 909,
+        "lmtime": 0,
+        "modified": false
+      },
+      "node_modules": {},
+      ".pm2": {},
+      "bak_20200311": {},
+      "routes": {
+        "getData.js": {
+          "type": "-",
+          "size": 16001,
+          "lmtime": 1588055955478,
+          "modified": false
+        },
+        "setData.js": {
+          "type": "-",
+          "size": 3925,
+          "lmtime": 1586337495862,
+          "modified": true
+        },
+        ".DS_Store": {
+          "type": "-",
+          "size": 6148,
+          "lmtime": 0,
+          "modified": false
+        },
+        "dashBoard.js": {
+          "type": "-",
+          "size": 115,
+          "lmtime": 0,
+          "modified": false
+        },
+        "datum.js": {
+          "type": "-",
+          "size": 34953,
+          "lmtime": 1586347479516,
+          "modified": true
+        },
+        "event.js": {
+          "type": "-",
+          "size": 102,
+          "lmtime": 0,
+          "modified": false
+        },
+        "event_coupon.js": {
+          "type": "-",
+          "size": 109,
+          "lmtime": 0,
+          "modified": false
+        },
+        "getData4Dashboard.js": {
+          "type": "-",
+          "size": 27160,
+          "lmtime": 1588055926928,
+          "modified": false
+        },
+        "getData4App.js": {
+          "type": "-",
+          "size": 34940,
+          "lmtime": 1586347630533,
+          "modified": true
+        },
+        "event_mypet.js": {
+          "type": "-",
+          "size": 108,
+          "lmtime": 0,
+          "modified": false
+        },
+        "index.js": {
+          "type": "-",
+          "size": 3792,
+          "lmtime": 1586392771034,
+          "modified": true
+        },
+        "news.js": {
+          "type": "-",
+          "size": 976,
+          "lmtime": 1586396056694,
+          "modified": true
+        },
+        "newsDatum.js": {
+          "type": "-",
+          "size": 1001,
+          "lmtime": 0,
+          "modified": false
+        },
+        "newNewsDatum.js": {
+          "type": "-",
+          "size": 2444,
+          "lmtime": 0,
+          "modified": false
+        }
+      },
+      "views": {
+        "inc": {},
+        "dashBoard.ejs": {
+          "type": "-",
+          "size": 17952,
+          "lmtime": 1586311179838,
+          "modified": true
+        },
+        "getData.ejs": {
+          "type": "-",
+          "size": 24,
+          "lmtime": 0,
+          "modified": false
+        },
+        ".DS_Store": {
+          "type": "-",
+          "size": 6148,
+          "lmtime": 0,
+          "modified": false
+        },
+        "event.ejs": {
+          "type": "-",
+          "size": 2989,
+          "lmtime": 0,
+          "modified": false
+        },
+        "event_coupon.ejs": {
+          "type": "-",
+          "size": 1000,
+          "lmtime": 0,
+          "modified": false
+        },
+        "event_mypet.ejs": {
+          "type": "-",
+          "size": 3509,
+          "lmtime": 0,
+          "modified": false
+        },
+        "news.ejs": {
+          "type": "-",
+          "size": 3524,
+          "lmtime": 1586396684742,
+          "modified": true
+        },
+        "index.ejs": {
+          "type": "-",
+          "size": 32640,
+          "lmtime": 1586310467869,
+          "modified": true
+        }
+      },
+      "public": {
+        ".DS_Store": {
+          "type": "-",
+          "size": 14340,
+          "lmtime": 1588056282589,
+          "modified": false
+        },
+        "README": {
+          "type": "-",
+          "size": 415,
+          "lmtime": 0,
+          "modified": false
+        },
+        "apptemplates": {},
+        "changelog.html": {
+          "type": "-",
+          "size": 16721,
+          "lmtime": 0,
+          "modified": false
+        },
+        "css": {
+          ".DS_Store": {
+            "type": "-",
+            "size": 6148,
+            "lmtime": 0,
+            "modified": false
+          },
+          "common.css": {
+            "type": "-",
+            "size": 304,
+            "lmtime": 1585819019000,
+            "modified": false
+          },
+          "dashboard.css": {
+            "type": "-",
+            "size": 27240,
+            "lmtime": 1585314436000,
+            "modified": false
+          },
+          "jquery.fullPage.css": {
+            "type": "-",
+            "size": 4603,
+            "lmtime": 1584672641000,
+            "modified": false
+          },
+          "dashboard copy.css": {
+            "type": "-",
+            "size": 27241,
+            "lmtime": 1584618256000,
+            "modified": false
+          },
+          "dashboard2.css": {
+            "type": "-",
+            "size": 3020,
+            "lmtime": 1584671648000,
+            "modified": false
+          },
+          "font.css": {
+            "type": "-",
+            "size": 1748,
+            "lmtime": 0,
+            "modified": false
+          },
+          "news.css": {
+            "type": "-",
+            "size": 5248,
+            "lmtime": 1586352036821,
+            "modified": true
+          },
+          "layout.css": {
+            "type": "-",
+            "size": 24863,
+            "lmtime": 1588244911000,
+            "modified": false
+          },
+          "responsive.css": {
+            "type": "-",
+            "size": 18392,
+            "lmtime": 1585875039000,
+            "modified": false
+          }
+        },
+        "examples": {},
+        "img": {
+          ".DS_Store": {
+            "type": "-",
+            "size": 6148,
+            "lmtime": 0,
+            "modified": false
+          },
+          "bg_blet.png": {
+            "type": "-",
+            "size": 127,
+            "lmtime": 0,
+            "modified": false
+          },
+          "bg_blet_b.png": {
+            "type": "-",
+            "size": 125,
+            "lmtime": 0,
+            "modified": false
+          },
+          "btn_lm_close.gif": {
+            "type": "-",
+            "size": 544,
+            "lmtime": 0,
+            "modified": false
+          },
+          "btn_view_bg@2x.png": {
+            "type": "-",
+            "size": 484,
+            "lmtime": 1586352119642,
+            "modified": false
+          },
+          "ic_blog.png": {
+            "type": "-",
+            "size": 432,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_blog@2x.png": {
+            "type": "-",
+            "size": 491,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_down_black_main.png": {
+            "type": "-",
+            "size": 1486,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_down_main.png": {
+            "type": "-",
+            "size": 1420,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_facebook.png": {
+            "type": "-",
+            "size": 406,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_facebook@2x.png": {
+            "type": "-",
+            "size": 372,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_instar.png": {
+            "type": "-",
+            "size": 875,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_instar@2x.png": {
+            "type": "-",
+            "size": 1069,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_search@2x.png": {
+            "type": "-",
+            "size": 1444,
+            "lmtime": 1586352132377,
+            "modified": false
+          },
+          "ic_youtube.png": {
+            "type": "-",
+            "size": 482,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ic_youtube@2x.png": {
+            "type": "-",
+            "size": 492,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_store_1.png": {
+            "type": "-",
+            "size": 10711,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_store_1_mobile.png": {
+            "type": "-",
+            "size": 9745,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_store_2.png": {
+            "type": "-",
+            "size": 9905,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_store_2_mobile.png": {
+            "type": "-",
+            "size": 9984,
+            "lmtime": 0,
+            "modified": false
+          },
+          "logo.png": {
+            "type": "-",
+            "size": 2678,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_2.jpg": {
+            "type": "-",
+            "size": 205594,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_3.jpg": {
+            "type": "-",
+            "size": 191399,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_4.jpg": {
+            "type": "-",
+            "size": 313893,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_7.jpg": {
+            "type": "-",
+            "size": 121227,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_9.jpg": {
+            "type": "-",
+            "size": 60277,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_9.png": {
+            "type": "-",
+            "size": 740262,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_11.png": {
+            "type": "-",
+            "size": 346112,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_1_2_mobile.jpg": {
+            "type": "-",
+            "size": 117189,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2.png": {
+            "type": "-",
+            "size": 121750,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_22.png": {
+            "type": "-",
+            "size": 343010,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2_1.png": {
+            "type": "-",
+            "size": 112013,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2_1_mobile.jpg": {
+            "type": "-",
+            "size": 102540,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2_2.png": {
+            "type": "-",
+            "size": 92597,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2_2_mobile.jpg": {
+            "type": "-",
+            "size": 106800,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2_2_mobile.png": {
+            "type": "-",
+            "size": 330517,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2_3.png": {
+            "type": "-",
+            "size": 84065,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_2_3_mobile.jpg": {
+            "type": "-",
+            "size": 103119,
+            "lmtime": 0,
+            "modified": true
+          },
+          "m_bg_app_2_4.png": {
+            "type": "-",
+            "size": 203381,
+            "lmtime": 0,
+            "modified": true
+          },
+          "m_bg_app_2_4_mobile.jpg": {
+            "type": "-",
+            "size": 121608,
+            "lmtime": 0,
+            "modified": true
+          },
+          "m_bg_app_3_1.png": {
+            "type": "-",
+            "size": 79741,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_3_2.png": {
+            "type": "-",
+            "size": 79329,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_3_3.png": {
+            "type": "-",
+            "size": 107894,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_3_4.png": {
+            "type": "-",
+            "size": 342645,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_app_3_5.png": {
+            "type": "-",
+            "size": 341060,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_apㅎp_2.png": {
+            "type": "-",
+            "size": 240992,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_logo.png": {
+            "type": "-",
+            "size": 2878,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_menu.png": {
+            "type": "-",
+            "size": 2347,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mobile_left_bg.png": {
+            "type": "-",
+            "size": 96,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mobile_lnb_close_btn.png": {
+            "type": "-",
+            "size": 403,
+            "lmtime": 0,
+            "modified": false
+          },
+          "smartcon_appinfo.jpg": {
+            "type": "-",
+            "size": 1256443,
+            "lmtime": 0,
+            "modified": false
+          },
+          "tt_bg@2x.png": {
+            "type": "-",
+            "size": 689,
+            "lmtime": 0,
+            "modified": false
+          },
+          "btn_event.png": {
+            "type": "-",
+            "size": 7773,
+            "lmtime": 0,
+            "modified": false
+          },
+          "btn_event2.png": {
+            "type": "-",
+            "size": 7920,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event01.jpg": {
+            "type": "-",
+            "size": 445972,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event02.jpg": {
+            "type": "-",
+            "size": 134403,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event03.jpg": {
+            "type": "-",
+            "size": 93557,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_store_1_event.png": {
+            "type": "-",
+            "size": 9784,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_store_2_event.png": {
+            "type": "-",
+            "size": 10319,
+            "lmtime": 0,
+            "modified": false
+          },
+          "CenGoldMain.png": {
+            "type": "-",
+            "size": 531377,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_install.png": {
+            "type": "-",
+            "size": 6418,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_banner.png": {
+            "type": "-",
+            "size": 74533,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_top_tt.jpg": {
+            "type": "-",
+            "size": 83679,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_event2.jpg": {
+            "type": "-",
+            "size": 322685,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event_money04.jpg": {
+            "type": "-",
+            "size": 391525,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_event1.jpg": {
+            "type": "-",
+            "size": 183809,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_top.png": {
+            "type": "-",
+            "size": 1307540,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event_money03.png": {
+            "type": "-",
+            "size": 21770,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event_money03.jpg": {
+            "type": "-",
+            "size": 104030,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_install_b1.png": {
+            "type": "-",
+            "size": 9253,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event_money02.jpg": {
+            "type": "-",
+            "size": 414965,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_install_b2.png": {
+            "type": "-",
+            "size": 8089,
+            "lmtime": 0,
+            "modified": false
+          },
+          "img_event_money01.png": {
+            "type": "-",
+            "size": 131148,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_quick.png": {
+            "type": "-",
+            "size": 4357,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_top_bg.jpg": {
+            "type": "-",
+            "size": 48914,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mypet_notice.png": {
+            "type": "-",
+            "size": 52078,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ez_1.jpg": {
+            "type": "-",
+            "size": 602650,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ez_2.jpg": {
+            "type": "-",
+            "size": 602889,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ez_4.jpg": {
+            "type": "-",
+            "size": 602195,
+            "lmtime": 0,
+            "modified": false
+          },
+          "ez_3.jpg": {
+            "type": "-",
+            "size": 603574,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_0nn.jpg": {
+            "type": "-",
+            "size": 669105,
+            "lmtime": 0,
+            "modified": false
+          },
+          "m_bg_0.jpg": {
+            "type": "-",
+            "size": 405473,
+            "lmtime": 0,
+            "modified": true
+          },
+          "img_event_200427_god.jpg": {
+            "type": "-",
+            "size": 199704,
+            "lmtime": 0,
+            "modified": false
+          },
+          "withGodEvent.jpg.download": {
+            "type": "-",
+            "size": 0,
+            "lmtime": 1588056286217,
+            "modified": false
+          },
+          "withGodEvent.jpg": {
+            "type": "-",
+            "size": 199704,
+            "lmtime": 1588056287075,
+            "modified": false
+          }
+        },
+        "inc": {},
+        "js": {
+          ".DS_Store": {
+            "type": "-",
+            "size": 6148,
+            "lmtime": 0,
+            "modified": false
+          },
+          "angular.min.js": {
+            "type": "-",
+            "size": 172444,
+            "lmtime": 0,
+            "modified": false
+          },
+          "cultures": {},
+          "fullpage.js": {
+            "type": "-",
+            "size": 155913,
+            "lmtime": 0,
+            "modified": false
+          },
+          "jquery-3.4.1.min.js": {
+            "type": "-",
+            "size": 88144,
+            "lmtime": 0,
+            "modified": false
+          },
+          "jquery.fullpage.min.js": {
+            "type": "-",
+            "size": 27661,
+            "lmtime": 0,
+            "modified": false
+          },
+          "jquery.min.js": {
+            "type": "-",
+            "size": 97183,
+            "lmtime": 0,
+            "modified": false
+          },
+          "jquery.min.map": {
+            "type": "-",
+            "size": 143947,
+            "lmtime": 0,
+            "modified": false
+          },
+          "jszip.min.js": {
+            "type": "-",
+            "size": 81491,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.all.min.js": {
+            "type": "-",
+            "size": 3665920,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.all.min.js.map": {
+            "type": "-",
+            "size": 14804658,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.angular.min.js": {
+            "type": "-",
+            "size": 22363,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.angular.min.js.map": {
+            "type": "-",
+            "size": 83536,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.autocomplete.min.js": {
+            "type": "-",
+            "size": 14743,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.autocomplete.min.js.map": {
+            "type": "-",
+            "size": 46605,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.badge.min.js": {
+            "type": "-",
+            "size": 5819,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.badge.min.js.map": {
+            "type": "-",
+            "size": 10637,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.binder.min.js": {
+            "type": "-",
+            "size": 27813,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.binder.min.js.map": {
+            "type": "-",
+            "size": 114022,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.breadcrumb.min.js": {
+            "type": "-",
+            "size": 12134,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.breadcrumb.min.js.map": {
+            "type": "-",
+            "size": 33782,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.button.min.js": {
+            "type": "-",
+            "size": 7263,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.button.min.js.map": {
+            "type": "-",
+            "size": 16421,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.buttongroup.min.js": {
+            "type": "-",
+            "size": 9291,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.buttongroup.min.js.map": {
+            "type": "-",
+            "size": 24181,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.calendar.min.js": {
+            "type": "-",
+            "size": 31865,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.calendar.min.js.map": {
+            "type": "-",
+            "size": 116741,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.chat.min.js": {
+            "type": "-",
+            "size": 26111,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.chat.min.js.map": {
+            "type": "-",
+            "size": 73439,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.color.min.js": {
+            "type": "-",
+            "size": 13268,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.color.min.js.map": {
+            "type": "-",
+            "size": 36670,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.colorpicker.min.js": {
+            "type": "-",
+            "size": 21339,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.colorpicker.min.js.map": {
+            "type": "-",
+            "size": 60649,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.columnmenu.min.js": {
+            "type": "-",
+            "size": 23071,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.columnmenu.min.js.map": {
+            "type": "-",
+            "size": 68771,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.columnsorter.min.js": {
+            "type": "-",
+            "size": 7584,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.columnsorter.min.js.map": {
+            "type": "-",
+            "size": 17441,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.combobox.min.js": {
+            "type": "-",
+            "size": 18642,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.combobox.min.js.map": {
+            "type": "-",
+            "size": 63130,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.core.min.js": {
+            "type": "-",
+            "size": 59248,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.core.min.js.map": {
+            "type": "-",
+            "size": 255262,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.min.js": {
+            "type": "-",
+            "size": 64594,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.min.js.map": {
+            "type": "-",
+            "size": 286027,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.odata.min.js": {
+            "type": "-",
+            "size": 9938,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.odata.min.js.map": {
+            "type": "-",
+            "size": 33370,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.signalr.min.js": {
+            "type": "-",
+            "size": 5879,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.signalr.min.js.map": {
+            "type": "-",
+            "size": 10475,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.xml.min.js": {
+            "type": "-",
+            "size": 6733,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.data.xml.min.js.map": {
+            "type": "-",
+            "size": 17135,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.barcode.min.js": {
+            "type": "-",
+            "size": 35060,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.barcode.min.js.map": {
+            "type": "-",
+            "size": 133054,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.chart.min.js": {
+            "type": "-",
+            "size": 193956,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.chart.min.js.map": {
+            "type": "-",
+            "size": 873264,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.core.min.js": {
+            "type": "-",
+            "size": 94969,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.core.min.js.map": {
+            "type": "-",
+            "size": 431178,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.diagram.min.js": {
+            "type": "-",
+            "size": 212795,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.diagram.min.js.map": {
+            "type": "-",
+            "size": 886032,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.gauge.min.js": {
+            "type": "-",
+            "size": 37549,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.gauge.min.js.map": {
+            "type": "-",
+            "size": 151554,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.map.min.js": {
+            "type": "-",
+            "size": 55573,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.map.min.js.map": {
+            "type": "-",
+            "size": 186052,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.min.js": {
+            "type": "-",
+            "size": 1285543,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.min.js.map": {
+            "type": "-",
+            "size": 5586906,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.mobile.min.js": {
+            "type": "-",
+            "size": 1374238,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.mobile.min.js.map": {
+            "type": "-",
+            "size": 5912763,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.qrcode.min.js": {
+            "type": "-",
+            "size": 32571,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.qrcode.min.js.map": {
+            "type": "-",
+            "size": 167684,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.sparkline.min.js": {
+            "type": "-",
+            "size": 11709,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.sparkline.min.js.map": {
+            "type": "-",
+            "size": 33393,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.stock.min.js": {
+            "type": "-",
+            "size": 21916,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.stock.min.js.map": {
+            "type": "-",
+            "size": 74449,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.themes.min.js": {
+            "type": "-",
+            "size": 47597,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.themes.min.js.map": {
+            "type": "-",
+            "size": 159453,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.treemap.min.js": {
+            "type": "-",
+            "size": 19395,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dataviz.treemap.min.js.map": {
+            "type": "-",
+            "size": 67420,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dateinput.min.js": {
+            "type": "-",
+            "size": 15934,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dateinput.min.js.map": {
+            "type": "-",
+            "size": 58033,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.datepicker.min.js": {
+            "type": "-",
+            "size": 13809,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.datepicker.min.js.map": {
+            "type": "-",
+            "size": 43526,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.daterangepicker.min.js": {
+            "type": "-",
+            "size": 12945,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.daterangepicker.min.js.map": {
+            "type": "-",
+            "size": 37207,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.datetimepicker.min.js": {
+            "type": "-",
+            "size": 14770,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.datetimepicker.min.js.map": {
+            "type": "-",
+            "size": 50549,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dialog.min.js": {
+            "type": "-",
+            "size": 19547,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dialog.min.js.map": {
+            "type": "-",
+            "size": 64235,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dom.min.js": {
+            "type": "-",
+            "size": 7627,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dom.min.js.map": {
+            "type": "-",
+            "size": 18859,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.draganddrop.min.js": {
+            "type": "-",
+            "size": 17433,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.draganddrop.min.js.map": {
+            "type": "-",
+            "size": 62020,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.drawer.min.js": {
+            "type": "-",
+            "size": 10364,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.drawer.min.js.map": {
+            "type": "-",
+            "size": 28644,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.drawing.min.js": {
+            "type": "-",
+            "size": 132033,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.drawing.min.js.map": {
+            "type": "-",
+            "size": 571304,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dropdownlist.min.js": {
+            "type": "-",
+            "size": 21937,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dropdownlist.min.js.map": {
+            "type": "-",
+            "size": 75168,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dropdowntree.min.js": {
+            "type": "-",
+            "size": 39689,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.dropdowntree.min.js.map": {
+            "type": "-",
+            "size": 133387,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.editable.min.js": {
+            "type": "-",
+            "size": 10465,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.editable.min.js.map": {
+            "type": "-",
+            "size": 29208,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.editor.min.js": {
+            "type": "-",
+            "size": 266466,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.editor.min.js.map": {
+            "type": "-",
+            "size": 1012791,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.excel.min.js": {
+            "type": "-",
+            "size": 14428,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.excel.min.js.map": {
+            "type": "-",
+            "size": 45261,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filebrowser.min.js": {
+            "type": "-",
+            "size": 17927,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filebrowser.min.js.map": {
+            "type": "-",
+            "size": 53651,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filemanager.min.js": {
+            "type": "-",
+            "size": 47119,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filemanager.min.js.map": {
+            "type": "-",
+            "size": 158867,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filter.min.js": {
+            "type": "-",
+            "size": 17964,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filter.min.js.map": {
+            "type": "-",
+            "size": 48378,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filtercell.min.js": {
+            "type": "-",
+            "size": 12460,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filtercell.min.js.map": {
+            "type": "-",
+            "size": 35631,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filtermenu.min.js": {
+            "type": "-",
+            "size": 34826,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.filtermenu.min.js.map": {
+            "type": "-",
+            "size": 92097,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.fx.min.js": {
+            "type": "-",
+            "size": 22972,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.fx.min.js.map": {
+            "type": "-",
+            "size": 87786,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.gantt.list.min.js": {
+            "type": "-",
+            "size": 19463,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.gantt.list.min.js.map": {
+            "type": "-",
+            "size": 67624,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.gantt.min.js": {
+            "type": "-",
+            "size": 58746,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.gantt.min.js.map": {
+            "type": "-",
+            "size": 214430,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.gantt.timeline.min.js": {
+            "type": "-",
+            "size": 42698,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.gantt.timeline.min.js.map": {
+            "type": "-",
+            "size": 159586,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.grid.min.js": {
+            "type": "-",
+            "size": 161807,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.grid.min.js.map": {
+            "type": "-",
+            "size": 643492,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.groupable.min.js": {
+            "type": "-",
+            "size": 11829,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.groupable.min.js.map": {
+            "type": "-",
+            "size": 32729,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.imagebrowser.min.js": {
+            "type": "-",
+            "size": 9561,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.imagebrowser.min.js.map": {
+            "type": "-",
+            "size": 25524,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.list.min.js": {
+            "type": "-",
+            "size": 38824,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.list.min.js.map": {
+            "type": "-",
+            "size": 146693,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.listbox.min.js": {
+            "type": "-",
+            "size": 25174,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.listbox.min.js.map": {
+            "type": "-",
+            "size": 92882,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.listview.min.js": {
+            "type": "-",
+            "size": 14321,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.listview.min.js.map": {
+            "type": "-",
+            "size": 47022,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.maskedtextbox.min.js": {
+            "type": "-",
+            "size": 11451,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.maskedtextbox.min.js.map": {
+            "type": "-",
+            "size": 36763,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mediaplayer.min.js": {
+            "type": "-",
+            "size": 24541,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mediaplayer.min.js.map": {
+            "type": "-",
+            "size": 69891,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.menu.min.js": {
+            "type": "-",
+            "size": 43891,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.menu.min.js.map": {
+            "type": "-",
+            "size": 166653,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.actionsheet.min.js": {
+            "type": "-",
+            "size": 6446,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.actionsheet.min.js.map": {
+            "type": "-",
+            "size": 13011,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.application.min.js": {
+            "type": "-",
+            "size": 13223,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.application.min.js.map": {
+            "type": "-",
+            "size": 35366,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.button.min.js": {
+            "type": "-",
+            "size": 7510,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.button.min.js.map": {
+            "type": "-",
+            "size": 17220,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.buttongroup.min.js": {
+            "type": "-",
+            "size": 6177,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.buttongroup.min.js.map": {
+            "type": "-",
+            "size": 11870,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.collapsible.min.js": {
+            "type": "-",
+            "size": 6925,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.collapsible.min.js.map": {
+            "type": "-",
+            "size": 14121,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.drawer.min.js": {
+            "type": "-",
+            "size": 8574,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.drawer.min.js.map": {
+            "type": "-",
+            "size": 21394,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.listview.min.js": {
+            "type": "-",
+            "size": 22693,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.listview.min.js.map": {
+            "type": "-",
+            "size": 73153,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.loader.min.js": {
+            "type": "-",
+            "size": 5678,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.loader.min.js.map": {
+            "type": "-",
+            "size": 9183,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.min.js": {
+            "type": "-",
+            "size": 341611,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.min.js.map": {
+            "type": "-",
+            "size": 1446803,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.modalview.min.js": {
+            "type": "-",
+            "size": 5806,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.modalview.min.js.map": {
+            "type": "-",
+            "size": 10475,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.navbar.min.js": {
+            "type": "-",
+            "size": 5621,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.navbar.min.js.map": {
+            "type": "-",
+            "size": 9190,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.pane.min.js": {
+            "type": "-",
+            "size": 9154,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.pane.min.js.map": {
+            "type": "-",
+            "size": 23141,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.popover.min.js": {
+            "type": "-",
+            "size": 7736,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.popover.min.js.map": {
+            "type": "-",
+            "size": 18058,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.scroller.min.js": {
+            "type": "-",
+            "size": 13969,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.scroller.min.js.map": {
+            "type": "-",
+            "size": 41182,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.scrollview.min.js": {
+            "type": "-",
+            "size": 16217,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.scrollview.min.js.map": {
+            "type": "-",
+            "size": 51195,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.shim.min.js": {
+            "type": "-",
+            "size": 5850,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.shim.min.js.map": {
+            "type": "-",
+            "size": 10695,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.splitview.min.js": {
+            "type": "-",
+            "size": 6403,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.splitview.min.js.map": {
+            "type": "-",
+            "size": 12250,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.switch.min.js": {
+            "type": "-",
+            "size": 7928,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.switch.min.js.map": {
+            "type": "-",
+            "size": 17996,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.tabstrip.min.js": {
+            "type": "-",
+            "size": 6328,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.tabstrip.min.js.map": {
+            "type": "-",
+            "size": 12634,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.view.min.js": {
+            "type": "-",
+            "size": 13869,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.mobile.view.min.js.map": {
+            "type": "-",
+            "size": 40901,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.multicolumncombobox.min.js": {
+            "type": "-",
+            "size": 5597,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.multicolumncombobox.min.js.map": {
+            "type": "-",
+            "size": 9832,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.multiselect.min.js": {
+            "type": "-",
+            "size": 25401,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.multiselect.min.js.map": {
+            "type": "-",
+            "size": 88637,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.multiviewcalendar.min.js": {
+            "type": "-",
+            "size": 29097,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.multiviewcalendar.min.js.map": {
+            "type": "-",
+            "size": 108627,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.notification.min.js": {
+            "type": "-",
+            "size": 10121,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.notification.min.js.map": {
+            "type": "-",
+            "size": 30179,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.numerictextbox.min.js": {
+            "type": "-",
+            "size": 14743,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.numerictextbox.min.js.map": {
+            "type": "-",
+            "size": 46212,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.ooxml.min.js": {
+            "type": "-",
+            "size": 37397,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.ooxml.min.js.map": {
+            "type": "-",
+            "size": 104078,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pager.min.js": {
+            "type": "-",
+            "size": 12496,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pager.min.js.map": {
+            "type": "-",
+            "size": 33143,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pane.min.js": {
+            "type": "-",
+            "size": 7186,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pane.min.js.map": {
+            "type": "-",
+            "size": 15695,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.panelbar.min.js": {
+            "type": "-",
+            "size": 27243,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.panelbar.min.js.map": {
+            "type": "-",
+            "size": 95541,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pdf.min.js": {
+            "type": "-",
+            "size": 62632,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pdf.min.js.map": {
+            "type": "-",
+            "size": 254371,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pdfviewer.min.js": {
+            "type": "-",
+            "size": 53788,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pdfviewer.min.js.map": {
+            "type": "-",
+            "size": 183849,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pivot.configurator.min.js": {
+            "type": "-",
+            "size": 11451,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pivot.configurator.min.js.map": {
+            "type": "-",
+            "size": 29509,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pivot.fieldmenu.min.js": {
+            "type": "-",
+            "size": 12261,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pivot.fieldmenu.min.js.map": {
+            "type": "-",
+            "size": 31797,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pivotgrid.min.js": {
+            "type": "-",
+            "size": 66627,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.pivotgrid.min.js.map": {
+            "type": "-",
+            "size": 280976,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.popup.min.js": {
+            "type": "-",
+            "size": 14944,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.popup.min.js.map": {
+            "type": "-",
+            "size": 49513,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.progressbar.min.js": {
+            "type": "-",
+            "size": 10235,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.progressbar.min.js.map": {
+            "type": "-",
+            "size": 29421,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.rating.min.js": {
+            "type": "-",
+            "size": 14892,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.rating.min.js.map": {
+            "type": "-",
+            "size": 48907,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.reorderable.min.js": {
+            "type": "-",
+            "size": 7430,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.reorderable.min.js.map": {
+            "type": "-",
+            "size": 17625,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.resizable.min.js": {
+            "type": "-",
+            "size": 6849,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.resizable.min.js.map": {
+            "type": "-",
+            "size": 14558,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.responsivepanel.min.js": {
+            "type": "-",
+            "size": 7481,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.responsivepanel.min.js.map": {
+            "type": "-",
+            "size": 12827,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.ripple.min.js": {
+            "type": "-",
+            "size": 8065,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.ripple.min.js.map": {
+            "type": "-",
+            "size": 19912,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.router.min.js": {
+            "type": "-",
+            "size": 10366,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.router.min.js.map": {
+            "type": "-",
+            "size": 30592,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.agendaview.min.js": {
+            "type": "-",
+            "size": 16577,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.agendaview.min.js.map": {
+            "type": "-",
+            "size": 50224,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.dayview.min.js": {
+            "type": "-",
+            "size": 34765,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.dayview.min.js.map": {
+            "type": "-",
+            "size": 131393,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.min.js": {
+            "type": "-",
+            "size": 85424,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.min.js.map": {
+            "type": "-",
+            "size": 313637,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.monthview.min.js": {
+            "type": "-",
+            "size": 29305,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.monthview.min.js.map": {
+            "type": "-",
+            "size": 107473,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.recurrence.min.js": {
+            "type": "-",
+            "size": 45108,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.recurrence.min.js.map": {
+            "type": "-",
+            "size": 168394,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.timelineview.min.js": {
+            "type": "-",
+            "size": 39135,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.timelineview.min.js.map": {
+            "type": "-",
+            "size": 151860,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.view.min.js": {
+            "type": "-",
+            "size": 37294,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scheduler.view.min.js.map": {
+            "type": "-",
+            "size": 147967,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scrollview.min.js": {
+            "type": "-",
+            "size": 20545,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.scrollview.min.js.map": {
+            "type": "-",
+            "size": 67217,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.selectable.min.js": {
+            "type": "-",
+            "size": 9708,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.selectable.min.js.map": {
+            "type": "-",
+            "size": 26092,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.slider.min.js": {
+            "type": "-",
+            "size": 28233,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.slider.min.js.map": {
+            "type": "-",
+            "size": 102040,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.sortable.min.js": {
+            "type": "-",
+            "size": 11125,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.sortable.min.js.map": {
+            "type": "-",
+            "size": 34484,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.splitter.min.js": {
+            "type": "-",
+            "size": 15444,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.splitter.min.js.map": {
+            "type": "-",
+            "size": 47402,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.spreadsheet.min.js": {
+            "type": "-",
+            "size": 498519,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.spreadsheet.min.js.map": {
+            "type": "-",
+            "size": 1851380,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.switch.min.js": {
+            "type": "-",
+            "size": 8209,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.switch.min.js.map": {
+            "type": "-",
+            "size": 19511,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.tabstrip.min.js": {
+            "type": "-",
+            "size": 27345,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.tabstrip.min.js.map": {
+            "type": "-",
+            "size": 93886,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.timeline.min.js": {
+            "type": "-",
+            "size": 23875,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.timeline.min.js.map": {
+            "type": "-",
+            "size": 65227,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.timepicker.min.js": {
+            "type": "-",
+            "size": 15636,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.timepicker.min.js.map": {
+            "type": "-",
+            "size": 53317,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.timezones.min.js": {
+            "type": "-",
+            "size": 257660,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.timezones.min.js.map": {
+            "type": "-",
+            "size": 1253408,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.toolbar.min.js": {
+            "type": "-",
+            "size": 29594,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.toolbar.min.js.map": {
+            "type": "-",
+            "size": 101405,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.tooltip.min.js": {
+            "type": "-",
+            "size": 11124,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.tooltip.min.js.map": {
+            "type": "-",
+            "size": 30994,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.touch.min.js": {
+            "type": "-",
+            "size": 6473,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.touch.min.js.map": {
+            "type": "-",
+            "size": 13208,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.treelist.min.js": {
+            "type": "-",
+            "size": 102774,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.treelist.min.js.map": {
+            "type": "-",
+            "size": 415388,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.treeview.draganddrop.min.js": {
+            "type": "-",
+            "size": 8059,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.treeview.draganddrop.min.js.map": {
+            "type": "-",
+            "size": 19282,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.treeview.min.js": {
+            "type": "-",
+            "size": 33793,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.treeview.min.js.map": {
+            "type": "-",
+            "size": 124880,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.upload.min.js": {
+            "type": "-",
+            "size": 40771,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.upload.min.js.map": {
+            "type": "-",
+            "size": 141170,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.userevents.min.js": {
+            "type": "-",
+            "size": 11658,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.userevents.min.js.map": {
+            "type": "-",
+            "size": 36091,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.validator.min.js": {
+            "type": "-",
+            "size": 12141,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.validator.min.js.map": {
+            "type": "-",
+            "size": 32349,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.view.min.js": {
+            "type": "-",
+            "size": 12772,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.view.min.js.map": {
+            "type": "-",
+            "size": 38780,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.virtuallist.min.js": {
+            "type": "-",
+            "size": 26649,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.virtuallist.min.js.map": {
+            "type": "-",
+            "size": 100027,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.web.min.js": {
+            "type": "-",
+            "size": 2897778,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.web.min.js.map": {
+            "type": "-",
+            "size": 11450368,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.window.min.js": {
+            "type": "-",
+            "size": 34015,
+            "lmtime": 0,
+            "modified": false
+          },
+          "kendo.window.min.js.map": {
+            "type": "-",
+            "size": 122290,
+            "lmtime": 0,
+            "modified": false
+          },
+          "main.js": {
+            "type": "-",
+            "size": 856,
+            "lmtime": 0,
+            "modified": false
+          },
+          "messages": {},
+          "pako_deflate.min.js": {
+            "type": "-",
+            "size": 27952,
+            "lmtime": 0,
+            "modified": false
+          },
+          "responsive.js": {
+            "type": "-",
+            "size": 1208,
+            "lmtime": 0,
+            "modified": false
+          },
+          "lazysizes.min.js": {
+            "type": "-",
+            "size": 7235,
+            "lmtime": 1586309347912,
+            "modified": false
+          }
+        },
+        "license-agreements": {},
+        "src": {},
+        "styles": {},
+        "typescript": {},
+        "vsdoc": {},
+        "event.html": {
+          "type": "-",
+          "size": 2021,
+          "lmtime": 0,
+          "modified": false
+        },
+        "dashboard3.html": {
+          "type": "-",
+          "size": 9610,
+          "lmtime": 0,
+          "modified": false
+        },
+        "dashBoard.ejs": {
+          "type": "-",
+          "size": 15797,
+          "lmtime": 0,
+          "modified": false
+        },
+        "dashBoard.html": {
+          "type": "-",
+          "size": 18166,
+          "lmtime": 0,
+          "modified": false
+        },
+        "myPet1.html": {
+          "type": "-",
+          "size": 2185,
+          "lmtime": 0,
+          "modified": false
+        },
+        "myPet2.html": {
+          "type": "-",
+          "size": 0,
+          "lmtime": 0,
+          "modified": false
+        },
+        "dashBoardTest.html": {
+          "type": "-",
+          "size": 22838,
+          "lmtime": 0,
+          "modified": false
+        },
+        "dashBoardTest copy.html": {
+          "type": "-",
+          "size": 23086,
+          "lmtime": 0,
+          "modified": false
+        },
+        "naveree65a7a572613c37a94902ca4334d4dd.html": {
+          "type": "-",
+          "size": 67,
+          "lmtime": 0,
+          "modified": false
+        },
+        "google04e2f351e5e50451.html": {
+          "type": "-",
+          "size": 53,
+          "lmtime": 0,
+          "modified": false
+        },
+        "robots.txt": {
+          "type": "-",
+          "size": 78,
+          "lmtime": 0,
+          "modified": false
+        },
+        "sitemap.xml": {
+          "type": "-",
+          "size": 300,
+          "lmtime": 0,
+          "modified": false
+        },
+        "news": {
+          "css": {
+            "news.css": {
+              "type": "-",
+              "size": 5081,
+              "lmtime": 1586352029244,
+              "modified": false
+            }
+          },
+          "img": {}
+        },
+        "menifest.json": {
+          "type": "-",
+          "size": 305,
+          "lmtime": 0,
+          "modified": false
+        }
+      },
+      "restart.sh": {
+        "type": "-",
+        "size": 70,
+        "lmtime": 0,
+        "modified": false
+      },
+      "app.js": {
+        "type": "-",
+        "size": 1470,
+        "lmtime": 1586350985825,
+        "modified": true
+      },
+      "out.log": {
+        "type": "-",
+        "size": 1741398072,
+        "lmtime": 0,
+        "modified": true
+      },
+      "err.log": {
+        "type": "-",
+        "size": 317968719,
+        "lmtime": 0,
+        "modified": true
+      },
+      "stop.sh": {
+        "type": "-",
+        "size": 72,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".gitignore": {
+        "type": "-",
+        "size": 39,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".vscode-server": {}
+    }
+  },
+  "$version": 1
+}

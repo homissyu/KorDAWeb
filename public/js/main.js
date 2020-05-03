@@ -8,7 +8,7 @@ $(document).ready(function(){
     css3: true,
     menu: '#menu',
     controlArrows: true ,
-    responsiveWidth: 768,
+    responsiveWidth: 1300,
     
 
   }); 

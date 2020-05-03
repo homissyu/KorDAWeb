@@ -1,0 +1,16 @@
+{
+    "host": "211.47.75.51",
+    "username": "korda",
+    "password": "koreada0326!",
+    "port" : 22,
+    "remotePath": "/web",
+    "protocol": "sftp",
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}
