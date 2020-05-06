@@ -79,33 +79,10 @@
             <%- include('./inc/header_inc.ejs') %>
          </header>         <!-- html에 include 하는 script -->
          <div id="fullpage">
-            <div id="contents--section0" class="section m1 main contents--outer-wrap is-first section fp-section fp-table"  data-fp-styles="null" data-anchor="is-first">
-                <div class="right_top">
-                    <div class="mtit"><script type="text/javascript">document.write(getNow());</script> 시세</div>
-                    <ul>
-                        <li>
-                            <span class="tit">e금</span><span id="pegDon" class="pr"><%=pegDon%></span><span class="g"> KRW/돈</span>
-                        </li>
-                        <li>
-                            <span class="tit">e은</span><span id="pesDon" class="pr" ><%=pesDon%></span><span class="g"> KRW/돈</span>
-                        </li> 
-                    </ul>
-                </div>        
-                <div class="content contents--inner-wrap">
-                    <h2><span class="tt1">세</span><span  class="tt2">상 편한 </span><span class="tt1">모</span><span  class="tt2">바일</span> <span  class="tt1">금</span><span  class="tt2">투자</span> <br class="m_view"><span class="name">#센골드</span> </h2>
-                    <p>센골드는, 실물자산(금, 은)을 디지털화하여  <br>
-                        일상 생활 속에서 소액으로 쉽고 간편하게 거래할 수 있는 서비스 입니다.
-                    </p>
-                    <div id="actions">
-                        <a href="#is-second" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
-                    </div>
-                </div>
-            </div>
-            <div id="contents--section1" class="section m2 contents--outer-wrap is-second section fp-section fp-table"  data-fp-styles="null" data-anchor="is-second" >
+            <div id="contents--section1" class="section m2 contents--outer-wrap is-second section fp-section fp-table"  data-fp-styles="null" data-anchor="is-second">
                 <div class="fp-tableCell">
                     <div class="left_top">
-                        <div class="mtit">CenGold</div>
-                        <div class="stit">센골드</div>
+                        <div class="mtit">한국금거래소디지털에셋 X 한국금거래소</div>
                     </div>        
                     <div class="right_top p_view">
                         <div class="mtit"><script type="text/javascript">document.write(getNow());</script> 시세</div>
@@ -122,25 +99,20 @@
                         <div class="mobile_bg">
                             <div class="right_top m_view">
                                 <div class="mtit"><script type="text/javascript">document.write(getNow());</script> 시세</div>
-                                <ul>
-                                    <li>
-                                        <span class="tit">e금</span><span id="pegDon" class="pr"><%=pegDon%></span><span class="g"> KRW/돈</span>
-                                    </li>
-                                    <li>
-                                        <span class="tit">e은</span><span id="pesDon" class="pr" ><%=pesDon%></span><span class="g"> KRW/돈</span>
-                                    </li> 
-                                </ul>
+                        <ul>
+                            <li>
+                                <span class="tit">e금</span><span id="pegDon" class="pr"><%=pegDon%></span><span class="g"> KRW/돈</span>
+                            </li>
+                            <li>
+                                <span class="tit">e은</span><span id="pesDon" class="pr" ><%=pesDon%></span><span class="g"> KRW/돈</span>
+                            </li> 
+                        </ul>
                             </div>        
-                            <img data-src="./img/m_bg_app_2.png" alt="센골드 앱이미지" class="lazyload">
+                            <img src="./img/m_bg_app_2.png" alt="센골드 앱이미지">
                         </div>
                         <div class="contents_text">
                             <h2>Life is Gold,</br>생활투자 서비스 </h2>
                             <div class="ul_list">
-                                <div class="store_wrap m_view">
-                                        <a href="https://play.google.com/store/apps/details?id=com.cengold.korda&hl=ko" class="st1" target="_blank" ><img data-src="../img/img_store_1_mobile.png" alt="센골드 플레이 스토어" class="lazyload"></a>
-                                        <a href="https://apps.apple.com/kr/app/%EC%84%BC%EA%B3%A8%EB%93%9C-cengold/id1484761981" class="st2" target="_blank"><img data-src="../img/img_store_2_mobile.png" alt="센골드 앱스토어" class="lazyload"></a>
-                                        <div class="both"></div>
-                                </div>
                                 <ul>
                                     <li>24시간 언제든지, 모바일로 간편하게</li>
                                     <li>10원으로 0.0001g 까지 거래 가능하며</li>
@@ -148,12 +120,69 @@
                                     <li>필요할 땐 실물로 인출 가능한</li>
                                     <li>모바일 금 교환권, e금</li>
                                 </ul>
+
+
+                                <div class="left-menu-bar__contents-list main m_view">
+                                    <p class="stit"><span>실시간 시세정보</span></p>
+                                    <ul>
+                                        <!--new 아이콘 추가 시, span 태그 추가-->
+                                        <li>
+                                            <span class="tt">센골드 e금 시세</span></br>
+                                            <span id='pegDon'><%=pegDon%></span><span class="g"> 원/돈</span>
+                                        </li>
+                                        <li>
+                                            <span class="tt">센골드 e은 시세</span></br>
+                                            <span id='pesDon'><%=pesDon%></span><span class="g"> 원/돈</span>
+                                        </li> 
+                                        <li>
+                                            <span class="tt">금 살때 소매시세</span></br>
+                                            <span id='goldBuy'><%=goldBuy%></span><span class="g"> 원/돈</span>
+                                        </li>
+                                        <li>
+                                            <span class="tt">금 팔 때 소매시세</span></br>
+                                            <span id='goldSell'><%=goldSell%></span><span class="g"> 원/돈</span>
+                                        </li>
+                                        <li>
+                                            <span class="tt">원/달러 환율</span></br>
+                                            <span id='excRate'><%=excRate%></span><span class="g"> 원/$</span>
+                                        </li>
+                                        <li>
+                                            <span class="tt">CD(91일) 금리</span></br>
+                                            <span id='investRate'><%=investRate%></span><span class="g"> %</span>
+                                        </li>
+                                        <li>
+                                            <span class="tt">KOSPI</span></br>
+                                            <span id='kospi'><%=kospi%></span><span class="g"> point</span>
+                                        </li>
+                                        <li>
+                                            <span class="tt">KOSDAQ</span></br>
+                                            <span id='kosdaq'><%=kosdaq%></span><span class="g"> point</span>
+                                        </li>
+                                        <!--li>
+                                            <span>Dow Jones</span></br>
+                                            <span id='dji'><%=dji%></span><span> point</span>
+                                        </li>
+                                        <li>
+                                            <span>NASDAQ</span></br>
+                                            <span id='nasdaq'><%=nasdaq%></span><span> point</span>
+                                        </li-->
+                                        <li>
+                                            <span class="tt">BitCoin</span></br>
+                                            <span id='btc'><%=btc%></span><span class="g"> 원/btc</span>
+                                        </li>
+                                        <li class="last">
+                                            <span class="tt">Ethereum</span></br>
+                                            <span id='eth'><%=eth%></span><span class="g"> 원/eth</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
                                 <div class="store_wrap p_view">
-                                    <a href="https://play.google.com/store/apps/details?id=com.cengold.korda&hl=ko" class="st1" target="_blank" ><img data-src="../img/img_store_1.png" alt="센골드 플레이 스토어" class="lazyload"></a>
-                                    <a href="https://apps.apple.com/kr/app/%EC%84%BC%EA%B3%A8%EB%93%9C-cengold/id1484761981" class="st2" target="_blank"><img data-src="../img/img_store_2.png" alt="센골드 앱스토어" class="lazyload"></a>
+                                    <a href="https://play.google.com/store/apps/details?id=com.cengold.korda&hl=ko" class="st1" target="_blank" ><img src="./img/img_store_1.png" alt="센골드 플레이 스토어"></a>
+                                    <a href="https://apps.apple.com/kr/app/%EC%84%BC%EA%B3%A8%EB%93%9C-cengold/id1484761981" class="st2" target="_blank"><img src="./img/img_store_2.png" alt="센골드 앱스토어"></a>
                                     <div class="both"></div>
                             </div>
-                                <!--p class="ex_stt">※ e금은 물품 제공형 신유형 상품권임. (공정거래위원회 표준약관 제100073호 제2조 제1항 및 제2항) </p-->
                             </div>            
                             <div id="actions">
                                 <a href="#is-third" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
@@ -161,8 +190,8 @@
                         </div> 
                     </div>
                 </div>
-            </div> 
-                    
+            </div>
+
             <div id="contents--section7" class="section m8 contents--outer-wrap is-eighth section fp-section fp-table"  data-fp-styles="null" data-anchor="is-eighth" >
                 <div class="fp-tableCell">
                     <div class="left_top">
@@ -171,7 +200,8 @@
                     </div>     
                     <div class="content contents--inner-wrap">
                         <h2>소식</h2>
-                        <p>한국금거래소디지털에셋의 가장 빠르고 정확한 소식을 전달합니다.  </p>
+                        <p>한국금거래소디지털에셋의 <br class="m_view">가장 빠르고 정확한 소식을 전달합니다.  </p>
+                    
                         <div class="con_box">
                             <div class="ul_list">
                                 <%
@@ -186,6 +216,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="con_tt"><%=fbNews[i].message.substring(0,40)+"....."%></div>
+                                                <span class="date"><%=fbNews[i].created_time%></span>
                                                 <span class="btn_go">바로가기</span>
                                             </a>
                                         </li>
@@ -197,6 +228,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="con_tt"><%=fbNews[i+1].message.substring(0,40)+"....."%></div>
+                                                <span class="date"><%=fbNews[i+1].created_time%></span>
                                                 <span class="btn_go">바로가기</span>
                                             </a>
                                         </li>
@@ -208,6 +240,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="con_tt"><%=fbNews[i+2].message.substring(0,40)+"....."%></div>
+                                                <span class="date"><%=fbNews[i+2].created_time%></span>
                                                 <span class="btn_go">바로가기</span>
                                             </a>
                                         </li>
@@ -219,6 +252,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="con_tt"><%=fbNews[i+3].message.substring(0,40)+"....."%></div>
+                                                <span class="date"><%=fbNews[i+3].created_time%></span>
                                                 <span class="btn_go">바로가기</span>
                                             </a>
                                         </li>
@@ -230,6 +264,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="con_tt"><%=fbNews[i+4].message.substring(0,40)+"....."%></div>
+                                                <span class="date"><%=fbNews[i+4].created_time%></span>
                                                 <span class="btn_go">바로가기</span>
                                             </a>
                                         </li>
@@ -247,6 +282,27 @@
                 </div>
             </div>
 
+            <div id="contents--section0" class="section m1 main contents--outer-wrap is-first section fp-section fp-table"  data-fp-styles="null" data-anchor="is-first">
+                <div class="right_top">
+                    <div class="mtit"><script type="text/javascript">document.write(getNow());</script> 시세</div>
+                        <ul>
+                            <li>
+                                <span class="tit">e금</span><span id="pegDon" class="pr"><%=pegDon%></span><span class="g"> KRW/돈</span>
+                            </li>
+                            <li>
+                                <span class="tit">e은</span><span id="pesDon" class="pr" ><%=pesDon%></span><span class="g"> KRW/돈</span>
+                            </li> 
+                        </ul>
+                </div>        
+                <div class="content contents--inner-wrap">
+                    <h2><span class="tt1">세</span><span  class="tt2">상 편한 </span><span class="tt1">모</span><span  class="tt2">바일</span> <span  class="tt1">금</span><span  class="tt2">투자</span> <br class="m_view"><span class="name">#센골드</span> </h2>
+                    <p>센골드는, 실물자산(금, 은)을 디지털화하여  <br> 일상 생활 속에서 소액으로 쉽고 간편하게 <br class="m_view">거래할 수 있는 서비스 입니다.   </p>
+                    <div id="actions">
+                        <a href="#is-second" class="contents__move-next-button" type="button" data-move-next="target">다음페이지</a>
+                    </div>
+                </div>
+            </div>
+                    
             <div id="contents--section2" class="section m3 contents--outer-wrap is-third section fp-section fp-table" data-fp-styles="null" data-anchor="is-third" > 
                 <div class="fp-tableCell">
                     <div class="left_top">
@@ -266,7 +322,7 @@
                     </div>            
                     <div class="content contents--inner-wrap">
                         <div class="mobile_bg">
-                            <img data-src="../img/m_bg_app_2_1.png" alt="센골드 앱이미지" class="lazyload">
+                            <img src="./img/m_bg_app_2_1.png" alt="센골드 앱이미지">
                         </div>
                         <div class="contents_text">
                             <h2>포인트 투자 서비스</h2>      
@@ -305,10 +361,10 @@
                     </div>            
                     <div class="content contents--inner-wrap">
                         <div class="mobile_bg">
-                            <img data-src="../img/m_bg_app_2_2.png" alt="센골드 앱이미지" class="lazyload">
+                            <img src="./img/m_bg_app_2_2.png" alt="센골드 앱이미지">
                         </div>
                         <div class="contents_text">
-                            <!--p class="tit_ex">4월 출시 예정</p-->
+                            <!-- <p class="tit_ex">4월 출시 예정</p> -->
                         <h2>골드바 인출(교환)<br>서비스 </h2>      
                         <div class="ul_list">
                             <ul>
@@ -332,7 +388,7 @@
                     <div class="left_top">
                         <div class="mtit">SEVICE 03</div>
                         <div class="stit">서비스</div>
-                    </div>   
+                    </div>     
                     <div class="right_top">
                         <div class="mtit"><script type="text/javascript">document.write(getNow());</script> 시세</div>
                         <ul>
@@ -343,10 +399,10 @@
                                 <span class="tit">e은</span><span id="pesDon" class="pr" ><%=pesDon%></span><span class="g"> KRW/돈</span>
                             </li> 
                         </ul>
-                    </div>                 
+                    </div>               
                     <div class="content contents--inner-wrap">
                         <div class="mobile_bg">
-                            <img data-src="../img/m_bg_app_2_3.png" alt="센골드 앱이미지" class="lazyload">
+                            <img src="./img/m_bg_app_2_3.png" alt="센골드 앱이미지">
                         </div>
                         <div class="contents_text">
                             <p class="tit_ex">하반기 출시 예정</p>
@@ -373,7 +429,7 @@
                     <div class="left_top">
                         <div class="mtit">SEVICE 04</div>
                         <div class="stit">서비스</div>
-                    </div>     
+                    </div>   
                     <div class="right_top">
                         <div class="mtit"><script type="text/javascript">document.write(getNow());</script> 시세</div>
                         <ul>
@@ -384,10 +440,10 @@
                                 <span class="tit">e은</span><span id="pesDon" class="pr" ><%=pesDon%></span><span class="g"> KRW/돈</span>
                             </li> 
                         </ul>
-                    </div>               
+                    </div>                 
                     <div class="content contents--inner-wrap">
                         <div class="mobile_bg">
-                            <img data-src="../img/m_bg_app_2_4.png" alt="센골드 앱이미지" class="lazyload">
+                            <img src="./img/m_bg_app_2_4.png" alt="센골드 앱이미지">
                         </div>
                         <div class="contents_text">
                             <p class="tit_ex">하반기 출시 예정</p>

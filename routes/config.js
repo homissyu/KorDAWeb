@@ -16,16 +16,16 @@
             connectionLimitCnt = 3;
             break;
         default:
-            connectionLimitCnt = 5;
+            connectionLimitCnt = 3;
             break;
     }
 
     return commonConfig = {
-        host     : 'test.test.test',
-        user     : 'test',
+        host     : 'db.korda.im',
+        user     : 'korda',
         port     : '3306',
-        database : 'test',
-        password : 'test',
+        database : 'dbkorda',
+        password : 'korda0326!',
         connectionLimit : connectionLimitCnt
     };
   }

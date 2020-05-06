@@ -113,10 +113,27 @@
     }
 </style>
 <script type="text/javascript">
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("navbar").style.bottom = "0";
+            document.getElementById("navbar").style.left = "0";
+            document.getElementById("navbar").style.right = "0";
+        } else {
+            document.getElementById("navbar").style.bottom = "30px";
+            document.getElementById("navbar").style.left = "30px";
+            document.getElementById("navbar").style.right = "30px";
+        }
+    }
+</script>
+
+<script type="text/javascript">
     var ajaxRet;
     var originArr = new Array();
-    var newArr = new Array();
-
+    var originArr3 = new Array();
+    
     function sendAjax(){
         // content-type을 설정하고 데이터 송신
         var xhr = new XMLHttpRequest();
@@ -126,6 +143,7 @@
         
         var tempObjArr = document.getElementsByClassName("left-menu-bar__contents-list")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
         var tempObjArr2 = document.getElementsByClassName("pr");
+        var tempObjArr3 = document.getElementsByClassName("left-menu-bar__contents-list main m_view")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
         // 데이터 수신이 완료되면 표시
         xhr.addEventListener('load', function(){
             ajaxRet = JSON.parse(xhr.responseText);
@@ -139,21 +157,22 @@
             for(var i=0 ; i<tempObjArr.length;i++){
                 // if(originArr.length>0)alert(tempStr +":"+originArr[i]+":"+ajaxRet[i].thisValue);
                 tempObj = tempObjArr[i].getElementsByTagName("span")[1];
+                tempObj3 = tempObjArr3[i].getElementsByTagName("span")[1];
                 tempStr = Number.parseFloat(tempObj.innerText);
                 tempVal = originArr[i] - ajaxRet[i].thisValue;
                 
                 originArr.reduce[i];
 
                 if(tempStr!=0 && tempVal>0){
-                    tempColor = "blue";
+                    tempColor = "#87dfff";
                     tempClass = "blinkText";
                     tempFontWeight = "bold";
                 }else if(tempStr!=0 && tempVal<0){
-                    tempColor = "red";
+                    tempColor = "#ff7575";
                     tempClass = "blinkText";
                     tempFontWeight = "bold";
                 }else{
-                    tempColor = "black";
+                    tempColor = "white";
                     tempClass = "";
                     tempFontWeight = "";
                 }
@@ -170,6 +189,36 @@
                 tempObjArr2[k].innerHTML = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet[0].thisValue);
                 tempObjArr2[k+1].innerHTML = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet[1].thisValue);
             }
+
+            for(var i=0 ; i<tempObjArr3.length;i++){
+                // if(originArr.length>0)alert(tempStr +":"+originArr[i]+":"+ajaxRet[i].thisValue);
+                tempObj = tempObjArr3[i].getElementsByTagName("span")[1];
+                tempStr = Number.parseFloat(tempObj.innerText);
+                tempVal = originArr3[i] - ajaxRet[i].thisValue;
+                
+                originArr3.reduce[i];
+
+                if(tempStr!=0 && tempVal>0){
+                    tempColor = "#87dfff";
+                    tempClass = "blinkText";
+                    tempFontWeight = "bold";
+                }else if(tempStr!=0 && tempVal<0){
+                    tempColor = "#ff7575";
+                    tempClass = "blinkText";
+                    tempFontWeight = "bold";
+                }else{
+                    tempColor = "white";
+                    tempClass = "";
+                    tempFontWeight = "";
+                }
+
+                originArr3[i] = ajaxRet[i].thisValue;
+                tempObj.innerText = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet[i].thisValue)
+                tempObj.style.color =  tempColor;
+                tempObj.className = tempClass;
+                tempObj.style.fontWeight = tempFontWeight;
+                // alert(tempObjArr.length+":"+ajaxRet[i].thisValue+":"+tempObj.innerText);
+            }
         });
     }
     window.setInterval("sendAjax()", 10000);
@@ -180,6 +229,11 @@
             <button data-gnb-active="mobile-button" type="button" id="ml_memu">메뉴 열기/닫기</button>
         </div>
 
+        <div id="navbar"class="m_view">
+            <a href="https://play.google.com/store/apps/details?id=com.cengold.korda&hl=ko"><img src="../img/img_store_1_w2_mobile.png" alt="센골드 플레이 스토어"></a>
+            <a href="itms-apps://itunes.apple.com/kr/app/apple-store/id1484761981"><img src="../img/img_store_2_w2_mobile.png" alt="센골드 앱스토어"></a>
+       </div>
+
         <!--//gnb only for Mobile-->
         <!--left-menu-bar section-->
         <div id="left-menu-wrapper" class="">
@@ -188,8 +242,8 @@
                 <div class="left-menu-bar--top-section">
                     <h1 class="left-menu-bar__logo"><a href="/">센골드 한국금거래소디지털에셋</a></h1>
                     <ul id="menu" class="left-menu-bar__category-list">
-                        <li class="left-menu-bar__category-list--list01" data-tooltip="is-first" data-scroll-point="contents--section1" data-menuanchor="is-first">
-                            <a href="#is-first"><span>센골드, 세상 편한 금투자 </span></a>
+                        <li class="left-menu-bar__category-list--list01" data-tooltip="is-first" data-scroll-point="contents--section1" data-menuanchor="is-second">
+                            <a href="#is-second"><span>센골드, 세상 편한 금투자 </span></a>
                         </li>
                         <li class="left-menu-bar__category-list--list04" data-tooltip="is-eighth" data-scroll-point="contents--section7" data-menuanchor="is-eighth">
                             <a href="#is-eighth"><span>소식</span></a>
@@ -210,36 +264,36 @@
                         <ul>
                     <!--new 아이콘 추가 시, span 태그 추가-->
                     <li>
-                        <span>센골드 e금 시세</span></br>
-                        <span id='pegDon'><%=pegDon%></span><span> 원/돈</span>
+                        <span class='tt'>센골드 e금 시세</span></br>
+                        <span id='pegDon'><%=pegDon%></span><span class="g"> 원/돈</span>
                     </li>
                     <li>
-                        <span>센골드 e은 시세</span></br>
-                        <span id='pesDon'><%=pesDon%></span><span> 원/돈</span>
+                        <span class='tt'>센골드 e은 시세</span></br>
+                        <span id='pesDon'><%=pesDon%></span><span class="g"> 원/돈</span>
                     </li> 
                     <li>
-                        <span>금 살때 소매시세</span></br>
-                        <span id='goldBuy'><%=goldBuy%></span><span> 원/돈</span>
+                        <span class='tt'>금 살때 소매시세</span></br>
+                        <span id='goldBuy'><%=goldBuy%></span><span class="g"> 원/돈</span>
                     </li>
                     <li>
-                        <span>금 팔 때 소매시세</span></br>
-                        <span id='goldSell'><%=goldSell%></span><span> 원/돈</span>
+                        <span class='tt'>금 팔 때 소매시세</span></br>
+                        <span id='goldSell'><%=goldSell%></span><span class="g"> 원/돈</span>
                     </li>
                     <li>
-                        <span>원/달러 환율</span></br>
-                        <span id='excRate'><%=excRate%></span><span> 원/$</span>
+                        <span class='tt'>원/달러 환율</span></br>
+                        <span id='excRate'><%=excRate%></span><span class="g"> 원/$</span>
                     </li>
                     <li>
-                        <span>CD(91일) 금리</span></br>
-                        <span id='investRate'><%=investRate%></span><span> %</span>
+                        <span class='tt'>CD(91일) 금리</span></br>
+                        <span id='investRate'><%=investRate%></span><span class="g"> %</span>
                     </li>
                     <li>
-                        <span>KOSPI</span></br>
-                        <span id='kospi'><%=kospi%></span><span> point</span>
+                        <span class='tt'>KOSPI</span></br>
+                        <span id='kospi'><%=kospi%></span><span class="g"> point</span>
                     </li>
                     <li>
-                        <span>KOSDAQ</span></br>
-                        <span id='kosdaq'><%=kosdaq%></span><span> point</span>
+                        <span class='tt'>KOSDAQ</span></br>
+                        <span id='kosdaq'><%=kosdaq%></span><span class="g"> point</span>
                     </li>
                     <!--li>
                         <span>Dow Jones</span></br>
@@ -250,12 +304,12 @@
                         <span id='nasdaq'><%=nasdaq%></span><span> point</span>
                     </li-->
                     <li>
-                        <span>BitCoin</span></br>
-                        <span id='btc'><%=btc%></span><span> 원/btc</span>
+                        <span class='tt'>BitCoin</span></br>
+                        <span id='btc'><%=btc%></span><span class="g"> 원/btc</span>
                     </li>
                     <li class="last">
-                        <span>Ethereum</span></br>
-                        <span id='eth'><%=eth%></span><span> 원/eth</span>
+                        <span class='tt'>Ethereum</span></br>
+                        <span id='eth'><%=eth%></span><span class="g"> 원/eth</span>
                     </li>
                 </ul>
                     </div>

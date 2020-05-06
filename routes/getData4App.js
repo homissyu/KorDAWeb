@@ -651,8 +651,8 @@ datum.getData = function (req, res){
             res.socket.destroy();
             throw err;
         }else {
-            var keys = ["pegGram","pesGram", "pegDon","pesDon","gold24Buy","gold24Sell","gold18Sell","gold14Sell","silverBuy","silverSell","interestRateCall","interestRateCD","interestRateUS","kospi","kosdaq","btc","eth","dji","nasdaq","wti","excRateUSD","excRateCNY", "excRateJPY", "excRateEUR"];
-            var labels = ["e금(gram)","e은(gram)", "e금(돈)","e은(돈)","금(24k) 살 때","금(24k) 팔 때","금(18k) 팔 때","금(14k) 팔 때","은 살 때","은 팔 때","콜금리","CD금리(91일)","미국국채(10년물)","코스피","코스닥","비트코인","이더리움","다우존스산업평균","나스닥","국제유가(WTI)","원/달러 환율","원/위안 환율", "원/엔 환율", "원/유로 환율"];
+            var keys = ["pegGram","pesGram","pegDon","pesDon","gold24Buy","gold24Sell","gold18Sell","gold14Sell","silverBuy","silverSell","interestRateCall","interestRateCD","interestRateUS","kospi","kosdaq","btc","eth","dji","nasdaq","wti","excRateUSD","excRateCNY", "excRateJPY", "excRateEUR"];
+            var labels = ["e금(gram)","e은(gram)","e금(돈)","e은(돈)","금(24k) 살 때(VAT별도)","금(24k) 팔 때","금(18k) 팔 때","금(14k) 팔 때","은 살 때(VAT별도)","은 팔 때","콜금리","CD금리(91일)","미국국채(10년물)","코스피","코스닥","비트코인","이더리움","다우존스산업평균","나스닥","국제유가(WTI)","원/달러 환율","원/위안 환율", "원/엔 환율", "원/유로 환율"];
             var visibilities = [true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
             var values = [pegGram, pesGram, pegDon, pesDon, gold24Buy, gold24Sell, gold18Sell, gold14Sell, silverBuy, silverSell, interestRateCall,interestRateCD, interestRateUS, kospi, kosdaq, btc, eth, dji, nasdaq, wti, excRateUSD, excRateCNY, excRateJPY, excRateEUR];
             // console.log(values);

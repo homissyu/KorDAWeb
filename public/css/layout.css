@@ -16,7 +16,7 @@
 .section.m3 {background:linear-gradient( 135deg, #2ccdb6, #1f85fa ) ;}
 .section.m4 {background:linear-gradient( 135deg, #f5885e, #eb2d6f ) ;}
 .section.m5 {background:linear-gradient( 135deg, #ffcc33, #b7db1e ) ;}
-.section.m6 {background:linear-gradient( 135deg, #fea016, #f75f7c ) ;}
+.section.m6 {background:linear-gradient( 135deg, #f75f7c, #8d58ff ) ;}
 .section.m7 {background:url(../img/m_bg_7.jpg) no-repeat 50% center;background-size:cover;}
 .section.m8 {background: #ccc;}
 .section.m9 {background:#41414a url(../img/m_bg_9.jpg) no-repeat 50% center;background-size:cover;}
@@ -95,11 +95,12 @@
 .section.m8 .ul_list  ul li {position:relative;margin-bottom: 10px;background:none;padding: 0 0 10px 0;border-bottom:1px solid #ddd;}
 .section.m8 .ul_list  ul li:after {content:'';display:block;clear:both;}
 .section.m8 ul li a {margin-bottom:20px;}
-.section.m8 ul li a .featImgWrap {float:left;width:30%;}
+.section.m8 ul li a .featImgWrap {float:left;width:120px;}
 .section.m8 ul li a .featImgWrap .featImage  {position:relative; width: 100px;height: 100px;overflow: hidden;}
 .section.m8 ul li a .featImgWrap .featImage img.landscape {width:auto;height: 100px;}
 .section.m8 ul li a .featImgWrap .featImage img.portrait {width: 100px;height: 100px;}
-.section.m8 ul li a .con_tt { float:left;width:70%;padding-top:20px;text-align:left;font-family: 'NanumSquare', sans-serif; font-style: normal;  font-weight: 400;font-size: 18px;line-height: 1.4;color:#666;}
+.section.m8 ul li a .con_tt { float:left;width:70%;width : -webkit-calc(100% - 120px); /* for Chrome, Safari */width :    -moz-calc(100% - 120px); /* for Firefox */width : calc(100% - 120px); /* for IE */padding-top:20px;text-align:left;font-family: 'NanumSquare', sans-serif; font-style: normal;  font-weight: 400;font-size: 18px;line-height: 1.4;color:#666;}
+.section.m8 ul li a span.date {position:absolute;top:2px;left:120px;text-align:left;font-size:14px;color:#bbb;}
 .section.m8 ul li a span.btn_go {position:absolute;bottom:20px;right:0;text-align:right;font-size:14px;color:#385898;}
 .section.m8 ul li p.mtit span.num {font-size: 30px; font-family: 'Roboto', sans-serif ;font-weight: 500; padding:10px 0 0 0;border-top:2px solid #fff;}
 .section.m8 ul li p.mtit span.tit {padding-left:10px;font-size: 30px; font-family: 'NanumSquare', sans-serif; font-style: normal;  font-weight: 700;} 
@@ -122,7 +123,7 @@
     font-size: 18px; font-family: 'NanumSquare', sans-serif; font-style: normal;  font-weight: 700;color:#fff;margin-top:10px;}
 .section .ul_list ul li em.ctt {font-family: 'sans-serif'; } 
 #left-menu-wrapper #left-menu-bar .left-menu-bar--top-section .left-menu-bar__category-list li a {text-decoration: none;}
-.fp-viewing-is-first #left-menu-wrapper #left-menu-bar .left-menu-bar--top-section .left-menu-bar__category-list li.left-menu-bar__category-list--list01 span {color: #3673f0;}
+/*.fp-viewing-is-first #left-menu-wrapper #left-menu-bar .left-menu-bar--top-section .left-menu-bar__category-list li.left-menu-bar__category-list--list01 span {color: #3673f0;}*/
 .fp-viewing-is-second #left-menu-wrapper #left-menu-bar .left-menu-bar--top-section .left-menu-bar__category-list li.left-menu-bar__category-list--list01 span {color: #3673f0;}
 .fp-viewing-is-third #left-menu-wrapper #left-menu-bar .left-menu-bar--top-section .left-menu-bar__category-list li.left-menu-bar__category-list--list02 span {color: #3673f0;}
 .fp-viewing-is-fourth #left-menu-wrapper #left-menu-bar .left-menu-bar--top-section .left-menu-bar__category-list li.left-menu-bar__category-list--list02 span {color: #3673f0;}
@@ -254,12 +255,12 @@ button span, button img {
 #left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__copyright dl dd { float: left;}
 #left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__copyright dl.last {margin-bottom: 16px;}
 
-#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li span {font-size:12px;font-family: 'NanumSquare', sans-serif; font-style: normal;  font-weight: 300;letter-spacing: -0.01em;}
-#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li span.pr {font-family: 'Roboto', sans-serif;font-style: normal;font-weight: 700;font-size: 18px;letter-spacing: -0.025em;}
-#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li span.g {font-weight: 700;letter-spacing: -0.025em;}
+#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li span {font-size:15px;font-family: 'Roboto', sans-serif; font-style: normal;  font-weight: 700;letter-spacing: -0.025em;}
+#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li span.tt {font-family: 'NanumSquare', sans-serif;font-style: normal;font-weight:300; font-size: 12px;letter-spacing: -0.01em;opacity:0.8}
+#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li span.g {font-size: 13px;font-weight: 300;}
 #left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li {
-    position: relative;display: inline-block;height: 40px;width: 42%;padding: 12px 0 0 20px;line-height:1.4;color: #333;vertical-align: top;letter-spacing: -0.025em;}
-#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list {margin-bottom: 14px;background: #f2f3f7;padding:5px 0 10px 0;-webkit-box-sizing: border-box;box-sizing: border-box;}
+    position: relative;display: inline-block;height: 40px;width: 42%;padding: 12px 0 0 20px;line-height:1.4;color: #fff;vertical-align: top;letter-spacing: -0.025em;}
+#left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list {margin-bottom: 14px;background: #454d61;padding:5px 0 10px 0;border-radius:5px;-webkit-box-sizing: border-box;box-sizing: border-box;}
 #left-menu-wrapper #left-menu-bar .left-menu-bar--bottom-section .left-menu-bar__contents-list ul li:nth-child(2n) {width: 48%;padding: 12px 0 0 0;}
 
 /*이용약관 모달창*/
