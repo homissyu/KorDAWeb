@@ -23,6 +23,7 @@ app.use("/news", require(__dirname+"/routes/news"));
 //use routes
 // app.use("/event", require(__dirname+"/routes/event"));
 app.use("/event_coupon", require(__dirname+"/routes/event_coupon"));
+app.use("/event_ezwel", require(__dirname+"/routes/event_ezwel"));
 // app.use("/event_mypet", require(__dirname+"/routes/event_mypet"));
 
 //API for GNB
