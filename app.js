@@ -3,11 +3,31 @@ const asyncify = require('express-asyncify');
  
 const app = asyncify(express());
 
+var compression = require('compression');
+app.use(compression());
+
 var bodyParser = require('body-parser'); 
 var cron = require('cron');
 
 // var app = express();
 var PORT= process.env.PORT || 3000;
+
+// https redirect
+
+app.all('*', (req, res, next) => { 
+    let protocol = req.headers['x-forwarded-proto'] || req.protocol; 
+    if (req.hostname == 'localhost' || protocol == 'https') { 
+        next(); 
+    } else { 
+        let from = `${protocol}://${req.hostname}${req.url}`; 
+        let to = `https://${req.hostname}${req.url}`; // log and redirect 
+        console.log(`[${req.method}]: ${from} -> ${to}`); res.redirect(to); 
+    } 
+});
+
+// app.use(cacheControl({
+//     maxAge: 5
+// }));
 
 //urlEncode
 app.use(bodyParser.urlencoded({extended : true}));
@@ -16,6 +36,13 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.set('views', __dirname+'/views');
 app.set('view engine', 'ejs');""
 app.use(express.static(__dirname+"/public"));
+
+//use cache-control
+var   maxAge =  60 * 60 * 24;
+app.all('/img/*',function(req,res,next){
+    res.setHeader('Cache-Control', 'public, max-age=' + maxAge);
+    next();
+});
 
 //Page for News Tab
 app.use("/news", require(__dirname+"/routes/news"));
@@ -32,6 +59,12 @@ app.use("/getData", require(__dirname+"/routes/getData"));
 app.use("/getData4App", require(__dirname+"/routes/getData4App"));
 //API for Dashboard
 app.use("/getData4Dashboard", require(__dirname+"/routes/getData4Dashboard"));
+
+//QR reader 4 KGE
+app.use("/chkValidGiftCard", require(__dirname+"/routes/chkValidGiftCard"));
+app.use("/viewGiftCardInfo", require(__dirname+"/routes/viewGiftCardInfo"));
+// app.use("/chkValidGiftCard2", require(__dirname+"/routes/chkValidGiftCard2"));
+// app.use("/chkValidGiftCard3", require(__dirname+"/routes/chkValidGiftCard3"));
 
 app.use("/dashBoard", require(__dirname+"/routes/dashBoard"));
 app.use("/", require(__dirname+"/routes/index"));

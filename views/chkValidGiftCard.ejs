@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+	<head>
+		<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<title>Gold Check</title>
+		<script type="text/javascript" src="/js/chkValidGiftCard/llqrcode.js"></script>
+		<script type="text/javascript" src="/js/chkValidGiftCard/webqr.js"></script>
+		<script type="text/javascript" src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+		<style type="text/css">
+			body{
+				width:100%;
+				text-align:center;
+			}
+			#mainbody{
+				display:none;
+			}
+			#v{
+				width:320px;
+				height:240px;
+			}
+			#qr-canvas{
+				display:none;
+			}
+		</style>
+	  </head>
+  	<body onLoad=getLocation()>
+		<div class="wrap">
+			<div id=KGE>한국금거래소</div>
+			<div id=version>v 1.0</div>
+			<div id=title>Gold Check</div>
+			<div id="mainbody">
+				<div id=scan_btn><a href=javascript:setwebcam();>scan</a></div>
+				<div id="outdiv"></div>
+				<div id=KGE_SECURITIES>한국금거래소 유가증권</div>
+				<div id="result"></div>
+			</div>
+			<div id="footer">한국금거래소 디지털에셋</div>
+			<canvas id="qr-canvas" width="800" height="600"></canvas>
+			<script type="text/javascript">load();</script>
+			<div id="map" style="width:500px; height: 500px;display: block;"></div> 
+		</div>
+  	</body>
+</html>

@@ -19,7 +19,7 @@ async function insertData(value){
                     // console.log("======================");
                 }else {
                     connection.commit();
-                    console.log(result);
+                    // console.log(result);
                 }
                 connection.release();
             }
@@ -37,7 +37,7 @@ db.setData = function () {
                 insertData(tempJson[i]);
             }
         }else{
-            console.log("No data found to insert"); 
+            console.log("No data found to insert on FB_LIST"); 
         }
     } catch (error){
         // pool.releaseConnection();

@@ -10,6 +10,7 @@
   "dependencies": {
     "async": "^3.2.0",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "cookie-parser": "~1.4.3",
     "cron": "^1.8.2",
     "debug": "~2.6.9",
@@ -24,6 +25,7 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
     "pm2": "^4.2.3",
+    "qr-scanner": "^1.1.1",
     "remove-array-items": "^2.0.1",
     "reqeust": "^2.81.1",
     "request": "^2.88.2",

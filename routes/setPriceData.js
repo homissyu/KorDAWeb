@@ -12,7 +12,7 @@ async function insertData(value){
         connection.query( sql, [value.keys, value.label, value.thisValue, value.gap, value.unit, value.visibilities], 
             function(error, result) {
                 if(error) {
-                    // console.log(error);
+                    console.log(error);
                     connection.rollback();
                     // console.log("======================");
                     // console.log("value.label:"+value.label);

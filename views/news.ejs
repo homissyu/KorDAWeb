@@ -61,7 +61,7 @@
 	        <%
                 for(var i=0; i < ret.length; i++) { 
             %>
-<li><a href="<%=ret[i].LINK%>" class="btn_view_tit"><h2><%=ret[i].TITLE%><br></h2><h3><%=ret[i].CONTENT%><br><br><div><%=ret[i].PROVIDER%> / <%=ret[i].BYLINE%> / <script type="text/javascript">document.write(getFormatDate('<%=ret[i].PUB_DATE%>'));</script></div></h3></a></li>
+<li><a href="<%=ret[i].LINK%>" class="btn_view_tit"><h2><%=ret[i].TITLE%><br></h2><h3><%=ret[i].CONTENT%><br><br><div><script type="text/javascript">document.write(getFormatDate('<%=ret[i].PUB_DATE%>'));</script></div></h3></a></li>
             <%     
                 } 
             %>
