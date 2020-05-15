@@ -21,11 +21,11 @@
     }
 
     return commonConfig = {
-        host     : 'db.korda.im',
-        user     : 'korda',
-        port     : '3306',
-        database : 'dbkorda',
-        password : 'korda0326!',
+        host     : 'test',
+        user     : 'tset',
+        port     : '1004',
+        database : 'test',
+        password : 'test',
         connectionLimit : connectionLimitCnt
     };
   }
