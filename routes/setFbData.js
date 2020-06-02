@@ -4,13 +4,13 @@ var config = require("./config");
 var pool = mysql.createPool(config.getConfig(1))
 var sql = "INSERT INTO FB_LIST (ID, MESSAGE, PICTURE, PERMALINK_URL, CREATED_TIME, UPDATE_TIME, STATUS_TYPE) VALUES (?,?,?,?,?,?,?)";
 async function insertData(value){
-    console.log(value);
+    // console.log(value);
     await pool.getConnection(function(err, connection) {
     // Use the connection
         connection.query( sql, [value.id, value.message, value.picture, value.permalink_url, value.created_time, value.updated_time, value.status_type], 
             function(error, result) {
                 if(error) {
-                    console.log(error);
+                    // console.log(error);
                     connection.rollback();
                     // console.log("======================");
                     // console.log("value.label:"+value.label);

@@ -40,6 +40,10 @@
             var ret = year + '.' + month + '.' + day + ' ' + hour + ':' + min;
             return  ret;
         }
+
+        function htmlEntities(str) {
+            return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+        }
     </script>
   </head>
   <body>
@@ -61,7 +65,7 @@
 	        <%
                 for(var i=0; i < ret.length; i++) { 
             %>
-<li><a href="<%=ret[i].LINK%>" class="btn_view_tit"><h2><%=ret[i].TITLE%><br></h2><h3><%=ret[i].CONTENT%><br><br><div><script type="text/javascript">document.write(getFormatDate('<%=ret[i].PUB_DATE%>'));</script></div></h3></a></li>
+<li><a href="<%=ret[i].LINK%>" class="btn_view_tit"><h2><script type="text/javascript">document.write(htmlEntities('<%=ret[i].TITLE%>'))</script><br></h2><h3><script type="text/javascript">document.write(htmlEntities('<%=ret[i].CONTENT%>'))</script><br><br><div><script type="text/javascript">document.write(getFormatDate('<%=ret[i].PUB_DATE%>'));</script></div></h3></a></li>
             <%     
                 } 
             %>

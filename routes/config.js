@@ -22,8 +22,8 @@
 
     return commonConfig = {
         host     : 'test',
-        user     : 'tset',
-        port     : '1004',
+        user     : 'test',
+        port     : 'test',
         database : 'test',
         password : 'test',
         connectionLimit : connectionLimitCnt

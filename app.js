@@ -37,12 +37,12 @@ app.set('views', __dirname+'/views');
 app.set('view engine', 'ejs');""
 app.use(express.static(__dirname+"/public"));
 
-//use cache-control
-var   maxAge =  60 * 60 * 24;
-app.all('/img/*',function(req,res,next){
-    res.setHeader('Cache-Control', 'public, max-age=' + maxAge);
-    next();
-});
+// //use cache-control
+// var   maxAge =  60 * 60 * 24;
+// app.all('/img/*',function(req,res,next){
+//     res.set('Cache-Control', 'public, max-age=31557600');
+//     next();
+// });
 
 //Page for News Tab
 app.use("/news", require(__dirname+"/routes/news"));
@@ -82,11 +82,16 @@ app.use(function(err, req, res, next) {
 var CronJob = require('cron').CronJob;
 var setNewsData = require("./routes/setNewsData.js");
 var setFBData = require("./routes/setFbData.js")
+// var _setNewsData = require("./routes/_setNewsData.js");
 var job1 = new CronJob('*/60 * * * * *', function() {
     setNewsData.setData();
 }, null, true);
 var job2 = new CronJob('* */5 * * * *', function() {
     setFBData.setData();
 }, null, true);
+// var job3 = new CronJob('* */5 * * * *', function() {
+//     _setNewsData.setData();
+// }, null, true);
 job1.start();
 job2.start();
+// job3.start();

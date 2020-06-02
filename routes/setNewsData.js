@@ -10,7 +10,7 @@ async function insertData(value){
         connection.query( sql, [value.title.replace(/<(\/b|b)([^>]*)>/gi,""), value.link, value.description.replace(/<(\/b|b)([^>]*)>/gi,""), new Date(value.pubDate)], 
             function(error, result) {
                 if(error) {
-                    console.log(error);
+                    // console.log(error);
                     connection.rollback();
                 }else {
                     connection.commit();

@@ -19,7 +19,7 @@ async function insertData(value){
     }
 
     if("02100801" == value.PROVIDER_CODE){ // for 아시아경제
-        console.log("02100801:"+value.PROVIDER_LINK_PAGE.indexOf(tempStr))
+        // console.log("02100801:"+value.PROVIDER_LINK_PAGE.indexOf(tempStr))
         var tempArr;
         if(0>value.PROVIDER_LINK_PAGE.indexOf(tempStr)){
             tempArr = value.PROVIDER_LINK_PAGE.split(":");
@@ -56,7 +56,7 @@ async function insertData(value){
         connection.query( sql, [value.NEWS_ID, value.TITLE.replace(/(<([^>]+)>)/ig,""), value.PROVIDER, value.BYLINE.replace(";",""), value.PROVIDER_LINK_PAGE, value.CONTENT.replace(/(<([^>]+)>)/ig,""), date], 
             function(error, result) {
                 if(error) {
-                    console.log(error);
+                    console.error(error);
                     connection.rollback();
                     // console.log("======================");
                     // console.log("value.label:"+value.label);
