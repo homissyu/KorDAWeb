@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+  <head>
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/css/news.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <title>Cengold News</title>
+    <script>
+        function getFormatDate(dateStr){
+            var date = new Date(Date.parse(dateStr));
+            var year = date.getFullYear();              //yyyy
+            var month = (1 + date.getMonth());          //M
+            month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+            var day = date.getDate();                   //d
+            day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+            var hour = date.getHours();
+            hour = hour >= 10 ? hour : '0' + hour;          //hour 두자리로 저장
+            var min = date.getMinutes();
+            min = min >= 10 ? min : '0' + min;          //min 두자리로 저장
+            var sec = date.getSeconds();
+            sec = sec >= 10 ? sec : '0' + sec;          //sec 두자리로 저장
+            var ret = year + '.' + month + '.' + day + ' ' + hour + ':' + min;
+            return  ret;
+        }
+
+        function htmlEntities(str) {
+            return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+        }
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+        <div class="list_wrap">
+            <ul class="listview">
+            <%
+                for(var i=0; i < ret.length; i++) { 
+            %>
+<li><%=ret[i].position%>
+    <iframe width=25% height=25% src='https://www.youtube.com/embed/<%=ret[i].videoId%>?playlist=<%=ret[i].videoId%>&loop=1&&controls=0&autoplay=0&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe>
+    <h2><script type="text/javascript">document.write(htmlEntities('<%=ret[i].title%>'))</script><br></h2><h3><div><script type="text/javascript">document.write(getFormatDate('<%=ret[i].videoPublishedAt%>'));</script></div></h3></a></li>
+            <%     
+                } 
+            %>
+</ul>
+            <!-- //리스트끝 -->
+        </div>
+    </div>
+  </body>
+</html>
+
+
+

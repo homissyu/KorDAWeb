@@ -418,15 +418,14 @@ async function getMKPrice() {
 
                 dji = obj[2].getElementsByTagName("tr")[5].getElementsByTagName("td")[1].innerHTML;
                 dji= Number.parseFloat(dji.replace(',',''));
-
+                
                 djiGap = obj[2].getElementsByTagName("tr")[5].getElementsByTagName("td")[2].getElementsByTagName("span")[0].innerHTML;
                 // if("t_12_blue" == obj[3].getElementsByTagName("tr")[0].getElementsByTagName("td")[2].getElementsByTagName("span")[0].className) manipulVal = -1;
                 if(djiGap.startsWith("▼")) manipulVal = -1;
                 else manipulVal = 1;
-                djiGap = Number.parseFloat(djiGap.substr(1)) * manipulVal; 
+                djiGap = Number.parseFloat(djiGap.substr(1).replace(',','')) * manipulVal; 
                 djiLast = Math.round((dji - djiGap)*100)/100;
-                // console.log("dji:"+dji);
-
+                
                 nasdaq = obj[2].getElementsByTagName("tr")[6].getElementsByTagName("td")[1].innerHTML;
                 nasdaq= Number.parseFloat(nasdaq.replace(',',''));
 
@@ -434,7 +433,7 @@ async function getMKPrice() {
                 if(nasdaqGap.startsWith("▼")) manipulVal = -1;
                 else manipulVal = 1;
                 // if("t_12_blue" == obj[3].getElementsByTagName("tr")[0].getElementsByTagName("td")[2].getElementsByTagName("span")[0].className) manipulVal = -1;
-                nasdaqGap = Number.parseFloat(nasdaqGap.substr(1)) * manipulVal; 
+                nasdaqGap = Number.parseFloat(nasdaqGap.substr(1).replace(',','')) * manipulVal; 
                 nasdaqLast = Math.round((nasdaq - nasdaqGap)*100)/100;
                 // console.log("nasdaq:"+nasdaq);
                 

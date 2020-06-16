@@ -1,7 +1,6 @@
-
-  var config = {};
-  config.getConfig = function (type){
-    var connectionLimitCnt
+var config = {};
+config.getConfig = function (type){
+    var connectionLimitCnt=1;
     switch(type){
         case 0://setNewsData.js
             connectionLimitCnt = 20;
@@ -28,5 +27,5 @@
         password : 'test',
         connectionLimit : connectionLimitCnt
     };
-  }
-  module.exports = config;
+}
+module.exports = config;
