@@ -94,7 +94,7 @@ var job1 = new CronJob('*/60 * * * * *', function() {
 var job2 = new CronJob('* */5 * * * *', function() {
     setFBData.setData();
 }, null, true);
-var job3 = new CronJob('* */5 * * * *', function() {
+var job3 = new CronJob('* */20 * * * *', function() {
     setYoutubeData.setData();
 }, null, true);
 // var job4 = new CronJob('* */5 * * * *', function() {

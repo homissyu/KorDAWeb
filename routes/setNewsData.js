@@ -1,21 +1,20 @@
-var mysql = require('mysql');
+const getConnection = require('./db');
 var newsDatum = require("./newsDatum.js");
-var config = require("./config");
-var pool = mysql.createPool(config.getConfig(0))
-var sql = "INSERT INTO NEWS_NAVER (TITLE, LINK, CONTENT, PUB_DATE) VALUES (?,?,?,?)";
 
+var sql = "INSERT INTO NEWS_NAVER (TITLE, LINK, CONTENT, PUB_DATE) VALUES (?,?,?,?)";
 async function insertData(value){
-    await pool.getConnection(function(err, connection) {
+    await getConnection((conn) => {
     // Use the connection
-        connection.query( sql, [value.title.replace(/<(\/b|b)([^>]*)>/gi,""), value.link, value.description.replace(/<(\/b|b)([^>]*)>/gi,""), new Date(value.pubDate)], 
+        conn.query(
+            sql, [value.title.replace(/<(\/b|b)([^>]*)>/gi,""), value.link, value.description.replace(/<(\/b|b)([^>]*)>/gi,""), new Date(value.pubDate)], 
             function(error, result) {
                 if(error) {
                     // console.log(error);
-                    connection.rollback();
+                    conn.rollback();
                 }else {
-                    connection.commit();
+                    conn.commit();
                 }
-                connection.release();
+                conn.release();
             }
         );
     });

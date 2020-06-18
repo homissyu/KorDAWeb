@@ -32,10 +32,21 @@
         <div class="list_wrap">
             <ul class="listview">
             <%
+            //http://pennygold.kr/v2/shared/assets/kordaAsset //자산보유현황
                 for(var i=0; i < ret.length; i++) { 
             %>
 <li><%=ret[i].position%>
     <iframe width=25% height=25% src='https://www.youtube.com/embed/<%=ret[i].videoId%>?playlist=<%=ret[i].videoId%>&loop=1&&controls=0&autoplay=0&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe>
+    <picture class="lazyload">
+        <source type="image/webp" srcset="<%=ret[i].thumnailMediumUrl%>">
+        <source type="image/jpeg" srcset="<%=ret[i].thumnailMediumUrl%>">
+        <img src="<%=ret[i].thumnailMediumUrl%>" class="lazyload" alt="유튜브 이미지">
+    </picture>
+    <picture class="lazyload">
+        <source type="image/webp" srcset="<%=ret[i].thumnailMaxResUrl%>">
+        <source type="image/jpeg" srcset="<%=ret[i].thumnailMaxResUrl%>">
+        <img src="<%=ret[i].thumnailMaxResUrl%>" class="lazyload" alt="유튜브 이미지">
+    </picture>
     <h2><script type="text/javascript">document.write(htmlEntities('<%=ret[i].title%>'))</script><br></h2><h3><div><script type="text/javascript">document.write(getFormatDate('<%=ret[i].videoPublishedAt%>'));</script></div></h3></a></li>
             <%     
                 } 
