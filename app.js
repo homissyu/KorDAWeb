@@ -12,6 +12,9 @@ var cron = require('cron');
 // var app = express();
 var PORT= process.env.PORT || 3000;
 
+// Publishing Version
+const PUB_VER = "/v1";
+
 // https redirect
 
 app.all('*', (req, res, next) => { 
@@ -33,9 +36,9 @@ app.all('*', (req, res, next) => {
 app.use(bodyParser.urlencoded({extended : true}));
 
 //view
-app.set('views', __dirname+'/views');
+app.set('views', __dirname+PUB_VER+'/views');
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname+"/public"));
+app.use(express.static(__dirname+PUB_VER+"/public"));
 
 // //use cache-control
 // var   maxAge =  60 * 60 * 24;
@@ -45,32 +48,32 @@ app.use(express.static(__dirname+"/public"));
 // });
 
 //Page for News Tab
-app.use("/news", require(__dirname+"/routes/news"));
+app.use("/news", require(__dirname+PUB_VER+"/routes/news"));
 
 //Page for YouTube in WebSite
-app.use("/youTubes", require(__dirname+"/routes/youTubes"));
+app.use("/youTubes", require(__dirname+PUB_VER+"/routes/youTubes"));
 
 //use routes
 // app.use("/event", require(__dirname+"/routes/event"));
-app.use("/event_coupon", require(__dirname+"/routes/event_coupon"));
-app.use("/event_ezwel", require(__dirname+"/routes/event_ezwel"));
+app.use("/event_coupon", require(__dirname+PUB_VER+"/routes/event_coupon"));
+app.use("/event_ezwel", require(__dirname+PUB_VER+"/routes/event_ezwel"));
 // app.use("/event_mypet", require(__dirname+"/routes/event_mypet"));
 
 //API for GNB
-app.use("/getData", require(__dirname+"/routes/getData"));
+app.use("/getData", require(__dirname+PUB_VER+"/routes/getData"));
 //API for Widget
-app.use("/getData4App", require(__dirname+"/routes/getData4App"));
+app.use("/getData4App", require(__dirname+PUB_VER+"/routes/getData4App"));
 //API for Dashboard
-app.use("/getData4Dashboard", require(__dirname+"/routes/getData4Dashboard"));
+app.use("/getData4Dashboard", require(__dirname+PUB_VER+"/routes/getData4Dashboard"));
 
 //QR reader 4 KGE
-app.use("/chkValidGiftCard", require(__dirname+"/routes/chkValidGiftCard"));
-app.use("/viewGiftCardInfo", require(__dirname+"/routes/viewGiftCardInfo"));
+app.use("/chkValidGiftCard", require(__dirname+PUB_VER+"/routes/chkValidGiftCard"));
+app.use("/viewGiftCardInfo", require(__dirname+PUB_VER+"/routes/viewGiftCardInfo"));
 // app.use("/chkValidGiftCard2", require(__dirname+"/routes/chkValidGiftCard2"));
 // app.use("/chkValidGiftCard3", require(__dirname+"/routes/chkValidGiftCard3"));
 
-app.use("/dashBoard", require(__dirname+"/routes/dashBoard"));
-app.use("/", require(__dirname+"/routes/index"));
+app.use("/dashBoard", require(__dirname+PUB_VER+"/routes/dashBoard"));
+app.use("/", require(__dirname+PUB_VER+"/routes/index"));
 
 //listen
 app.listen(PORT, function(){
@@ -83,9 +86,9 @@ app.use(function(err, req, res, next) {
 });
 
 var CronJob = require('cron').CronJob;
-var setNewsData = require("./routes/setNewsData.js");
-var setFBData = require("./routes/setFbData.js");
-var setYoutubeData = require("./routes/setYoutubeData.js")
+var setNewsData = require("."+PUB_VER+"/routes/setNewsData.js");
+var setFBData = require("."+PUB_VER+"/routes/setFbData.js");
+var setYoutubeData = require("."+PUB_VER+"/routes/setYoutubeData.js");
 // var _setNewsData = require("./routes/_setNewsData.js");
 
 var job1 = new CronJob('*/60 * * * * *', function() {
