@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="KorDA" />
+	<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+	<!--[if lte IE 8]>
+	<script src="https://koreada.kr:443/home/js/html5.js"></script>
+	<![endif]-->
+	<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta name="naver-site-verification" content="4d19d5228c22389492a202f428e9889cc154f5f1" />
+	<title>KorDA - 한국금거래소디지털에셋.</title>
+	<!--Start for NAVER-->
+	<meta name="naver-site-verification" content="94a1ce911be5f4b0a7cbd4a8e12877a63b5411ab" />
+	<meta name="description" lang="ko" content="금투자, 금시세, 금거래는 센골드로 - 세상 편한 모바일 금투자 Cengold로 소액생활투자 서비스를 경험하세요.">
+	<meta property="og:type" content="website"> 
+	<meta property="og:title" content="센골드 한국금거래소디지털에셋">
+	<meta property="og:description" content="금투자, 금시세, 금거래는 센골드로 - 세상 편한 모바일 금투자 Cengold로 소액생활투자 서비스를 경험하세요.">
+	<meta property="og:url" content="https://korda.im">
+	<meta name="copyright" content="copyrights 2020 센골드 한국금거래소디지털에셋">
+	<link rel="canonical" href="https://www.korda.im">
+	<meta name="keywords" content="금거래, 금투자, 금선물, 금송금, 포인트, 쿠폰, 모바일간편감정, 실물인출 , 금시세, 위젯 "> 
+	<!--End for NAVER-->
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/swiper.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+
+	<!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/settings.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="include/rs-plugin/css/navigation.css">
+
+	<script src="js/jquery-3.4.1.min.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<style type="text/css">
+        .blinkText {
+            animation: blinker 1s linear infinite;
+        }
+    
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+	</style>
+	<style>
+		.youtube {
+			background-color: #000;
+			margin-bottom: 30px;
+			position: relative;
+			padding-top: 56.25%;
+			overflow: hidden;
+			cursor: pointer;
+		}
+		.youtube img {
+			width: 100%;
+			top: -16.84%;
+			left: 0;
+			opacity: 0.7;
+		}
+		.youtube .play-button {
+			width: 90px;
+			height: 60px;
+			background-color: #333;
+			box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+			z-index: 1;
+			opacity: 0.8;
+			border-radius: 6px;
+		}
+		.youtube .play-button:before {
+			content: "";
+			border-style: solid;
+			border-width: 15px 0 15px 26.0px;
+			border-color: transparent transparent transparent #fff;
+		}
+		.youtube img,
+		.youtube .play-button {
+			cursor: pointer;
+		}
+		.youtube img,
+		.youtube iframe,
+		.youtube .play-button,
+		.youtube .play-button:before {
+			position: absolute;
+		}
+		.youtube .play-button,
+		.youtube .play-button:before {
+			top: 50%;
+			left: 50%;
+			transform: translate3d( -50%, -50%, 0 );
+		}
+		.youtube iframe {
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<!--style type="text/css">
+		/* 유튜브 */
+		<%
+			for(var i=0; i < youTubes.length; i++) { 
+		%>
+		//.flex-control-thumbs li:nth-child(<%=i+1%>):after {content:'';}
+		<%     
+			} 
+		%>
+	</style-->
+	<script type="text/javascript">
+		/*! lazysizes - v5.2.0 */
+		!function(a,b){var c=b(a,a.document,Date);a.lazySizes=c,"object"==typeof module&&module.exports&&(module.exports=c)}("undefined"!=typeof window?window:{},function(a,b,c){"use strict";var d,e;if(function(){var b,c={lazyClass:"lazyload",loadedClass:"lazyloaded",loadingClass:"lazyloading",preloadClass:"lazypreload",errorClass:"lazyerror",autosizesClass:"lazyautosizes",srcAttr:"data-src",srcsetAttr:"data-srcset",sizesAttr:"data-sizes",minSize:40,customMedia:{},init:!0,expFactor:1.5,hFac:.8,loadMode:2,loadHidden:!0,ricTimeout:0,throttleDelay:125};e=a.lazySizesConfig||a.lazysizesConfig||{};for(b in c)b in e||(e[b]=c[b])}(),!b||!b.getElementsByClassName)return{init:function(){},cfg:e,noSupport:!0};var f=b.documentElement,g=a.HTMLPictureElement,h="addEventListener",i="getAttribute",j=a[h].bind(a),k=a.setTimeout,l=a.requestAnimationFrame||k,m=a.requestIdleCallback,n=/^picture$/i,o=["load","error","lazyincluded","_lazyloaded"],p={},q=Array.prototype.forEach,r=function(a,b){return p[b]||(p[b]=new RegExp("(\\s|^)"+b+"(\\s|$)")),p[b].test(a[i]("class")||"")&&p[b]},s=function(a,b){r(a,b)||a.setAttribute("class",(a[i]("class")||"").trim()+" "+b)},t=function(a,b){var c;(c=r(a,b))&&a.setAttribute("class",(a[i]("class")||"").replace(c," "))},u=function(a,b,c){var d=c?h:"removeEventListener";c&&u(a,b),o.forEach(function(c){a[d](c,b)})},v=function(a,c,e,f,g){var h=b.createEvent("Event");return e||(e={}),e.instance=d,h.initEvent(c,!f,!g),h.detail=e,a.dispatchEvent(h),h},w=function(b,c){var d;!g&&(d=a.picturefill||e.pf)?(c&&c.src&&!b[i]("srcset")&&b.setAttribute("srcset",c.src),d({reevaluate:!0,elements:[b]})):c&&c.src&&(b.src=c.src)},x=function(a,b){return(getComputedStyle(a,null)||{})[b]},y=function(a,b,c){for(c=c||a.offsetWidth;c<e.minSize&&b&&!a._lazysizesWidth;)c=b.offsetWidth,b=b.parentNode;return c},z=function(){var a,c,d=[],e=[],f=d,g=function(){var b=f;for(f=d.length?e:d,a=!0,c=!1;b.length;)b.shift()();a=!1},h=function(d,e){a&&!e?d.apply(this,arguments):(f.push(d),c||(c=!0,(b.hidden?k:l)(g)))};return h._lsFlush=g,h}(),A=function(a,b){return b?function(){z(a)}:function(){var b=this,c=arguments;z(function(){a.apply(b,c)})}},B=function(a){var b,d=0,f=e.throttleDelay,g=e.ricTimeout,h=function(){b=!1,d=c.now(),a()},i=m&&g>49?function(){m(h,{timeout:g}),g!==e.ricTimeout&&(g=e.ricTimeout)}:A(function(){k(h)},!0);return function(a){var e;(a=!0===a)&&(g=33),b||(b=!0,e=f-(c.now()-d),e<0&&(e=0),a||e<9?i():k(i,e))}},C=function(a){var b,d,e=99,f=function(){b=null,a()},g=function(){var a=c.now()-d;a<e?k(g,e-a):(m||f)(f)};return function(){d=c.now(),b||(b=k(g,e))}},D=function(){var g,m,o,p,y,D,F,G,H,I,J,K,L=/^img$/i,M=/^iframe$/i,N="onscroll"in a&&!/(gle|ing)bot/.test(navigator.userAgent),O=0,P=0,Q=0,R=-1,S=function(a){Q--,(!a||Q<0||!a.target)&&(Q=0)},T=function(a){return null==K&&(K="hidden"==x(b.body,"visibility")),K||!("hidden"==x(a.parentNode,"visibility")&&"hidden"==x(a,"visibility"))},U=function(a,c){var d,e=a,g=T(a);for(G-=c,J+=c,H-=c,I+=c;g&&(e=e.offsetParent)&&e!=b.body&&e!=f;)(g=(x(e,"opacity")||1)>0)&&"visible"!=x(e,"overflow")&&(d=e.getBoundingClientRect(),g=I>d.left&&H<d.right&&J>d.top-1&&G<d.bottom+1);return g},V=function(){var a,c,h,j,k,l,n,o,q,r,s,t,u=d.elements;if((p=e.loadMode)&&Q<8&&(a=u.length)){for(c=0,R++;c<a;c++)if(u[c]&&!u[c]._lazyRace)if(!N||d.prematureUnveil&&d.prematureUnveil(u[c]))ba(u[c]);else if((o=u[c][i]("data-expand"))&&(l=1*o)||(l=P),r||(r=!e.expand||e.expand<1?f.clientHeight>500&&f.clientWidth>500?500:370:e.expand,d._defEx=r,s=r*e.expFactor,t=e.hFac,K=null,P<s&&Q<1&&R>2&&p>2&&!b.hidden?(P=s,R=0):P=p>1&&R>1&&Q<6?r:O),q!==l&&(D=innerWidth+l*t,F=innerHeight+l,n=-1*l,q=l),h=u[c].getBoundingClientRect(),(J=h.bottom)>=n&&(G=h.top)<=F&&(I=h.right)>=n*t&&(H=h.left)<=D&&(J||I||H||G)&&(e.loadHidden||T(u[c]))&&(m&&Q<3&&!o&&(p<3||R<4)||U(u[c],l))){if(ba(u[c]),k=!0,Q>9)break}else!k&&m&&!j&&Q<4&&R<4&&p>2&&(g[0]||e.preloadAfterLoad)&&(g[0]||!o&&(J||I||H||G||"auto"!=u[c][i](e.sizesAttr)))&&(j=g[0]||u[c]);j&&!k&&ba(j)}},W=B(V),X=function(a){var b=a.target;if(b._lazyCache)return void delete b._lazyCache;S(a),s(b,e.loadedClass),t(b,e.loadingClass),u(b,Z),v(b,"lazyloaded")},Y=A(X),Z=function(a){Y({target:a.target})},$=function(a,b){try{a.contentWindow.location.replace(b)}catch(c){a.src=b}},_=function(a){var b,c=a[i](e.srcsetAttr);(b=e.customMedia[a[i]("data-media")||a[i]("media")])&&a.setAttribute("media",b),c&&a.setAttribute("srcset",c)},aa=A(function(a,b,c,d,f){var g,h,j,l,m,p;(m=v(a,"lazybeforeunveil",b)).defaultPrevented||(d&&(c?s(a,e.autosizesClass):a.setAttribute("sizes",d)),h=a[i](e.srcsetAttr),g=a[i](e.srcAttr),f&&(j=a.parentNode,l=j&&n.test(j.nodeName||"")),p=b.firesLoad||"src"in a&&(h||g||l),m={target:a},s(a,e.loadingClass),p&&(clearTimeout(o),o=k(S,2500),u(a,Z,!0)),l&&q.call(j.getElementsByTagName("source"),_),h?a.setAttribute("srcset",h):g&&!l&&(M.test(a.nodeName)?$(a,g):a.src=g),f&&(h||l)&&w(a,{src:g})),a._lazyRace&&delete a._lazyRace,t(a,e.lazyClass),z(function(){var b=a.complete&&a.naturalWidth>1;p&&!b||(b&&s(a,"ls-is-cached"),X(m),a._lazyCache=!0,k(function(){"_lazyCache"in a&&delete a._lazyCache},9)),"lazy"==a.loading&&Q--},!0)}),ba=function(a){if(!a._lazyRace){var b,c=L.test(a.nodeName),d=c&&(a[i](e.sizesAttr)||a[i]("sizes")),f="auto"==d;(!f&&m||!c||!a[i]("src")&&!a.srcset||a.complete||r(a,e.errorClass)||!r(a,e.lazyClass))&&(b=v(a,"lazyunveilread").detail,f&&E.updateElem(a,!0,a.offsetWidth),a._lazyRace=!0,Q++,aa(a,b,f,d,c))}},ca=C(function(){e.loadMode=3,W()}),da=function(){3==e.loadMode&&(e.loadMode=2),ca()},ea=function(){if(!m){if(c.now()-y<999)return void k(ea,999);m=!0,e.loadMode=3,W(),j("scroll",da,!0)}};return{_:function(){y=c.now(),d.elements=b.getElementsByClassName(e.lazyClass),g=b.getElementsByClassName(e.lazyClass+" "+e.preloadClass),j("scroll",W,!0),j("resize",W,!0),j("pageshow",function(a){if(a.persisted){var c=b.querySelectorAll("."+e.loadingClass);c.length&&c.forEach&&l(function(){c.forEach(function(a){a.complete&&ba(a)})})}}),a.MutationObserver?new MutationObserver(W).observe(f,{childList:!0,subtree:!0,attributes:!0}):(f[h]("DOMNodeInserted",W,!0),f[h]("DOMAttrModified",W,!0),setInterval(W,999)),j("hashchange",W,!0),["focus","mouseover","click","load","transitionend","animationend"].forEach(function(a){b[h](a,W,!0)}),/d$|^c/.test(b.readyState)?ea():(j("load",ea),b[h]("DOMContentLoaded",W),k(ea,2e4)),d.elements.length?(V(),z._lsFlush()):W()},checkElems:W,unveil:ba,_aLSL:da}}(),E=function(){var a,c=A(function(a,b,c,d){var e,f,g;if(a._lazysizesWidth=d,d+="px",a.setAttribute("sizes",d),n.test(b.nodeName||""))for(e=b.getElementsByTagName("source"),f=0,g=e.length;f<g;f++)e[f].setAttribute("sizes",d);c.detail.dataAttr||w(a,c.detail)}),d=function(a,b,d){var e,f=a.parentNode;f&&(d=y(a,f,d),e=v(a,"lazybeforesizes",{width:d,dataAttr:!!b}),e.defaultPrevented||(d=e.detail.width)&&d!==a._lazysizesWidth&&c(a,f,e,d))},f=function(){var b,c=a.length;if(c)for(b=0;b<c;b++)d(a[b])},g=C(f);return{_:function(){a=b.getElementsByClassName(e.autosizesClass),j("resize",g)},checkElems:g,updateElem:d}}(),F=function(){!F.i&&b.getElementsByClassName&&(F.i=!0,E._(),D._())};return k(function(){e.init&&F()}),d={cfg:e,autoSizer:E,loader:D,init:F,uP:w,aC:s,rC:t,hC:r,fire:v,gW:y,rAF:z}});
+	</script>
+
+	<!-- Document Title
+	============================================= -->
+	<title>한국금거래소디지털에셋</title>
+</head>
+
+<body class="stretched" onload=sendAjax();sendAjax4Asset()>
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix gold">
+		
+		<!-- Header
+		============================================= -->
+		<header id="header" class="transparent-header dark" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+						<!-- Logo
+						============================================= -->
+						<div id="logo">
+							<a href="" class="standard-logo" data-dark-logo="images/logo-dark.png">
+								<picture class="lazyload">
+									<source type="image/webp" srcset="/images/logo.webp">
+									<source type="image/jpeg" srcset="/images/logo.jpg">
+									<img src="images/logo.png" class="lazyload" alt="센골드 앱이미지">
+								</picture>
+							</a>
+							<a href="" class="retina-logo" data-dark-logo="images/logo-dark@2x.png">
+								<picture class="lazyload">
+                                	<source type="image/webp" srcset="/images/logo@2x.webp">
+                                	<source type="image/jpeg" srcset="/images/logo@2x.jpg">
+                                	<img src="images/logo@2x.png" class="lazyload" alt="센골드 앱이미지">
+								</picture>
+							</a>
+						</div><!-- #logo end -->
+
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+
+						<!-- Primary Navigation
+						============================================= -->
+						
+						<nav class="primary-menu not-dark">
+
+							<ul class="one-page-menu menu-container" data-easing="easeInOutExpo" data-speed="1250" data-offset="60">
+								<li class="current menu-item"><a class="menu-link" href="#"data-href="#slider"><div>Home</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="#"data-href="#cengold"><div>센골드</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="#" data-href="#gogold"><div>금방금방</div></a></li>
+								<li class="menu-item"><a class="menu-link" href="#" data-href="#news"><div>소식</div></a></li>	
+								<li class="menu-item"><a class="menu-link" href="#" data-href="#company"><div>회사소개</div></a></li>
+								<li class="menu-item">
+									<div class="header-misc">
+
+										<div class="d-flex">
+											<a href="https://bit.ly/36TFtnj" target="_blank" class="social-icon si-dark si-colored si-grayF si-small mb-0" style="margin-right: 10px;">
+												<i class="icon-none">
+													<picture class="lazyload">
+														<source type="image/webp" srcset="/images/ic_facebook.webp">
+														<source type="image/jpeg" srcset="/images/ic_facebook.jpg">
+														<img src="images/ic_facebook.png" class="lazyload" alt="sns">
+													</picture>
+												</i>
+												<i class="icon-none">
+													<picture class="lazyload">
+														<source type="image/webp" srcset="/images/ic_facebook.webp">
+														<source type="image/jpeg" srcset="/images/ic_facebook.jpg">
+														<img src="images/ic_facebook.png" class="lazyload" alt="sns">
+													</picture>
+												</i>
+											</a>
+											<a href="https://blog.naver.com/cengold" target="_blank" class="social-icon si-dark si-colored si-grayF si-small mb-0" style="margin-right: 10px;">
+												<i class="icon-none">
+													<picture class="lazyload">
+														<source type="image/webp" srcset="/images/ic_blog.webp">
+														<source type="image/jpeg" srcset="/images/ic_blog.jpg">
+														<img src="images/ic_blog.png" class="lazyload" alt="sns">
+													</picture>
+												</i>
+												<i class="icon-none">
+													<picture class="lazyload">
+														<source type="image/webp" srcset="/images/ic_blog.webp">
+														<source type="image/jpeg" srcset="/images/ic_blog.jpg">
+														<img src="images/ic_blog.png" class="lazyload" alt="sns">
+													</picture>
+												</i>
+											</a>
+											<a href="https://www.youtube.com/channel/UCqZwkP5qKoRttaLn7j3aTiw" target="_blank" class="social-icon si-dark si-colored si-grayF si-small mb-0" style="margin-right: 10px;">
+												<i class="icon-none">
+													<picture class="lazyload">
+														<source type="image/webp" srcset="/images/ic_youtube.webp">
+														<source type="image/jpeg" srcset="/images/ic_youtube.jpg">
+														<img src="images/ic_youtube.png" class="lazyload" alt="sns">
+													</picture>
+												</i>
+												<i class="icon-none">
+													<picture class="lazyload">
+														<source type="image/webp" srcset="/images/ic_youtube.webp">
+														<source type="image/jpeg" srcset="/images/ic_youtube.jpg">
+														<img src="images/ic_youtube.png" class="lazyload" alt="sns">
+													</picture>
+												</i>
+											</a>
+										</div>
+			
+									</div>
+								</li>
+							</ul>
+						</nav><!-- #primary-menu end -->
+					
+
+					</div>
+				</div>
+			</div>
+		</header><!-- #header end -->
+		 <!--하단 앱다운로드 버튼-->
+		 <div class="m_view">
+			<div id="navbar">
+				<a href="https://play.google.com/store/apps/details?id=com.cengold.korda&hl=ko">
+					<picture class="lazyload">
+						<source type="image/webp" srcset="/images/img_store_1_w2_mobile.webp">
+						<source type="image/jpeg" srcset="/images/img_store_1_w2_mobile.jpg">
+						<img src="images/img_store_1_w2_mobile.png" class="lazyload" alt="센골드 구글플레이">
+					</picture>
+				</a>
+				<a href="https://apps.apple.com/kr/app/%EC%84%BC%EA%B3%A8%EB%93%9C-cengold/id1484761981">
+					<picture class="lazyload">
+						<source type="image/webp" srcset="/images/img_store_2_w2_mobile.webp">
+						<source type="image/jpeg" srcset="/images/img_store_2_w2_mobile.jpg">
+						<img src="images/img_store_2_w2_mobile.png" class="lazyload" alt="센골드 앱스토어">
+					</picture>
+				</a>
+		</div>
+		</div>
+	   <!--//gnb only for Mobile-->
+		<!-- 금시세보기 -->
+		<div class="right_wrap" data-animate="fadeIn" data-delay="100" data-readmore="true" data-readmore-mask="false" data-readmore-size="0rem" data-readmore-trigger-open="금시세보기<i class='icon-angle-down'></i>" data-readmore-trigger-close="금시세보기<i class='icon-angle-up'></i>">
+			<a href="#" class="btn btn-primary read-more-trigger">금시세보기 </a>
+			<div class="rightmenu">
+				
+                <ul>
+                    <!--new 아이콘 추가 시, span 태그 추가-->
+                    <li>
+                        <span class="tt">센골드 e금 시세</span></br>
+                        <span id='pegDon'><%=pegDon%></span><span class="g"> 원/돈</span>
+                    </li>
+                    <li>
+                        <span class="tt">센골드 e은 시세</span></br>
+                        <span id='pesDon'><%=pesDon%></span><span class="g"> 원/돈</span>
+                    </li> 
+                    <li>
+                        <span class="tt">금 살때 소매시세</span></br>
+                        <span id='goldBuy'><%=goldBuy%></span><span class="g"> 원/돈</span>
+                    </li>
+                    <li>
+                        <span class="tt">금 팔 때 소매시세</span></br>
+                        <span id='goldSell'><%=goldSell%></span><span class="g"> 원/돈</span>
+                    </li>
+                    <li>
+                        <span class="tt">원/달러 환율</span></br>
+                        <span id='excRate'><%=excRate%></span><span class="g"> 원/$</span>
+                    </li>
+                    <li>
+                        <span class="tt">CD(91일) 금리</span></br>
+                        <span id='investRate'><%=investRate%></span><span class="g"> %</span>
+                    </li>
+                    <li>
+                        <span class="tt">KOSPI</span></br>
+                        <span id='kospi'><%=kospi%></span><span class="g"> point</span>
+                    </li>
+                    <li>
+                        <span class="tt">KOSDAQ</span></br>
+                        <span id='kosdaq'><%=kosdaq%></span><span class="g"> point</span>
+                    </li>
+                    <!--li>
+                        <span>Dow Jones</span></br>
+                        <span id='dji'><%=dji%></span><span> point</span>
+                    </li>
+                    <li>
+                        <span>NASDAQ</span></br>
+                        <span id='nasdaq'><%=nasdaq%></span><span> point</span>
+                    </li-->
+                    <li>
+                        <span class="tt">BitCoin</span></br>
+                        <span id='btc'><%=btc%></span><span class="g"> 원/btc</span>
+                    </li>
+                    <li class="last">
+                        <span class="tt">Ethereum</span></br>
+                        <span id='eth'><%=eth%></span><span class="g"> 원/eth</span>
+                    </li>
+                </ul>
+			</div>
+		</div>
+		<!-- right_wrap// -->
+		
+
+		<section id="slider" class="slider-element slider-parallax swiper_wrapper min-vh-60 min-vh-md-100 include-header" >
+			<div class="slider-inner">
+
+				<div class="swiper-container swiper-parent">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption">
+									<h2 data-animate="fadeInUp">
+										<p class="tt1">
+											<picture class="lazyload">
+												<source type="image/webp" srcset="/images/ic_gold.webp">
+												<source type="image/jpeg" srcset="/images/ic_gold.jpg">
+												<img src="images/ic_gold.png" class="lazyload" alt="mobile">
+											</picture>
+										</p>
+										<p class="tt2">세상 편한 모바일 금투자</p><p class="tt3">#센골드<p></h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">
+                                        <a href="https://play.google.com/store/apps/details?id=com.cengold.korda&hl=ko" class="button button-xlarge button-border button-rounded"><i class="icon-google-play"></i>앱다운로드</a>
+										<a href="https://apps.apple.com/kr/app/%EC%84%BC%EA%B3%A8%EB%93%9C-cengold/id1484761981" class="button button-xlarge button-border button-rounded"><i class="icon-apple1"></i>앱다운로드</a>
+									</p>
+								</div>
+							</div>
+							<div class="swiper-slide-bg" style="background-image: url('images/slider/swiper/1.jpg'); background-position: center top;"></div>
+						</div>
+						<div class="swiper-slide dark">
+							<div class="container">
+								<div class="slider-caption">
+									<h2 data-animate="fadeInUp"><p class="tt1">방구석 금은방, </p><p class="tt2">30초, 간편감정서비스</p><p class="tt3">금방금방</p</h2>
+									<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">
+										<a href="#" class="button button-xlarge button-border button-rounded"><i class="icon-google-play"></i>앱출시예정</a>
+										<a href="#" class="button button-xlarge button-border button-rounded"><i class="icon-apple1"></i>앱출시예정</a>
+									</p>
+								</div>
+							</div>
+							<div class="swiper-slide-bg" style="background-image: url('images/slider/swiper/2.jpg'); background-position: center top;"></div>
+						</div>
+					</div>
+
+					
+					<div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+					<div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+				</div>
+
+				<a href="#" data-scrollto="#content" data-offset="100" class="one-page-arrow dark"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
+
+			</div>
+		</section>
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap py-0">
+
+				<!-- 보안 -->
+				<div class="container clearfix bottommargin-lg">
+					<div class="heading-block topmargin-lg  center">
+						<h2>센골드 앱 총 자산현황</h2>
+						<span class="mx-auto">2020년 6월 기준</span>
+					</div>
+					<div class="row align-items-center bottommargin-lg cot">
+						<!-- <div class="row clearfix align-items-stretch bottommargin-lg"> -->
+							<div class="col-lg-3 col-md-6 col-sm-6 dark center col-padding box01 boxarea" >
+								<h5>누적 <br class="m_none">금 거래량</h5>
+								<div class="counter counter-lined"><span data-from="10" data-to="<%=new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format((assetDatum.egold).toString().split('.')[0])%>" data-refresh-interval="100" data-speed="600"></span>.<span data-from="0" data-to="<%=(assetDatum.egold).toString().split('.')[1]%>" data-refresh-interval="100" data-speed="3000"></span><em class="p_none">g</em></div>
+								<!-- data-comma="true"  -->
+								<h2>g</h2>
+							</div>
+							<div class="col-lg-3 col-md-6 col-sm-6 dark center col-padding box02 boxarea" >
+								<h5>누적 <br class="m_none">은 거래량</h5>
+								<div class="counter counter-lined"><span data-from="10" data-to="<%=new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format((assetDatum.esilver).toString().split('.')[0])%>" data-refresh-interval="100" data-speed="600"></span>.<span data-from="0" data-to="<%=(assetDatum.esilver).toString().split('.')[1]%>" data-refresh-interval="100" data-speed="2000"></span><em class="p_none">g</em></div>
+								<h2>g</h2>
+							</div>
+		
+							<div class="col-lg-3 col-md-6 col-sm-6 dark center col-padding box03 boxarea" >
+								<h5>누적 <br class="m_none">포인트 거래량</h5>
+								<div class="counter counter-lined"><span data-from="100" data-to="<%=assetDatum.point%>" data-refresh-interval="250" data-speed="3500" data-comma="true"></span><em class="p_none">원</em></div>
+								<h2>Point</h2>
+							</div>
+		
+							<div class="col-lg-3 col-md-6 col-sm-6 center col-padding box04 boxarea">
+								<h5>출시 이래 <br class="m_none">보안사고</h5>
+								<div class="counter counter-lined"><span data-from="1000" data-to="0" data-refresh-interval="10" data-speed="1000"></span>건</div>
+								<h2>&nbsp;</h2> 
+							</div>
+					</div>
+					<!-- row// -->
+				</div>
+				<!-- container// -->
+
+				<!-- 센골드 -->
+				<div id="cengold" class="section co1">
+					<div class="container clearfix">
+						<div>
+				
+							<div class="clear"></div>
+							<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" >
+								<!-- style="height: 400px;" -->
+								<div class="row align-items-center">
+
+									<div class="col-lg-6">
+										<h3>
+											<picture class="lazyload">
+												<source type="image/webp" srcset="/images/logo_cen.webp">
+												<source type="image/jpeg" srcset="/images/logo_cen.jpg">
+												<img src="images/logo_cen.png" class="lazyload" alt="logo_cen">
+											</picture>
+										</h3>
+										<p class="mtit">세상 편한 금투자<br>누구나 할 수 있습니다. </p>
+										<ol class="carousel-indicators">
+											<li class="active">
+												<p data-target="#carouselExampleCaptions" data-slide-to="0" >금 매수/매도하기<br><div class="tt">24시간 합리적인 가격으로 간편하게 구매할 수 있습니다.</div></p>
+												<br class="m_none">
+												<a class="menu-link" href="https://blog.korda.im/sesang-pyeonhanhttp-blog-korda-im-sesang-pyeonhan-mobail-geumtuja-sengoldeu-cengold-iyonggaideu-maesu-maedohagi-mobail-geumtuja-sengoldeu-cengold-iyonggaideu-maesu-maedohagi/" style="padding-top: 19px; padding-bottom: 19px;"target="_blank">이용방법 알아보기<i class="icon-angle-right"></i></a>
+											</li>
+											<li>
+												<p data-target="#carouselExampleCaptions" data-slide-to="1" >포인트/쿠폰 충전<br><div class="tt">포인트/쿠폰으로 황금을 만들 수 있습니다.</div></p>
+												<br class="m_none">
+												<a class="menu-link" href="https://blog.korda.im/sesang-pyeonhan-mobail-geumtuja-sengoldeu-cengold-iyonggaideu-maesu-maedohagi/" style="padding-top: 19px; padding-bottom: 19px;"target="_blank">이용방법 알아보기<i class="icon-angle-right"></i></a>
+											</li>
+											<li>
+												<p data-target="#carouselExampleCaptions" data-slide-to="2" >금 선물하기<br><div class="tt">친구에게 감사한 마음을 금으로 선물해보세요.</div></p>
+												<br class="m_none">
+												<a class="menu-link" href="https://blog.korda.im/sengoldeu-cengold-iyonggaideu-egeum-seonmulhagi-gacijeondal-seobiseu-2/" style="padding-top: 19px; padding-bottom: 19px;"target="_blank">이용방법 알아보기<i class="icon-angle-right"></i></a>
+											</li>
+										</ol>
+									</div>
+									<!-- col-lg-5 -->
+									<div class="col-lg-6 align-self-end">
+										<div class="carousel-inner" data-animate="fadeInRight" class="fadeInRight animated">
+											<div class="tab_mobile">
+												<img class="lazyload" src="images/tab_img_border.png" alt="mobile" />
+											</div>
+											<div class="carousel-item active">
+												<img class="d-block lazyload" src="images/tab_img1_1.jpg" alt="First slide" />
+											</div>
+											<div class="carousel-item">
+												<img class="d-block lazyload" src="images/tab_img1_2.jpg" alt="Second slide" />
+											</div>
+											<div class="carousel-item">
+												<img class="d-block lazyload" src="images/tab_img1_3.jpg" alt="Third slide" />
+											</div>
+										</div>		
+									</div>
+									<!-- col-lg-7 -->
+		
+								</div>								
+							</div>
+
+						</div>
+						<!-- cengold// -->
+					</div>
+					<!-- container// -->
+				</div>
+				<!-- section -->
+
+				<!-- 금방금방 -->
+				<div id="gogold" class="container clearfix">
+					<div>
+						<div class="clear"></div>
+						<div id="carouselExampleCaptions2" class="carousel slide" data-ride="carousel" >
+							<!-- style="height: 400px;" -->
+							<div class="row align-items-center">
+								<div class="col-lg-6">
+									<h3><img src="images/logo_go.png" class="lazyload" alt="금방금방"></h3>
+									<p class="mtit"> 반지, 목걸이 간편감정<br>
+										지금 바로 할 수 있습니다.</p>
+									<ol class="carousel-indicators">
+										<li class="active">
+											<p data-target="#carouselExampleCaptions2" data-slide-to="0" >금방금방이란?<br><div class="tt">30초 간편감정으로 빠르게 조회할 수 있습니다.</div></p>
+											<br class="m_none">
+											<a class="menu-link" href="https://blog.korda.im/30co-ganpyeon-gamjeong-seobiseu-geumbanggeumbang-aeb-sogae/" style="padding-top: 19px; padding-bottom: 19px;"target="_blank">이용방법 알아보기<i class="icon-angle-right"></i></a>
+										</li>
+										<li>
+											<p data-target="#carouselExampleCaptions2" data-slide-to="1" >간편 감정하기<br><div class="tt">숨겨진 진짜 가치를 알아보세요.</div></p>
+											<br class="m_none">
+											<a class="menu-link" href="https://blog.korda.im/geumbanggeumbangiyonggaideu-ganpyeon/" style="padding-top: 19px; padding-bottom: 19px;"target="_blank">이용방법 알아보기<i class="icon-angle-right"></i></a>
+										</li>
+										<li>
+											<p data-target="#carouselExampleCaptions2" data-slide-to="2" >최고가 판매하기<br><div class="tt">금은방 찾아가는 일은 그만, 쉽게 판매할 수 있습니다.</div></p>
+											<br class="m_none">
+											<a class="menu-link" href="https://blog.korda.im/geumbanggeumbang-iyonggaideu-geumeunbangboda-nopeun-geumaeg-coegoga-panmaehagi/" style="padding-top: 19px; padding-bottom: 19px;"target="_blank">이용방법 알아보기<i class="icon-angle-right"></i></a>
+										</li>
+									</ol>
+								</div>
+								<!-- col-lg-5 -->
+								<div class="col-lg-6 align-self-end">
+									<div class="carousel-inner" data-animate="fadeInRight" class="fadeInRight animated">
+										<div class="tab_mobile">
+											<img class="lazyload" src="images/tab2_img_border.png" alt="mobile" />
+										</div>
+										<div class="carousel-item active">
+											<img class="d-block lazyload" src="images/tab_img2_1.jpg" alt="First slide" />
+											<!-- w-100 -->
+										</div>
+										<div class="carousel-item">
+											<img class="d-block lazyload" src="images/tab_img2_2.jpg" alt="Second slide" />
+										</div>
+										<div class="carousel-item">
+											<img class="d-block lazyload" src="images/tab_img2_3.jpg" alt="Third slide" />
+										</div>
+									</div>		
+								</div>
+								<!-- col-lg-7 -->
+							</div>			
+						</div>
+					</div>
+					<!-- gogold// -->
+				</div>
+				<!-- container// -->
+
+				<div class="clear"></div>
+
+				<!-- 소식 -->
+				<div  id="news" class="section my-0">
+					<div>
+						<div class="container">
+							<div class="heading-block topmargin-sm center">
+								<h3>세상 궁금(金)한 소식</h3>
+							</div>
+							<div class="features-items mx-auto" ><!-- style="max-width: 1000px;" -->
+								<div class="row justify-content-around">
+									<%
+										var strLength = 25;
+                                        for(var i=0; i < fbNews.length; i+=(fbNews.length/2)) { 
+                                    %>
+                                    <%  if(i%(fbNews.length/2)==0) %>
+                                    <div class="col-md-5 bottommargin-lg">
+                                    %>
+                                        <div class="feature-box media-box border_box_news" data-animate="fadeIn">
+											<div class="fbox-content">
+												<a href="<%=fbNews[i].permalink_url%>" target="_blank">
+													<div class="featImgWrap">
+														<div class="featImage">
+															<img class="portrait lazyload" src="<%=fbNews[i].picture%>">
+														</div>
+													</div>
+													<div class="con_tt"><div class="title"><%=fbNews[i].message.substring(0,strLength)+"....."%></div>
+														<span class="date"><%=fbNews[i].created_time%></span>
+													</div>
+													<span class="btn_go"><i class="icon-line-arrow-right"></i>	</span>
+												</a>
+											</div>
+										</div>
+										<div class="feature-box media-box border_box_news" data-animate="fadeIn" data-delay="200">
+											<div class="fbox-content">
+												<a href="<%=fbNews[i+1].permalink_url%>" target="_blank">
+													<div class="featImgWrap">
+														<div class="featImage">
+															<img class="portrait lazyload" src="<%=fbNews[i+1].picture%>">
+														</div>
+													</div>
+													<div class="con_tt"><div class="title"><%=fbNews[i+1].message.substring(0,strLength)+"....."%></div>
+														<span class="date"><%=fbNews[i+1].created_time%></span>
+													</div>								
+													<span class="btn_go"><i class="icon-line-arrow-right"></i>	</span>
+												</a>
+											</div>
+										</div>
+										<div class="feature-box media-box border_box_news" data-animate="fadeIn" data-delay="400">
+											<div class="fbox-content">
+												<a href="<%=fbNews[i+2].permalink_url%>" target="_blank">
+													<div class="featImgWrap">
+														<div class="featImage">
+															<img class="portrait lazyload" src="<%=fbNews[i+2].picture%>">
+														</div>
+													</div>
+													<div class="con_tt"><div class="title"><%=fbNews[i+2].message.substring(0,strLength)+"....."%></div>
+														<span class="date"><%=fbNews[i+2].created_time%></span>
+													</div>								
+													<span class="btn_go"><i class="icon-line-arrow-right"></i>	</span>
+												</a>
+											</div>
+										</div>
+										<div class="feature-box media-box border_box_news" data-animate="fadeIn" data-delay="600">
+											<div class="fbox-content">
+												<a href="<%=fbNews[i+3].permalink_url%>" target="_blank">
+													<div class="featImgWrap">
+														<div class="featImage">
+															<img class="portrait lazyload" src="<%=fbNews[i+3].picture%>">
+														</div>
+													</div>
+													<div class="con_tt"><div class="title"><%=fbNews[i+3].message.substring(0,strLength)+"....."%></div>
+														<span class="date"><%=fbNews[i+3].created_time%></span>
+													</div>								
+													<span class="btn_go"><i class="icon-line-arrow-right"></i>	</span>
+												</a>
+											</div>
+										</div>
+                                    <%  if(i%(fbNews.length/2)==0) %>	
+                                    </div>
+                                    %>
+                                    <%     
+                                        } 
+                                    %>
+								</div>
+							</div>
+						</div>
+						<!-- container// -->
+					</div>
+					<!-- news// -->
+				</div>
+				<!-- section// -->
+
+
+				<!-- 조직문화 배경사진 흔들  -->
+				<div id="company" class="section parallax dark mb-0 my-0" style="background-image: url('../images/culture_bg.jpg'); " data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+					<div class="heading-block topmargin-sm center border_no">
+						<h5 class="text-white">조직문화</h5>
+						<h3 class="text-white">우리가 일하는 방식</h3>
+					</div>
+					<div  class="container clearfix">
+
+						<div class="row col-mb-50 ">
+							<div class="col-sm-6 col-lg-4">
+								<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left" style="color:#fff"></i>
+									</div>
+									<div class="fbox-content" style="flex-basis: inherit;">
+										<h3>01 공유와 협력</h3>
+										<p>개인의 성과는 모든 구성원과 공유합니다. 나의 일보다 팀의 일이 중요하고 팀의 일보다 조직이 더 중요합니다.</p>
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="col-sm-6 col-lg-4">
+								<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="200">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h3>02 도전과 성과</h3>
+										<p>리스크가 있는 곳에 기회가 있습니다. 합리적인 시도와 실패는 권장하며, 실패 속에 배움이 있습니다.</p>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="col-sm-6 col-lg-4">
+								<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="400">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h3>03 계획과 실행</h3>
+										<p>모든 업무는 항상 고객을 중심으로 생각합니다. 치열하게 논의하고 빠르게 의사결정 합니다. 복잡함은 스케일과 속도, 고객 경험을 망치는 주범입니다.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-4">
+								<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="600">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h3>04 리더쉽과 팔로우쉽</h3>
+										<p>지시를 기다리지 않고 리더처럼 행동합니다. 생각을 명확하게 커뮤니케이션할 수 있어야 합니다.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-4">
+								<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="800">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h3>05 권한과 책임</h3>
+										<p>위임과 신뢰가 업무의 핵심입니다. 책임은 실행한 사람이 아닌 결정한 사람이 집니다.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-4">
+								<div class="feature-box fbox-sm fbox-plain" data-animate="fadeIn" data-delay="1000">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h3>06 발전과 참여</h3>
+										<p>스스로 높은 기준을 세우고, 마지막까지 끊임없이 개선하고자 노력합니다. 개인과 조직의 성장을 위해 지속적으로 학습하고 토론합니다.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- company// -->
+					
+					<div class="features-items mx-auto jnone" style="max-width: 1000px;">
+						<div class="row justify-content-around">
+							<div class="col-md-5 bottommargin-lg">
+
+								<div class="feature-box media-box bottommargin" data-animate="fadeIn">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h2 class="text-white">01 공유와 협력</h2>
+										<p class="text-white">개인의 성과는 모든 구성원과 공유합니다. 
+											나의 일보다 팀의 일이 중요하고 팀의 일보다 조직이 더 중요합니다.</p>
+									</div>
+								</div>
+								<div class="feature-box media-box bottommargin" data-animate="fadeIn" data-delay="200">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h2 class="text-white">02 도전과 성과</h2>
+										<p class="text-white">리스크가 있는 곳에 기회가 있습니다.
+											합리적인 시도와 실패는 권장하며, 실패 속에 배움이 있습니다.</p>
+									</div>
+								</div>
+								<div class="feature-box media-box bottommargin" data-animate="fadeIn" data-delay="400">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h2 class="text-white">03 계획과 실행</h2>
+										<p class="text-white">모든 업무는 항상 고객을 중심으로 생각합니다.
+											치열하게 논의하고 빠르게 의사결정 합니다.
+											복잡함은 스케일과 속도, 고객 경험을 망치는 주범입니다.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5 bottommargin-lg">
+								<div class="feature-box media-box bottommargin" data-animate="fadeIn">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h2 class="text-white">04 리더쉽과 팔로우쉽</h2>
+										<p class="text-white">지시를 기다리지 않고 리더처럼 행동합니다.
+											생각을 명확하게 커뮤니케이션할 수 있어야 합니다.</p>
+									</div>
+								</div>
+								<div class="feature-box media-box bottommargin" data-animate="fadeIn" data-delay="200">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h2 class="text-white">05 권한과 책임</h2>
+										<p class="text-white">위임과 신뢰가 업무의 핵심입니다.
+											책임은 실행한 사람이 아닌 결정한 사람이 집니다.</p>
+									</div>
+								</div>
+								<div class="feature-box media-box bottommargin" data-animate="fadeIn" data-delay="400">
+									<div class="fbox-icon">
+										<i class="icon-line-minus rounded-0 bg-transparent text-left"></i>
+									</div>
+									<div class="fbox-content">
+										<h2 class="text-white">06 발전과 참여</h2>
+										<p class="text-white">스스로 높은 기준을 세우고, 마지막까지 끊임없이 개선하고자 노력합니다.
+											개인과 조직의 성장을 위해 지속적으로 학습하고 토론합니다.</p>
+									</div>
+								</div>
+								
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<!-- 유튜브 -->
+				<div class="section mt-0 my-0 yout">
+					<div class="container clearfix">
+						<div class="row align-items-center justify-content-center center my-4">				
+							<div class="col-lg-9 col-md-9 col-sm-12">
+							<div class="heading-block topmargin-sm center border_no">
+								<h5 >한국금거래소디지털에셋만의</h5>
+								<h3>센골드 이야기 살펴보기</h3>
+							</div>
+								<div class="fslider flex-thumb-grid grid-6 bottommargin-sm" data-arrows="false" data-animation="slide" data-thumbs="true">
+									<div class="flexslider">
+										<div class="slider-wrap">
+										<%
+											for(var i=0; i < youTubes.length; i++) { 
+										%>
+										<div class="slide" data-thumb="<%=youTubes[i].thumnailMediumUrl%>">
+											<div class="youtube" data-embed="<%=youTubes[i].videoId%>"><div class="play-button"></div></div>
+										</div>
+										<%     
+											} 
+										%>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- col-sm-8// -->
+						</div>
+						<!-- row// -->
+					</div>
+					<!-- container// -->
+				</div>
+				<!-- section// -->
+
+			</div>
+			<!-- content-wrap// -->
+		</section><!-- #content end -->
+		
+
+		<!-- Footer
+		============================================= -->
+		<footer id="footer" class="dark">
+			<div class="container">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap">
+
+					<div class="row col-mb-50">
+						<div class="col-lg-12">
+
+							<div class="row col-mb-50">
+								<div class="col-md-2">
+
+									<div class="widget widget_links clearfix">
+										<h4>메뉴</h4>
+										<ul class="one-page-menu" data-easing="easeInOutExpo" data-speed="1250" data-offset="60">
+											<li><a href="#" data-href="#cengold" >센골드</a></li>
+											<li><a href="#" data-href="#gogold" >금방금방</a></li>
+											<li><a href="#" data-href="#news" >소식</a></li>
+											<li><a href="#" data-href="#company" >회사소개</a></li>
+										</ul>
+									</div>
+
+								</div>
+
+								<div class="col-md-3">
+									<div class="widget widget_links clearfix">
+										<h4>문의</h4>
+										<ul>
+											<li class="lnone"><a href="mailto:contact@koreada.kr"><i class="icon-envelope"> </i> 사업제휴메일 : contact@koreada.kr</a></li>
+											<li class="lnone"><a href="mailto:recruit@koreada.kr"><i class="icon-envelope"> </i> 인재채용 메일 : recruit@koreada.kr</a></li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="col-md-7">
+									<div class="widget widget_links clearfix">
+										<h4>고객센터</h4>
+										<ul>
+											<li class="lnone"><a href="mailto:help@koreada.kr"><i class="icon-envelope"> </i> 메일: help@koreada.kr</a></li>
+											<li class="lnone"><a href="tel:02-1670-8456"><i class="icon-headphones"> </i> 전화: 02-1670-8456<br>(월~금 9am~6pm, 주말, 공휴일 휴무)</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+						</div>
+		
+					</div>
+
+				</div><!-- .footer-widgets-wrap end -->
+
+			</div>
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+				<div class="container">
+
+					<div class="row col-mb-30">
+
+					<!-- Modal -->
+					<div class="modal1 mfp-hide" id="myModal1">
+						<div class="block mx-auto" style="background-color: #FFF; max-width: 1000px;">
+							<div class="form_wrap">
+								<h1>개인정보처리방침</h1>
+								<div class="con_tt">
+									<article role="article" data-include="privacy_inc.html"></article>
+								</div>
+								<!-- con_tt //-->
+							</div>
+							<div class="section center m-0" style="padding: 10px;">
+								<a href="#" class="button" onClick="$.magnificPopup.close();return false;">닫기</a>
+							</div>
+						</div>
+					</div>
+					<!-- Modal// -->
+					<!-- Modal -->
+					<div class="modal2 mfp-hide" id="myModal2">
+						<div class="block mx-auto" style="background-color: #FFF; max-width: 1000px;">
+							<div class="form_wrap">
+								<h1>서비스 이용약관</h1>
+								<div class="con_tt">
+									<article role="article" data-include="service_inc.html"></article>
+								</div>
+								<!-- con_tt //-->
+							</div>
+							<div class="section center m-0" style="padding: 10px;">
+								<a href="#" class="button" onClick="$.magnificPopup.close();return false;">닫기</a>
+							</div>
+						</div>
+					</div>
+					<!-- Modal// -->
+
+					<!-- Modal -->
+					<div class="modal3 mfp-hide" id="myModal3">
+						<div class="block mx-auto" style="background-color: #FFF; max-width: 1000px;">
+							<div class="form_wrap">
+								<h1>상품권 이용약관</h1>
+								<div class="con_tt">
+									<article role="article" data-include="giftcard_inc.html"></article>
+								</div>
+								<!-- con_tt //-->
+							</div>
+							<div class="section center m-0" style="padding: 10px;">
+								<a href="#" class="button" onClick="$.magnificPopup.close();return false;">닫기</a>
+							</div>
+						</div>
+					</div>
+					<!-- Modal// -->
+
+					
+					<div class="col-md-12 text-center text-md-left">
+							<div class="copyright-links"><a href="#myModal1" data-lightbox="inline">개인정보 처리방침</a> <a href="#myModal2" data-lightbox="inline">서비스 이용약관상품권</a> <a href="#myModal3" data-lightbox="inline">상품권 이용약관</a></span></div>
+							<div class="line" style="margin: 30px 0 0 0;"></div>
+						</div> 
+						<div class="col-md-6 text-center text-md-left">
+							<h5>㈜한국금거래소디지털에셋</h5>
+							대표이사 : 김종인 | 사업자등록번호 : 764-81-01460 | 통신판매업신고 : 제2019-서울중구-0900호<br>
+							(03139) 서울특별시 종로구 돈화문로5가길 1 (돈의동, 피카디리플러스) 7-2호
+							<br>
+							<span class="coR">Copyrights &copy; 2020 All Rights Reserved by KoreaDA.</span><br>			
+						</div>
+
+						<div class="col-md-6 text-center text-md-right">
+							<div class="d-flex justify-content-center justify-content-md-end widget">
+				
+								<a href="https://bit.ly/36TFtnj" target="_blank" class="social-icon si-dark si-colored si-gray mb-0" style="margin-right: 10px;">
+									<i class="icon-none">
+										<picture class="lazyload">
+											<source type="image/webp" srcset="/images/ic_facebook.webp">
+											<source type="image/jpeg" srcset="/images/ic_facebook.jpg">
+											<img src="images/ic_facebook.png" class="lazyload" alt="sns">
+										</picture>
+									</i>
+									<i class="icon-none">
+										<picture class="lazyload">
+											<source type="image/webp" srcset="/images/ic_facebook.webp">
+											<source type="image/jpeg" srcset="/images/ic_facebook.jpg">
+											<img src="images/ic_facebook.png" class="lazyload" alt="sns">
+										</picture>
+									</i>
+								</a>
+								<a href="https://blog.naver.com/cengold" target="_blank" class="social-icon si-dark si-colored si-gray mb-0" style="margin-right: 10px;">
+									<i class="icon-none">
+										<picture class="lazyload">
+											<source type="image/webp" srcset="/images/ic_blog.webp">
+											<source type="image/jpeg" srcset="/images/ic_blog.jpg">
+											<img src="images/ic_blog.png" class="lazyload" alt="sns">
+										</picture>
+									</i>
+									<i class="icon-none">
+										<picture class="lazyload">
+											<source type="image/webp" srcset="/images/ic_blog.webp">
+											<source type="image/jpeg" srcset="/images/ic_blog.jpg">
+											<img src="images/ic_blog.png" class="lazyload" alt="sns">
+										</picture>
+									</i>
+								</a>
+								<a href="https://www.youtube.com/channel/UCqZwkP5qKoRttaLn7j3aTiw" target="_blank" class="social-icon si-dark si-colored si-gray mb-0" style="margin-right: 10px;">
+									<i class="icon-none">
+										<picture class="lazyload">
+											<source type="image/webp" srcset="/images/ic_youtube.webp">
+											<source type="image/jpeg" srcset="/images/ic_youtube.jpg">
+											<img src="images/ic_youtube.png" class="lazyload" alt="sns">
+										</picture>
+									</i>
+									<i class="icon-none">
+										<picture class="lazyload">
+											<source type="image/webp" srcset="/images/ic_youtube.webp">
+											<source type="image/jpeg" srcset="/images/ic_youtube.jpg">
+											<img src="images/ic_youtube.png" class="lazyload" alt="sns">
+										</picture>
+									</i>
+								</a>
+							</div>
+
+							<div class="clear"></div>
+						</div>
+
+					</div>
+
+				</div>
+			</div><!-- #copyrights end -->
+		</footer><!-- #footer end -->
+
+	</div><!-- #wrapper end -->
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script src="js/jquery.js"></script>
+
+
+
+	<!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+	<script src="include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script src="include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+	<script>
+		//하단 모바일 앱다운 버튼
+		// When the user scrolls down 20px from the top of the document, slide down the navbar
+		window.onscroll = function() {scrollFunction()};
+		
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("navbar").style.bottom = "0";
+				document.getElementById("navbar").style.left = "0";
+				document.getElementById("navbar").style.right = "0";
+			} else {
+				document.getElementById("navbar").style.bottom = "30px";
+				document.getElementById("navbar").style.left = "30px";
+				document.getElementById("navbar").style.right = "30px";
+			}
+		}
+	</script>
+
+	<script type="text/javascript">
+		$(function(){ 
+			includeLayout();
+		}); 
+		function includeLayout(){ 
+			var includeArea = $('[data-include]'); 
+			var self, url; $.each(includeArea, function() { self = 
+				$(this); url = self.data("include"); 
+				self.load(
+					url, function() { 
+					self.removeAttr("data-include"); 
+				}); 
+			}); 
+		} 
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// feat image ratio size 소식 썸네일 이미지 가로사진 조절 
+			$('.featImage > img').each(function (index, item) {
+				if ($(this).height() / $(this).width() < 0.567) {
+					$(this).addClass('landscape').removeClass('portrait');
+				} else {
+					$(this).addClass('portrait').removeClass('landscape');
+				}
+			});
+		});
+	//  ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ //
+	</script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
+
+    <!--4 Asset Price start -->
+    <script type="text/javascript">
+        var ajaxRet;
+        var originArr = new Array();
+        var originArr3 = new Array();
+        
+        function sendAjax(){
+            // content-type을 설정하고 데이터 송신
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', document.URL.split("#")[0]+'getData');
+            xhr.setRequestHeader('Content-type', "application/json");
+            xhr.send();
+            
+            var tempObjArr3 = document.getElementsByClassName("rightmenu")[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+            // 데이터 수신이 완료되면 표시
+            xhr.addEventListener('load', function(){
+                ajaxRet = JSON.parse(xhr.responseText);
+                // "pegDon","pesDon","goldBuy","goldSell","excRate","investRate","kospi","kosdaq","dji","nasdaq","btc","wti","pegGram","pesGram","s_p500","eth"var tempClass;
+                var tempColor;
+                var tempFontWeight;
+                var tempVal = 0;
+                var tempStr;
+                var tempObj;
+                
+                for(var i=0 ; i<tempObjArr3.length;i++){
+                    // if(originArr.length>0)alert(tempStr +":"+originArr[i]+":"+ajaxRet[i].thisValue);
+                    tempObj = tempObjArr3[i].getElementsByTagName("span")[1];
+                    tempStr = Number.parseFloat(tempObj.innerText);
+                    tempVal = originArr3[i] - ajaxRet[i].thisValue;
+                    
+                    originArr3.reduce[i];
+    
+                    if(tempStr!=0 && tempVal>0){
+                        tempColor = "#87dfff";
+                        tempClass = "blinkText";
+                        tempFontWeight = "bold";
+                    }else if(tempStr!=0 && tempVal<0){
+                        tempColor = "#ff7575";
+                        tempClass = "blinkText";
+                        tempFontWeight = "bold";
+                    }else{
+                        tempColor = "white";
+                        tempClass = "";
+                        tempFontWeight = "";
+                    }
+    
+                    originArr3[i] = ajaxRet[i].thisValue;
+                    tempObj.innerText = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet[i].thisValue)
+                    tempObj.style.color =  tempColor;
+                    tempObj.className = tempClass;
+                    tempObj.style.fontWeight = tempFontWeight;
+                    // alert(tempObjArr.length+":"+ajaxRet[i].thisValue+":"+tempObj.innerText);
+                }
+			});
+		}
+		
+		function sendAjax4Asset(){
+            // content-type을 설정하고 데이터 송신
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', document.URL.split("#")[0]+'getAsset');
+            xhr.setRequestHeader('Content-type', "application/json");
+            xhr.send();
+			
+			//egold
+            var egoldCardinal = document.getElementsByClassName("counter counter-lined")[0].getElementsByTagName("span")[0];
+			var egoldDecimal = document.getElementsByClassName("counter counter-lined")[0].getElementsByTagName("span")[1];
+            //esilver
+            var esilverCardinal = document.getElementsByClassName("counter counter-lined")[1].getElementsByTagName("span")[0];
+			var esilverDecimal = document.getElementsByClassName("counter counter-lined")[1].getElementsByTagName("span")[1];
+			//point
+            var point = document.getElementsByClassName("counter counter-lined")[2].getElementsByTagName("span")[0];
+			
+			// 데이터 수신이 완료되면 표시
+            xhr.addEventListener('load', function(){
+				ajaxRet = JSON.parse(xhr.responseText);
+				egoldCardinal.setAttribute("data-to", (ajaxRet.egold).toString().split(".")[0]);
+				egoldDecimal.setAttribute("data-to", (ajaxRet.egold).toString().split(".")[1]);
+				esilverCardinal.setAttribute("data-to", (ajaxRet.esilver).toString().split(".")[0]);
+				esilverDecimal.setAttribute("data-to", (ajaxRet.esilver).toString().split(".")[1]);
+				point.setAttribute("data-to",ajaxRet.point);
+
+				egoldCardinal.innerHTML = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format((ajaxRet.egold).toString().split(".")[0]);
+				egoldDecimal.innerHTML = (ajaxRet.egold).toString().split(".")[1];
+				esilverCardinal.innerHTML = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format((ajaxRet.esilver).toString().split(".")[0]);
+				esilverDecimal.innerHTML = (ajaxRet.esilver).toString().split(".")[1];
+				point.innerHTML = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet.point);
+            });
+        }
+		window.setInterval("sendAjax()", 10000);
+		window.setInterval("sendAjax4Asset()", 60000);
+    </script>
+	<!--4 Asset Price end -->
+	<script>
+		(function() {
+			var youtube = document.querySelectorAll( ".youtube" );
+			for (var i = 0; i < youtube.length; i++) {
+				var source = "https://img.youtube.com/vi/"+ youtube[i].dataset.embed +"/sddefault.jpg";
+				var image = new Image();
+				image.src = source;
+				image.addEventListener( "load", function() {
+					youtube[ i ].appendChild( image );
+				}( i ) );
+				youtube[i].addEventListener( "click", function() {
+					var iframe = document.createElement( "iframe" );
+					iframe.setAttribute( "frameborder", "0" );
+					iframe.setAttribute( "allowfullscreen", "" );
+					iframe.setAttribute( "src", "https://www.youtube.com/embed/"+ this.dataset.embed +"?rel=0&showinfo=0&autoplay=1" );
+					this.innerHTML = "";
+					this.appendChild( iframe );
+				});    
+			};
+		} )();
+	</script>
+	<!-- LOGGER(TM) TRACKING SCRIPT V.40 FOR logger.co.kr / 104822 : COMBINE TYPE / DO NOT ALTER THIS SCRIPT. -->
+<script type="text/javascript">var _TRK_LID = "104822";var _L_TD = "ssl.logger.co.kr";var _TRK_CDMN = ".korda.im";</script>
+<script type="text/javascript">var _CDN_DOMAIN = location.protocol == "https:" ? "https://fs.bizspring.net" : "http://fs.bizspring.net"; 
+(function (b, s) { var f = b.getElementsByTagName(s)[0], j = b.createElement(s); j.async = true; j.src = '//fs.bizspring.net/fs4/bstrk.1.js'; f.parentNode.insertBefore(j, f); })(document, 'script');
+</script>
+<noscript><img alt="Logger Script" width="1" height="1" src="http://ssl.logger.co.kr/tracker.1.tsp?u=104822&amp;js=N"/></noscript>
+	<!-- END OF LOGGER TRACKING SCRIPT -->
+	
+	<!-- Global site tag (gtag.js) - Google Analytics Start-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-169617054-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-169617054-1');
+</script>
+        <!-- Global site tag (gtag.js) - Google Analytics End-->
+        
+</body>
+</html>

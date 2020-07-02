@@ -1,0 +1,365 @@
+<head>
+    <meta charset="utf-8">
+    <title>KorDA Dashboards</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href=="/manifest.json">
+    <link rel="stylesheet" href="./css/font.css">
+    <style>
+        /* -- import Roboto Font ------------------------------ */
+        @import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+
+        .container {
+            display: grid;
+            grid-gap: 10px;
+            /* grid-template-columns: repeat(6, [col] auto ) ; */
+            grid-template-columns: 17% 16% 16% 16% 17% 16% ;
+            /* grid-template-rows: repeat(5, [row] auto ); */
+            grid-template-rows: 20% 20% 19% 19% 19% ;
+            background-color: #fff;
+            color: #444;
+            height:100%;
+        }
+
+        /* -- Google typography ------------------------------- */
+        .title {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1.1;
+            color: #ffffff;
+            text-transform: inherit;
+            letter-spacing: inherit;
+        }
+
+        .contents{
+            text-align: right;
+            font-size: 125%; 
+            color: #ffffff;
+            line-height: 2.5;
+            text-transform: inherit;
+            letter-spacing: inherit;
+        }
+
+        a {
+            animation-name: display,fadeIn;
+            animation-duration: 1s;
+            padding : 20;
+            text-decoration: none;
+            opacity : 0.9;
+        }
+
+        a:hover{
+            opacity : 1;
+        }
+
+        body {
+            font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+            }
+            to   { 
+                opacity: 1; 
+            }
+        }
+        
+        @keyframes display {
+            from {
+                -webkit-transform: scale(0);
+            }
+            to {
+                -webkit-transform: scale(1);
+            }
+        }
+
+        .box {
+            background-color: #444;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 150%;
+        }
+
+        #box1 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        #box4 {
+            grid-column-start: 5;
+            grid-column-end: 7;
+        }
+
+        #box5 {
+            grid-row-start: 2;
+            grid-row-end: 4;
+        }
+
+        #box7 {
+            grid-column-start: 3;
+            grid-column-end: 5;
+        }
+        
+        #box10 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+
+        #box12 {
+            grid-column-start: 5;
+            grid-column-end: 6;
+            grid-row-start: 3;
+            grid-row-end: 6;
+        }
+
+        #box16 {
+            grid-column-start: 3;
+            grid-column-end: 5;
+        }
+
+        #box18 {
+            padding : 0;
+        }
+
+        #box19 {
+            padding : 0;
+            background-image:url('/img/withGodEvent.webp');
+            background-size: 100% 100%;
+        }
+
+        #box20 {
+            padding : 0;
+        }
+
+        #box21 {
+            padding : 0;
+            background-image: url('/img/img_event01.webp');
+            background-size: 100% 100%;
+        }
+
+        #box22 {
+            padding : 0;
+        }
+
+        a:hover{
+            -webkit-transform: scale(1.02);
+        }
+
+        a:active{
+            -webkit-transform: scale(1);
+        }
+
+        .blinkText {
+            animation: blinker 1s linear infinite;
+        }
+    
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <style> 
+        .containerMyPet {
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(2, [col] auto ) ;
+            grid-template-rows: repeat(2, [row] auto );
+            background-color: #fff;
+            color: #444;
+            height:100%
+        }
+        .box {
+            background-color: #444;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 150%;
+        }
+        .a {
+            grid-column: col;
+            grid-row: row ;
+        }
+        .b {
+            grid-column: col 2;
+            grid-row: row ;
+        }
+        .c {
+            grid-column: col ;
+            grid-row: row 2 ;
+        }
+        .d {
+            grid-column: col 2;
+            grid-row: row 2 ;
+        }
+    </style>
+    <script>
+        var ajaxRet;
+        
+        function sendAjax(){
+            // content-type을 설정하고 데이터 송신
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', document.URL.split("/")[0]+'getData4Dashboard');
+            xhr.setRequestHeader('Content-type', "application/json");
+            xhr.send();
+            
+            var tempClass;
+            var tempVal;
+            var tempStr;
+            var tempObjArr = document.getElementsByClassName("container")[0].getElementsByClassName("contents");
+            
+            // 데이터 수신이 완료되면 표시
+            xhr.addEventListener('load', function(){
+                ajaxRet = JSON.parse(xhr.responseText);
+                //pegDon, pesDon, pegGram, pesGram, gold24Buy, gold24Sell, gold18Sell, gold14Sell, silverBuy, silverSell, interestRateCall,interestRateCD, interestRateUS, kospi, kosdaq, btc, eth, dji, nasdaq, wti, excRateUSD, excRateCNY, excRateJPY, excRateEUR                
+                for(var i=0;i<ajaxRet.length;i++){
+                    ajaxRet[i].thisValue = new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(ajaxRet[i].thisValue);
+                    //alert(ajaxRet[i].elapsedVal);
+                }
+                var contentsArr = [];
+
+                // 센골드 e금 시세(원/돈) / 센골드 e은 시세(원/돈)
+                contentsArr.push(ajaxRet[0].thisValue+"("+ajaxRet[0].gap+")"+" / "+ajaxRet[1].thisValue+"("+ajaxRet[1].gap+")");
+                // 18K 팔때 시세(원/돈)
+                contentsArr.push(ajaxRet[6].thisValue+"("+ajaxRet[6].gap+")");
+                // 14K 팔때 시세(원/돈)
+                contentsArr.push(ajaxRet[7].thisValue+"("+ajaxRet[7].gap+")");
+                //금 소매 살 때 시세(원/돈) / 금 소매 팔 때 시세(원/돈)
+                contentsArr.push(ajaxRet[4].thisValue+"("+ajaxRet[4].gap+")"+" / "+ajaxRet[5].thisValue)+"("+ajaxRet[5].gap+")";
+
+                // Dow Jones(point) / NASDAQ(point)
+                contentsArr.push(ajaxRet[17].thisValue+"("+ajaxRet[17].gap+")"+" / "+ajaxRet[18].thisValue+"("+ajaxRet[18].gap+")");
+                // 국제유가($/배럴)
+                contentsArr.push(ajaxRet[19].thisValue+"("+ajaxRet[19].gap+")");
+
+                //은 소매 살 때 시세(원/돈) / 은 소매 팔 때 시세(원/돈)
+                contentsArr.push(ajaxRet[8].thisValue+"("+ajaxRet[8].gap+")"+" / "+ajaxRet[9].thisValue+"("+ajaxRet[9].gap+")");
+
+                // 환율(원/달러)
+                contentsArr.push(ajaxRet[20].thisValue+"("+ajaxRet[20].gap+")");
+                // 환율(원/유로)
+                contentsArr.push(ajaxRet[23].thisValue+"("+ajaxRet[23].gap+")");
+                // KOSPI(point) / KOSDAQ(point)
+                contentsArr.push(ajaxRet[13].thisValue+"("+ajaxRet[13].gap+")"+" / "+ajaxRet[14].thisValue+"("+ajaxRet[14].gap+")");
+
+                // 콜 금리(%)
+                contentsArr.push(ajaxRet[10].thisValue+"("+ajaxRet[10].gap+")");
+                // 환율(원/위안)
+                contentsArr.push(ajaxRet[21].thisValue+"("+ajaxRet[21].gap+")");
+
+                // BitCoin(원/BTC)
+                contentsArr.push(ajaxRet[15].thisValue+"("+ajaxRet[15].gap+")");
+                // Ethereum(원/ETH)
+                contentsArr.push(ajaxRet[16].thisValue+"("+ajaxRet[16].gap+")");
+
+                // CD 91일분(point) / 미 국채 10년(point)
+                contentsArr.push(ajaxRet[11].thisValue+"("+ajaxRet[11].gap+")"+" / "+ajaxRet[12].thisValue+"("+ajaxRet[12].gap+")");
+                // 환율(원/100엔)
+                contentsArr.push(ajaxRet[22].thisValue+"("+ajaxRet[22].gap+")");
+                
+                for(var k=0 ; k < tempObjArr.length ;k++){
+                    tempStr = tempObjArr[k].innerText;
+                    tempVal = contentsArr[k];
+                    
+                    if(tempStr != tempVal){
+                        tempClass = "blinkText";
+                    }else{
+                        tempClass = "";
+                    }
+
+                    tempObjArr[k].children[0].innerText = tempVal;
+                    tempObjArr[k].children[0].className = tempClass;
+                }
+            });
+        }
+
+        function shuffle(array) {
+            var i = array.length,
+                j = 0,
+                temp;
+            while (i--) {
+                j = Math.floor(Math.random() * (i+1));
+                // swap randomly chosen element with current element
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array;
+        }
+        
+        function initColor(){
+            var colors = [["1abc9c", "16a085"],["4ECDC4", "1BA39C"],["2ecc71", "27ae60"],["87D37C", "1E824C"],["3498D8", "2980b9"],["86E2D5", "19B5FE"],["9b59b6", "8e44ad"],["BE90D4", "913D88"],["34495e", "2C3E50"],["67809F", "22313F"],["F1C40F", "F39C12"],["E9D460", "ffd166"],["E67E22", "D35400"],["F9690E", "F27935"],["E74C3C", "C0392B"],["CF000F", "D91E18"],["95A5A6", "7F8C8D"]];
+            var ranColors = shuffle(colors);
+            var childNodeObj = document.getElementsByClassName("container")[0].children;
+            
+            for(var i = 0 ; i < childNodeObj.length ; i++){
+                childNodeObj[i].style.backgroundColor = ranColors[i][1]; 
+            }
+        }
+
+        // var adArr = ["box12","box18","box19","box20","box21","box22"];
+        // //모달1  창 
+        // $(function () {
+        //     var open = $('.apply_form');
+        //     $('.container a').on('click', function () {
+        //         if(!adArr.includes(this.id)){
+        //             $("#chartTitle").text(this.id);
+        //             if (open.css("display") == "none") {
+        //                 open.fadeIn(200);
+        //                 $('body').css('overflow', 'hidden');
+        //                 $(".con_tt").load("/examples/area-charts/local-data-binding.html"); 
+        //                 $(".con_tt").css("background-size") = "100% 100%";
+        //             } else {
+        //                 open.fadeOut(200);
+        //                 $('body').css('overflow', 'visible');
+        //             }
+        //         }
+        //     });
+        
+        //     $('.btn_area a.cancel, a.close').on('click', function () {
+        //         open.fadeOut(200);
+        //         $('body').css('overflow', 'visible');
+        //     });
+            
+        // });
+        //모달1 끝
+
+        var KorDABody = "<body id='KorDA' translate='no'><div class='container'><a id='box1' href='#' style='animation-delay: 0.26s;'><span class='title'><h3>e금 시세 / e은 시세 (원/돈)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box2' href='#' style='animation-delay: 0.43s;'><span class='title'><h3>18k 소매 팔 때 시세 (원/돈)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box3' href='#' style='animation-delay: 0.51s;'><span class='title'><h3>14k 소매 팔 때 시세 (원/돈)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box4' href='#' style='animation-delay: 0.62s;'><span class='title'><h3>24k 소매 살 때 시세 / 24k 소매 팔 때 시세 (원/돈)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box5' href='#' style='animation-delay: 0.13s;'><span class='title'><h3>DJI / NASDAQ (Point)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box6' href='#' style='animation-delay: 0.29s;'><span class='title'><h3>유가(WTI)(달러)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box7' href='#' style='animation-delay: 0.43s;'><span class='title'><h3>은 소매 살 때 시세 / 은 소매 팔 때 시새 (원/돈)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box8' href='#' style='animation-delay: 0.67s;'><span class='title'><h3>미국 달러 환율 (원/달러)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box9' href='#' style='animation-delay: 0.28s;'><span class='title'><h3>EU 유로 환율 (원/유로)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box10' href='#' style='animation-delay: 0.18;'><span class='title'><h3>KOSPI / KOSDAQ (Point)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box11' href='#' style='animation-delay: 0.43s;'><span class='title'><h3>콜금리 (%)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box12' href='javascript:changeBody();' style='animation-delay: 0.51s; background-image:url(\"./img/CenGoldMain.webp\"); background-size:cover'></a><a id='box13' href='#' style='animation-delay: 0.29s;'><span class='title'><h3>중국 위안 환율 (원/위안)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box14' href='#' style='animation-delay: 0.67s;'><span class='title'><h3>비트코인 (원/BTC) </h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box15' href='#' style='animation-delay: 0.38s;'><span class='title'><h3>이더리움 (원/ETH)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box16' href='#' style='animation-delay: 0.28s;'><span class='title'><h3>CD금리(91일) / 미국국채(10년) (%)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box17' href='#' style='animation-delay: 0.22s;'><span class='title'><h3>일본 엔 환율 (원/100엔)</h3></span><span class='contents'><h1>loading ...</h1></span></a><a id='box18' href='#' style='animation-delay: 0.51s;'><iframe width=100% height=100% src='https://www.youtube.com/embed/NfYQkkcerWI?playlist=NfYQkkcerWI&loop=1&controls=0&autoplay=1&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe></a><a id='box19' href='#' style='animation-delay: 0.51s;'></a><a id='box20' href='/' style='animation-delay: 0.51s;'><iframe width=100% height=100% src='https://www.youtube.com/embed/O4ViPmXBcXM?playlist=O4ViPmXBcXM&loop=1&controls=0&autoplay=1&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe></a><a id='box21' href='#' style='animation-delay: 0.51s;'></a><a id='box22' href='/' style='animation-delay: 0.51s;'><iframe width=100% height=100% src='https://www.youtube.com/embed/49lJsf2hwBo?playlist=49lJsf2hwBo&loop=1&&controls=0&autoplay=1&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe></a></div></body>";
+        var myPetBody = "<body id='MyPet' translate='no'><div class='containerMyPet'><div class='box a'><iframe width=100% height=100% src='https://www.youtube.com/embed/UDHH4y8GmlU?playlist=UDHH4y8GmlU&loop=1&controls=0&autoplay=1&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe></div><div class='box b'><iframe width=100% height=100% src='https://www.youtube.com/embed/TjzoQ3RXQXM?playlist=TjzoQ3RXQXM&loop=1&controls=0&autoplay=1&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe></div><div class='box c'><iframe width=100% height=100% src='https://www.youtube.com/embed/D4Q_y2_3kk8?playlist=D4Q_y2_3kk8&loop=1&controls=0&autoplay=1&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe></div><div class='box d'><iframe width=100% height=100% src='https://www.youtube.com/embed/lYkDY1_700k?playlist=lYkDY1_700k&loop=1&controls=0&autoplay=1&vq=light&mute=1' frameborder='0' allow='accelerometer; encrypted-media; gyroscope; picture-in-picture'></iframe></div></div></body>";
+        var durationKorDA = 10;
+        var durationMyPet = 3;
+        function changeBody(){
+            if("KorDA" == window.document.body.id){
+                if(durationKorDA > 0){
+                    durationKorDA--;
+                }else {
+                    window.document.body.innerHTML = myPetBody;
+                    window.document.body.id = "MyPet";
+                    durationKorDA = 10;
+                }
+                sendAjax();
+            }else{
+                if(durationMyPet > 0){
+                    durationMyPet--;
+                }else{
+                    window.document.body.innerHTML = KorDABody;
+                    window.document.body.id = "KorDA";
+                    init();
+                    durationMyPet = 3;
+                } 
+            }
+        }
+        function init(){
+            window.document.body.innerHTML = KorDABody;
+            initColor();
+            sendAjax();
+        }
+        window.setInterval("changeBody()", 10000);
+    </script>
+</head>
+<body id=KorDA onLoad = init();></body>
