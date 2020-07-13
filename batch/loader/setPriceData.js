@@ -1,5 +1,6 @@
 const getConnection = require('../config/db');
 var PriceDatum = require("../datum/priceDatum.js");
+const logger = require('../utils/logger');
 
 var sql = "INSERT INTO PRICE_HISTORY (labelKey, labelStr, thisVal, gap, unit, visibilities) VALUES (?,?,?,?,?,?)";
 async function insertData(value){
@@ -12,13 +13,13 @@ async function insertData(value){
             sql, [value.keys, value.label, value.thisValue, value.gap, value.unit, value.visibilities], 
             function(error, result) {
                 if(error) {
-                    // console.log(error);
+                    logger.error(error);
                     conn.rollback();
                 }else {
                     conn.commit();
-                    // console.log(result);
+                    // logger.info(result);
                 }
-                conn.release();
+                // conn.release();
             }
         );
     });
@@ -31,11 +32,11 @@ db.setData = function () {
     try{
         if(tempJson[0].TITLE != undefined){
             for(var i=0;i<tempJson.length;i++){
-                // console.log(tempJson[i].NEWS_ID.split(".")[1]);
+                // logger.info(tempJson[i].NEWS_ID.split(".")[1]);
                 insertData(tempJson[i]);
             }
         }else{
-            console.log("No data found to insert"); 
+            logger.info("No data found to insert"); 
         }
     } catch (error){
         // pool.releaseConnection();

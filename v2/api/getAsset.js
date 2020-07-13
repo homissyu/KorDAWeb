@@ -1,9 +1,11 @@
 const request = require('request');
 const async = require('async');
 
+const logger = require('../utils/logger');
+
 const assetOption = { 
     url:'https://pennygold.kr/v2/shared/assets/kordaAsset'
-}
+};
 
 //[{"type":"STOCK","point":"1229630","egold":"3095.8069","esilver":"172697.18"},{"type":"TRADE","point":"144600164","egold":"16605.5442","esilver":"728091.46"}]
 
@@ -11,6 +13,7 @@ var type;
 var point;
 var egold;
 var esilver;
+
 
 async function getAsset(){
     return new Promise(function(resolve, reject){
@@ -21,13 +24,16 @@ async function getAsset(){
                     try {
                         // something bad happens here
                         var result = JSON.parse(body);
-                        type = result[1].type;
-                        point = Number.parseFloat(result[1].point);
-                        egold = Number.parseFloat(result[1].egold);
-                        esilver = Number.parseFloat(result[1].esilver);
+                        if(result.length == 2){
+                            type = result[1].type;
+                            point = Number.parseFloat(result[1].point);
+                            egold = Number.parseFloat(result[1].egold);
+                            esilver = Number.parseFloat(result[1].esilver);
+                        }
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err);
+                        logger.error(err);
+                        // console.error(err);
                         throw err;
                     }
                 }
@@ -45,7 +51,7 @@ datum.getData = function (req, res){
         }
     ], function (err, result) {
         if(err){
-            console.log('Error 발생');
+            logger.error(err);
             res.socket.destroy();
             throw err;
         }else {

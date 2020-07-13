@@ -1,6 +1,8 @@
 const getConnection = require('../config/db');
 var ytDatum = require("../datum/youTubeDatum.js");
+const logger = require('../utils/logger');
 
+var chkUqSql = "SELECT DISTINCT ID FROM YOUTUBE_LIST";
 var sql = "INSERT INTO YOUTUBE_LIST (ID, videoId, channelId, title, description, channelTitle, playlistId, position, videoPublishedAt, thumnailMediumUrl, thumnailMaxResUrl) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 async function insertData(value){
     // console.log(value);
@@ -9,13 +11,12 @@ async function insertData(value){
             sql, [value.ID, value.videoId, value.channelId, value.title, value.description, value.channelTitle, value.playlistId, value.position, value.videoPublishedAt, value.thumnailMediumUrl, value.thumnailMaxResUrl],
             function(error, rows) {
                 if(error) {
-                    // console.log(error);
+                    logger.error(error);
                     conn.rollback();
                 }else {
                     conn.commit();
-                    // console.log(result);
+                    // logger.info(result);
                 }
-                conn.release();
             }
         );
     });
@@ -31,7 +32,7 @@ db.setData = function () {
                 insertData(tempJson[i]);
             }
         }else{
-            console.log("No data found to insert on YOUTUBE_LIST"); 
+            logger.info("No data found to insert on YOUTUBE_LIST"); 
         }
     } catch (error){
         // pool.releaseConnection();

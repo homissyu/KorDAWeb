@@ -4,6 +4,8 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const async = require('async');
 
+const logger = require('../utils/logger');
+
 const goldPriceOption = { 
     method:'GET', 
     url:'http://www.koreagoldx.co.kr/include/lineup.asp',
@@ -207,7 +209,7 @@ async function getGoldPrice() {
 
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // 금 소매 살 때
@@ -239,6 +241,7 @@ async function getPegPrice(){
                 }
                 
             }).catch(function(err){
+                logger.error(err);
                 // request.end();
                 throw err;
             })
@@ -263,6 +266,7 @@ async function getPesPrice(){
                 }
                 
             }).catch(function(err){
+                logger.error(err);
                 // request.end();
                 throw err;
             })
@@ -292,6 +296,7 @@ async function getPegLastPrice(){
 
                 
             }).catch(function(err){
+                logger.error(err);
                 // request.end();
                 throw err;
             })
@@ -321,6 +326,7 @@ async function getPesLastPrice(){
 
                 
             }).catch(function(err){
+                logger.error(err);
                 // request.end();
                 throw err;
             })
@@ -350,7 +356,7 @@ async function getBTCPrice() {
                         else btcGap = "0.00";
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum btc 기준시세
@@ -383,7 +389,7 @@ async function getETHPrice() {
                         else ethGap = "0.00";
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum eth 기준시세
@@ -463,6 +469,7 @@ async function getMKPrice() {
 
                 
             }).catch(function(err){
+                logger.error(err);
                 // if(!response.socket.destroyed) response.socket.destroy();
                 throw err;
             })
@@ -492,7 +499,7 @@ async function getKospiPrice() {
                         else kospiGap = "0.00";
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum btc 기준시세
@@ -524,7 +531,7 @@ async function getKosdaqPrice() {
                         else kosdaqGap = "0.00";
                     } catch (err) {
                         if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum btc 기준시세
@@ -571,7 +578,7 @@ datum.getData = function (req, res){
         } // 10
     ], function (err, result) {
         if(err){
-            console.log('Error 발생');
+            logger.error(err);
             res.socket.destroy();
             throw err;
         }else {

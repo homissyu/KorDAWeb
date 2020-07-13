@@ -4,6 +4,8 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const async = require('async');
 
+const logger = require('../utils/logger');
+
 const goldPriceOption = { 
     method:'GET', 
     url:'http://www.koreagoldx.co.kr/include/lineup.asp',
@@ -86,7 +88,7 @@ async function getGoldPrice() {
                         goldSell = Number.parseFloat(result.Xml.data[0].sell.price._text);
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // 금 소매 살 때
@@ -117,6 +119,7 @@ async function getPegPrice(){
                     pegDon = parseInt(pegGram)*3.75;
                 }
             }).catch(function(err){
+                logger.error(err);
                 throw err;
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
@@ -139,6 +142,7 @@ async function getPesPrice(){
                     pesDon = parseInt(pesGram)*3.75;
                 }
             }).catch(function(err){
+                logger.error(err);
                 throw err;
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
@@ -162,7 +166,7 @@ async function getBTCPrice() {
                         btc = Number.parseFloat(result.data.closing_price);
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum btc 기준시세
@@ -190,7 +194,7 @@ async function getETHPrice() {
                         eth = Number.parseFloat(result.data.closing_price);
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum eth 기준시세
@@ -234,6 +238,7 @@ async function getBokAssetPrice() {
                 // investRate = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(investRate).trim());
                 
             }).catch(function(err){
+                logger.error(err);
                 throw err;
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
@@ -255,6 +260,7 @@ async function getGlobalPrice() {
                 
                 
             }).catch(function(err){
+                logger.error(err);
                 throw err;
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
@@ -279,7 +285,7 @@ async function getKospiPrice() {
                         kospi = (result.result.areas[0].datas[0].nv)/100;
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum btc 기준시세
@@ -307,7 +313,7 @@ async function getKosdaqPrice() {
                         kosdaq = (result.result.areas[0].datas[0].nv)/100;
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err) // decide what you want to do here
+                        logger.error(err); // decide what you want to do here
                         throw err;
                     }
                     // Bithum btc 기준시세
@@ -350,7 +356,7 @@ datum.getData = function (req, res){
         } // 14
     ], function (err, result) {
         if(err){
-            console.log('Error 발생');
+            logger.error(err);
             res.socket.destroy();
             throw err;
         }else {

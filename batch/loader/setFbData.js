@@ -1,7 +1,7 @@
 const getConnection = require('../config/db');
+const logger = require('../utils/logger');
 var fbDatum = require("../datum/fbDatum.js");
-
-var sql = "INSERT INTO FB_LIST (ID, MESSAGE, PICTURE, PERMALINK_URL, CREATED_TIME, UPDATE_TIME, STATUS_TYPE) VALUES (?,?,?,?,?,?,?)";
+const sql = "INSERT INTO FB_LIST (ID, MESSAGE, PICTURE, PERMALINK_URL, CREATED_TIME, UPDATE_TIME, STATUS_TYPE) VALUES (?,?,?,?,?,?,?)";
 async function insertData(value){
     // console.log(value);
     await getConnection((conn) => {
@@ -9,13 +9,13 @@ async function insertData(value){
             sql, [value.id, value.message, value.picture, value.permalink_url, value.created_time, value.updated_time, value.status_type], 
             function(error, result) {
                 if(error) {
-                    // console.log(error);
+                    logger.error(error);
                     conn.rollback();
                 }else {
                     conn.commit();
-                    // console.log(result);
+                    // logger.info(result);
                 }
-                conn.release();
+                // conn.release();
             }
         );
     });
@@ -31,11 +31,12 @@ db.setData = function () {
                 insertData(tempJson[i]);
             }
         }else{
-            console.log("No data found to insert on FB_LIST"); 
+            logger.info("No data found to insert on FB_LIST"); 
         }
     } catch (error){
+        logger.error(error);
         // pool.releaseConnection();
     }
-}
+};
 
 module.exports = db;

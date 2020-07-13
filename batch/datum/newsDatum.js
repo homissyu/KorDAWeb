@@ -1,4 +1,7 @@
 const request = require('request');
+const logger = require('../utils/logger');
+
+var DupChecker = require('../utils/DupChecker');
 
 var client_id = '3aVbezRKkHUsAHv7IQ9N';
 var client_secret = 'KdT0HQTnWc';
@@ -9,25 +12,38 @@ var options = {
     headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
 };
 
-var datum = {};
-var retObj;
-datum.getData = function (req, res){
+var retObj = new Array();
+var retArr = new Array();
   
+var datum = {};
+datum.getData = function (req, res){
+  DupChecker.init("SELECT TRIM(LINK) AS ID FROM NEWS_NAVER");
   request.get(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
       // res.end(body);
+      // if(!DupChecker.isDup(retObj[i].link)){}
       retObj = (JSON.parse(body)).items;
-      // console.log("retObj="+JSON.stringify(retObj))
-    
+      var j=0;
+      
+      for(var i=0;i<retObj.length;i++){
+        // console.log(retObj[i].link);
+        if(!DupChecker.isDup(retObj[i].link.trim())) {
+          retArr[j] = retObj[i];
+          j++;
+        }
+      };
+      // console.log(retArr.length);
+      // console.log("retArr="+JSON.stringify(retArr));
+      // console.log("retObj="+JSON.stringify(retObj));
     } else {
-      console.log("error="+response.statusCode);
-      console.log("error.body="+response.body);
+      logger.error("error="+response.statusCode);
+      logger.error("error.body="+response.body);
     }
   });
   // console.log("retObj:"+retObj);
-  return retObj;
+  // console.log("retArr.length="+retArr.length);
+  return retArr;
 };
 
 module.exports = datum;
-

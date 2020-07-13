@@ -32,7 +32,7 @@ function getData(req, res){
         ytRet = rows;
       }
     );
-    conn.release();
+    // conn.release();
     // console.log("fbRet.length:"+fbRet.length);
     // console.log("ytRet.length:"+ytRet.length);
     ret = {goldBuy:0, goldSell:0, pegDon:0, pesDon:0, btc:0, excRate:0, investRate:0, kospi:0, kosdaq:0, dji:0, nasdaq:0, wti:0, fbNews:fbRet, pegGram:0, pesGram:0, dubai:0, eth:0, youTubes:ytRet, assetDatum:assetRet};

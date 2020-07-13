@@ -1,6 +1,8 @@
 const request = require('request');
 const async = require('async');
 
+const logger = require('../utils/logger');
+
 const assetOption = { 
     url:'https://pennygold.kr/v2/shared/assets/kordaAsset'
 }
@@ -21,13 +23,15 @@ async function getAsset(){
                     try {
                         // something bad happens here
                         var result = JSON.parse(body);
-                        type = result[1].type;
-                        point = Number.parseFloat(result[1].point);
-                        egold = Number.parseFloat(result[1].egold);
-                        esilver = Number.parseFloat(result[1].esilver);
+                        if(result.length == 2){
+                            type = result[1].type;
+                            point = Number.parseFloat(result[1].point);
+                            egold = Number.parseFloat(result[1].egold);
+                            esilver = Number.parseFloat(result[1].esilver);
+                        }
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
-                        console.error(err);
+                        logger.error(err);
                         throw err;
                     }
                 }
@@ -45,7 +49,7 @@ datum.getData = function (req, res){
         }
     ], function (err, result) {
         if(err){
-            console.log('Error 발생');
+            logger.error(err);
             res.socket.destroy();
             throw err;
         }else {

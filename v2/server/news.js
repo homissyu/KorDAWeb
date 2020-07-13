@@ -10,7 +10,7 @@ function getNews(req, res){
         //   console.log("rows[i].TITLE :"+rows[i].TITLE);
         // }
         // And done with the connection.
-        conn.release();
+        // conn.release();
         // Don't use the connection here, it has been returned to the pool.
         res.render('news', {ret:rows});
       }

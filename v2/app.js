@@ -9,6 +9,8 @@ app.use(compression());
 var bodyParser = require('body-parser');
 const request = require('request');
 
+const logger = require('./utils/logger');
+
 // var app = express();
 var PORT= process.env.PORT || 3000;
 
@@ -26,7 +28,7 @@ app.all('*', (req, res, next) => {
     } else { 
         let from = `${protocol}://${req.hostname}${req.url}`; 
         let to = `https://www.korda.im${req.url}`; // log and redirect 
-        console.log(`[${req.method}]: ${from} -> ${to}`); 
+        logger.info(`[${req.method}]: ${from} -> ${to}`); 
         res.redirect(to); 
     } 
 });
@@ -69,10 +71,11 @@ app.use("/", require(__dirname+PUB_VER+"/server/index"));
 
 //listen
 app.listen(PORT, function(){
-    console.log('Example app listening on port', PORT);
+    //console.log('Example app listening on port', PORT);
+    logger.info(`Listening on port ${PORT}...`);
 });
 
 app.use(function(err, req, res, next) { 
-    console.log(err);
+    logger.error(err);
     // handle error 
 });
