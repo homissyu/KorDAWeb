@@ -36,6 +36,7 @@ db.setData = function () {
             logger.info("No data found to insert on NEWS1"); 
         }
     } catch (error){
+        logger.error(error);
         // pool.releaseConnection();
     }
 }

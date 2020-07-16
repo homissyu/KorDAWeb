@@ -35,6 +35,7 @@ db.setData = function () {
             logger.info("No data found to insert on YOUTUBE_LIST"); 
         }
     } catch (error){
+        logger.error(error);
         // pool.releaseConnection();
     }
 }

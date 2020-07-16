@@ -9,7 +9,7 @@ async function insertData(value){
             sql, [value.id, value.message, value.picture, value.permalink_url, value.created_time, value.updated_time, value.status_type], 
             function(error, result) {
                 if(error) {
-                    logger.error(error);
+                    logger.error("12:"+error);
                     conn.rollback();
                 }else {
                     conn.commit();
@@ -29,12 +29,13 @@ db.setData = function () {
         if(tempLength > 0){
             for(var i=0;i<tempLength;i++){
                 insertData(tempJson[i]);
+                // logger.info("32:tempJson[i]:"+tempJson[i].id); 
             }
         }else{
             logger.info("No data found to insert on FB_LIST"); 
         }
     } catch (error){
-        logger.error(error);
+        logger.error("38:"+error);
         // pool.releaseConnection();
     }
 };

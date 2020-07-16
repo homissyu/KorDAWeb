@@ -39,6 +39,7 @@ db.setData = function () {
             logger.info("No data found to insert"); 
         }
     } catch (error){
+        logger.error(error);
         // pool.releaseConnection();
     }
 }
