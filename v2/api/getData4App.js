@@ -11,7 +11,16 @@ const goldPriceOption = {
     url:'http://www.koreagoldx.co.kr/include/lineup.asp',
     headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Host': 'www.koreagoldx.co.kr',
+        'Connection': 'keep-alive',
+        'Pragma': 'no-cache',
+        'Cache-Control': 'no-cache',
+        'Upgrade-Insecure-Requests': '1',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
+        'Cookie': 'ACEUACS=1580453742668741321; _ga=GA1.3.645744641.1594339639; ACEFCID=UID-5F07B14FC74F7EED1409808D; ASPSESSIONIDCATARBAD=ADBOMMABEBAMFKFCKMNMPFKD; ASPSESSIONIDACQARBAD=AJCCPKBBAFBELFOCMDCIEFJP'
     }
 };
 

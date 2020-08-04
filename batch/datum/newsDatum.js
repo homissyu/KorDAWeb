@@ -1,7 +1,7 @@
 const request = require('request');
 const logger = require('../utils/logger');
 
-var DupChecker = require('../utils/DupChecker');
+// var DupChecker = new require('../utils/DupChecker');
 
 var client_id = '3aVbezRKkHUsAHv7IQ9N';
 var client_secret = 'KdT0HQTnWc';
@@ -17,7 +17,9 @@ var retArr = new Array();
   
 var datum = {};
 datum.getData = function (req, res){
-  DupChecker.init("SELECT TRIM(LINK) AS ID FROM NEWS_NAVER");
+  var DupChecker = new require('../utils/DupChecker');
+  DupChecker.init('SELECT TRIM(LINK) AS ID FROM NEWS_NAVER');
+
   request.get(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       // res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
@@ -29,13 +31,15 @@ datum.getData = function (req, res){
       for(var i=0;i<retObj.length;i++){
         // console.log(retObj[i].link);
         if(!DupChecker.isDup(retObj[i].link.trim())) {
+          logger.info("DupChecker:"+false);
           retArr[j] = retObj[i];
           j++;
         }
-      };
-      // console.log(retArr.length);
-      // console.log("retArr="+JSON.stringify(retArr));
-      // console.log("retObj="+JSON.stringify(retObj));
+      }
+      // logger.info("81:"+JSON.stringify(retObj));
+      logger.info("[ News ] Before dup check:"+retObj.length);
+      logger.info("[ News ] After dup check:"+retArr.length);
+      
     } else {
       logger.error("error="+response.statusCode);
       logger.error("error.body="+response.body);

@@ -8,10 +8,10 @@ var setFBData = require("./loader/setFbData.js");
 var setYoutubeData = require("./loader/setYoutubeData.js");
 // var _setNewsData = require("."+PUB_VER+"/batch/_setNewsData.js");
 
-var job1 = new CronJob('*/60 * * * * *', function() {
+var job1 = new CronJob('*/10 * * * * *', function() {
     setNewsData.setData();
 }, null, true);
-var job2 = new CronJob('*/10 * * * * *', function() {
+var job2 = new CronJob('* */10 * * * *', function() {
     setFBData.setData();
 }, null, true);
 var job3 = new CronJob('* */60 * * * *', function() {
@@ -21,7 +21,7 @@ var job3 = new CronJob('* */60 * * * *', function() {
 //     _setNewsData.setData();
 // }, null, true);
 
-// job1.start();
+job1.start();
 job2.start();
-// job3.start();
+job3.start();
 // job4.start();

@@ -27,10 +27,10 @@ db.setData = function () {
     var tempJson = newsDatum.getData();
     // logger.info("tempJson[0]:"+JSON.stringify(tempJson)[0].title);
     try{
-        if(tempJson[0].title != undefined){
+        if(tempJson.length >0 && tempJson[0].title != undefined){
             for(var i=0;i<tempJson.length;i++){
                 // logger.info(tempJson[i].link);
-                insertData(tempJson[i]);
+                // insertData(tempJson[i]);
             }
         }else{
             logger.info("No data found to insert on NEWS1"); 

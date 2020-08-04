@@ -11,7 +11,16 @@ const goldPriceOption = {
     url:'http://www.koreagoldx.co.kr/include/lineup.asp',
     headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Host': 'www.koreagoldx.co.kr',
+        'Connection': 'keep-alive',
+        'Pragma': 'no-cache',
+        'Cache-Control': 'no-cache',
+        'Upgrade-Insecure-Requests': '1',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
+        'Cookie': 'ACEUACS=1580453742668741321; _ga=GA1.3.645744641.1594339639; ACEFCID=UID-5F07B14FC74F7EED1409808D; ASPSESSIONIDCATARBAD=ADBOMMABEBAMFKFCKMNMPFKD; ASPSESSIONIDACQARBAD=AJCCPKBBAFBELFOCMDCIEFJP'
     }
 };
 
@@ -45,7 +54,7 @@ const DaumFinanceOption = {
     Cookie: 'ssab=; _ga=GA1.2.3326601.1583510482; _dfs=OGh6cFFoeGgxRk1td3pkU2Vrb2VuVFRXRkdmeG9MWjl2d0dLRERBNVRkRkFKaGh0MXoxNUZCS0lhVDhENVdZUWNqaThZMTBTNjZ4Zm9kbUJpckN6cUE9PS0tWnJMSndKaDIzemd1R1ZBa3JRa3FkQT09--4f88590e9aca0799b9b67e1cfc573474056fdf1c; TIARA=s155R_LBqM5qFUgp6SfUE8AoaKx3VTEb.WcssqVr58Gqf4HLwJudEJQ.Q-1yKriVe8UQUhZzpaJ35jC.pAynDQ00; _gid=GA1.2.101062231.1583670889; _gat_gtag_UA_128578811_1=1'
 };
 
-const BOKAssetPriceOption = "http://ecos.bok.or.kr/EIndex.jsp";
+const BOKAssetPriceOption = "https://ecos.bok.or.kr/EIndex.jsp";
 
 const BizKhanOption = "http://biz.khan.co.kr/";
 
@@ -211,16 +220,17 @@ async function getBokAssetPrice() {
             // console.log("getBokAssetPrice");
             JSDOM.fromURL(BOKAssetPriceOption).then(dom => {
                 var obj = dom.window.document.getElementsByClassName("ESdaily")[0];
-                investRate = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                // console.log(obj.innerHTML);
+                investRate = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 investRate = Number.parseFloat(investRate.replace(',',''));
 
-                excRateUSD = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[3].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                excRateUSD = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[3].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 excRateUSD = Number.parseFloat(excRateUSD.replace(',',''));
 
-                excRateJPY = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[5].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                excRateJPY = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[5].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 excRateJPY = Number.parseFloat(excRateJPY.replace(',',''));
 
-                excRateCNY = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[4].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                excRateCNY = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[4].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 excRateCNY = Number.parseFloat(excRateCNY.replace(',',''));
                 // nasdaq = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 // nasdaq = Number.parseFloat(nasdaq.replace(',',''));
@@ -228,14 +238,14 @@ async function getBokAssetPrice() {
                 // dji = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 // dji = Number.parseFloat(dji.replace(',',''));
 
-                wti = obj.getElementsByTagName("table")[1].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                wti = obj.getElementsByTagName("table")[1].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 wti = Number.parseFloat(wti.replace(',',''));
 
-                dubai = obj.getElementsByTagName("table")[1].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                dubai = obj.getElementsByTagName("table")[1].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
                 dubai = Number.parseFloat(dubai.replace(',',''));
 
 
-                // investRate = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(investRate).trim());
+                investRate = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(investRate).trim());
                 
             }).catch(function(err){
                 logger.error(err);

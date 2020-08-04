@@ -3,7 +3,6 @@ const rp = require('request-promise');
 const removeItem = require('remove-array-items');
 const logger = require('../utils/logger');
 
-var DupChecker = require('../utils/DupChecker');
 
 var yesterday = new Date(new Date().setDate(new Date().getDate()-3));
 // console.log(new Date().getDate()-1);
@@ -46,14 +45,16 @@ function getFbFeedList() {
         }
     ).catch(function(err){
         // res.socket.destroy();
-        logger.error("49:"+err);
+        logger.error(err);
         throw err;
     });
 }
 
 var datum = {};
 datum.getData = function (req, res){
-    DupChecker.init("SELECT DISTINCT ID FROM FB_LIST");
+    var DupChecker = new require('../utils/DupChecker');
+    DupChecker.init('SELECT DISTINCT TRIM(ID)`ID` FROM FB_LIST ORDER BY CREATED_TIME');
+
     async.waterfall([
         function(callback) {
             callback(null, getFbFeedList());
@@ -61,7 +62,7 @@ datum.getData = function (req, res){
     ], function (err, result) {
         // res.writeHead(200, {'Cache-Control': 'public, max-age=31536000'});
         if(err){
-            logger.error("64:"+err);
+            logger.error(err);
             res.socket.destroy();
         }else {
             retArr.sort(custom_sort);
@@ -75,14 +76,15 @@ datum.getData = function (req, res){
             
             var j=0;
             for(var i=0;i<retArr.length;i++){
-                // logger.info("retArr["+i+"].id.trim():"+retArr[i].id.trim());
                 if(!DupChecker.isDup(retArr[i].id.trim())) {
                     retObj[j] = retArr[i];
                     j++;
+                    // logger.info("retArr["+i+"].id.trim():"+retArr[i].id.trim());
                 }
-            };
-            // logger.info("81:"+JSON.stringify(retObj));
-            // logger.info(retObj.length);
+            }
+            // logger.info("85:"+JSON.stringify(retObj));
+            logger.info("[ FB ] Before dup check:"+retArr.length);
+            logger.info("[ FB ] After dup check:"+retObj.length);
             // res.render('index', {goldBuy:goldBuy, goldSell:goldSell, pegGram:pegGram, pesGram:pesGram, btc:btc, excRate:excRate, investRate:investRate, kospi:kospi, kosdaq:kosdaq,fbNews:retArr.
         }  // 7
     });

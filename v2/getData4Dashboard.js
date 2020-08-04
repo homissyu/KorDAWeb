@@ -289,6 +289,7 @@ async function getPegLastPrice(){
             // console.log("getPegPrice");
             JSDOM.fromURL(lastPegPriceOpton).then(dom => {
                 // console.log(dom.window.document.children[0].children[0].childElementCount);
+                console.log(dom.window.document.getElementsByClassName("text2_1")[3]);
                 pegGramLast = dom.window.document.getElementsByClassName("text2_1")[3].children[5].innerHTML.trim();
                 pegGramLast = pegGramLast.replace( regExp , ""); 
                 pegGramLast = Math.round(parseInt(pegGramLast)*1008)/1000;

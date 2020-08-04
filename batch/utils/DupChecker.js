@@ -13,18 +13,24 @@ DupChecker.init = function(sql){
         );
     });
     // logger.info("SQL:"+sql);
-    // logger.info("cnt:"+uqRet.length);
+    // logger.info("cnt:"+uqRet.length); 
     // logger.info("result:"+JSON.stringify(uqRet));
 };
 
 DupChecker.isDup = function (id){
-    for(var i=0;i<uqRet.length;i++){
-        if(uqRet[i].ID == id){
+    // logger.info("uqRet.length:"+uqRet.length);
+    // logger.info("id:"+id);
+    if(uqRet.length > 0){
+        for(var i=0;i<uqRet.length;i++){
             // logger.info("id:"+id+", uqRet["+i+"].ID:"+uqRet[i].ID);
-            return true;
+            if(uqRet[i].ID == id){
+                // logger.info("DupChecker isDup:"+true);
+                return true;
+            }
         }
-    }
-    return false;
+    }else return false;
+    // logger.info("result:"+Object.values(uqRet)[0]);
+    // return (Object.values(uqRet)).includes(id);
 };
 
 DupChecker.log = function(){

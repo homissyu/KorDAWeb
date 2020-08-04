@@ -1,3 +1,5 @@
+'use strict'
+
 const request = require('request');
 const async = require('async');
 
@@ -5,16 +7,16 @@ const logger = require('../utils/logger');
 
 const assetOption = { 
     url:'https://pennygold.kr/v2/shared/assets/kordaAsset'
-}
+};
 
-//[{"type":"STOCK","point":"1229630","egold":"3095.8069","esilver":"172697.18"},{"type":"TRADE","point":"144600164","egold":"16605.5442","esilver":"728091.46"}]
+var imageUrl = "https://pennygold.kr/v2/shared/image/view/public/";
 
 var type;
 var point;
 var egold;
 var esilver;
 
-async function getAsset(){
+async function getReview(){
     return new Promise(function(resolve, reject){
         resolve(
             request(
@@ -45,7 +47,7 @@ datum.getData = function (req, res){
     var ret = [];
     async.waterfall([
         function(callback) {
-            callback(null, getAsset());
+            callback(null, getReview());
         }
     ], function (err, result) {
         if(err){

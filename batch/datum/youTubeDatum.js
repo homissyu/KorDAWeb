@@ -3,7 +3,6 @@ var youTube = new Youtube();
 
 const logger = require('../utils/logger');
 
-var DupChecker = require('../utils/DupChecker');
 
 var playListId = 'PLdCdURyEGavxp8mQw-0jJNfC0bkBNKUI2'; // 검색어 지정
 var limit = 5;  // 검색 갯수
@@ -14,7 +13,9 @@ var retArr = new Array();
 var datum = {};
 
 datum.getData = function (req, res){
-    DupChecker.init("SELECT DISTINCT ID FROM YOUTUBE_LIST");
+    var DupChecker = new require('../utils/DupChecker');
+    DupChecker.init('SELECT DISTINCT ID FROM YOUTUBE_LIST');
+
     youTube.getPlayListsItemsById(playListId, limit, (err, res) => {
         if (err) {
             logger.error(err);
@@ -37,8 +38,11 @@ datum.getData = function (req, res){
                     retArr.push(ret);
                 }
             }
+            logger.info("[ Youtube ] Before dup check:"+objArr.length);
+            logger.info("[ Youtube ] After dup check:"+retArr.length);
         }
-        // console.log("retArr:"+retArr);
+        
+        // logger.info("JSON.stringify(res.items):"+JSON.stringify(res.items):);
     });
     return retArr;
 };
