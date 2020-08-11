@@ -45,7 +45,7 @@ var db = {};
 db.setData = function () {
     var tempJson = ytDatum.getData();
     var tempLength = tempJson.length;
-    logger.info("tempLength:"+tempLength);
+    // logger.info("tempLength:"+tempLength);
     try{
         logger.info(JSON.stringify(tempJson));
         if(tempLength > 0){

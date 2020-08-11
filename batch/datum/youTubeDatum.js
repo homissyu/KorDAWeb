@@ -8,14 +8,12 @@ var playListId = 'PLdCdURyEGavxp8mQw-0jJNfC0bkBNKUI2'; // 검색어 지정
 var limit = 5;  // 검색 갯수
 youTube.setKey('AIzaSyAQJHOZJSuvKRJpNBOAeeG3mZ6FB8IIbO0'); // API 키 입력
 
-var retArr = new Array();    
-
 var datum = {};
 
 datum.getData = function (req, res){
     var DupChecker = new require('../utils/DupChecker');
     DupChecker.init('SELECT DISTINCT ID FROM YOUTUBE_LIST');
-
+    var retArr = new Array();  
     youTube.getPlayListsItemsById(playListId, limit, (err, res) => {
         if (err) {
             logger.error(err);
@@ -38,6 +36,7 @@ datum.getData = function (req, res){
                     retArr.push(ret);
                 }
             }
+            DupChecker = null;
             logger.info("[ Youtube ] Before dup check:"+objArr.length);
             logger.info("[ Youtube ] After dup check:"+retArr.length);
         }

@@ -9,12 +9,12 @@ DupChecker.init = function(sql){
         conn.query(
             sql, function(err, rows) {
                 uqRet = rows;
+                logger.info("SQL:"+sql);
+                logger.info("cnt:"+uqRet.length); 
+                // logger.info("result:"+JSON.stringify(uqRet));
             }
         );
     });
-    // logger.info("SQL:"+sql);
-    // logger.info("cnt:"+uqRet.length); 
-    // logger.info("result:"+JSON.stringify(uqRet));
 };
 
 DupChecker.isDup = function (id){
@@ -24,6 +24,7 @@ DupChecker.isDup = function (id){
         for(var i=0;i<uqRet.length;i++){
             // logger.info("id:"+id+", uqRet["+i+"].ID:"+uqRet[i].ID);
             if(uqRet[i].ID == id){
+                // logger.info("DupChecker isDup:"+true+", id:"+id+", uqRet["+i+"].ID:"+uqRet[i].ID);
                 // logger.info("DupChecker isDup:"+true);
                 return true;
             }
