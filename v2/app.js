@@ -75,7 +75,7 @@ app.listen(PORT, function(){
     logger.info(`Listening on port ${PORT}...`);
 });
 
-app.use(function(err, req, res, next) { 
-    logger.error(err);
-    // handle error 
-});
+// app.use(function(err, req, res, next) { 
+//     logger.error(err);
+//     // handle error 
+// });
