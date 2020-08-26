@@ -1,14 +1,14 @@
 const getConnection = require('../config/db');
-var asset = require('../datum/assetDatum.js');
-var fbSql;
-var ytSql;
-var fbCnt = 8;
-var fbRet = {};
-var ytCnt = 4;
-var ytRet = {};
-var ret;
+const asset = require('../datum/assetDatum.js');
+let fbSql;
+let ytSql;
+const fbCnt = 8;
+let fbRet = {};
+const ytCnt = 4;
+let ytRet = {};
+let ret;
 function getData(req, res){
-  var assetRet= asset.getData();
+  const assetRet= asset.getData();
   // console.log("fbRet.length:"+fbRet.length);
   // console.log("ytRet.length:"+ytRet.length);
   fbSql = "SELECT "+
@@ -41,6 +41,6 @@ function getData(req, res){
     res.set('Cache-Control', 'public, max-age=31557600');
     res.render('index', ret);
   });
-};
+}
 
 module.exports = getData;

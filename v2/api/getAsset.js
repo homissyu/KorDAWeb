@@ -7,13 +7,10 @@ const assetOption = {
     url:'https://pennygold.kr/v2/shared/assets/kordaAsset'
 };
 
-//[{"type":"STOCK","point":"1229630","egold":"3095.8069","esilver":"172697.18"},{"type":"TRADE","point":"144600164","egold":"16605.5442","esilver":"728091.46"}]
-
 var type;
 var point;
 var egold;
 var esilver;
-
 
 async function getAsset(){
     return new Promise(function(resolve, reject){

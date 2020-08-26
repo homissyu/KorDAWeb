@@ -1,7 +1,10 @@
-const request = require('request');
+const cheerio = require("cheerio");
+const request = require('request-promise');
 const convert = require('xml-js');
+
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+
 const async = require('async');
 
 const logger = require('../utils/logger');
@@ -52,102 +55,77 @@ const MKOption = "http://vip.mk.co.kr/newSt/rate";
 const KospiPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSPI";
 const KosdaqPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSDAQ";
 
-var gold24Buy;
-var gold24Sell;
-var gold18Sell;
-var gold14Sell;
-var silverBuy;
-var silverSell;
+let gold24Buy;
+let gold24Sell;
+let gold18Sell;
+let gold14Sell;
+let silverBuy;
+let silverSell;
 
-var gold24BuyLast;
-var gold24SellLast;
-var gold18SellLast;
-var gold14SellLast;
-var silverBuyLast;
-var silverSellLast;
+let gold24BuyGap;
+let gold24SellGap;
+let gold18SellGap;
+let gold14SellGap;
+let silverBuyGap;
+let silverSellGap;
 
-var gold24BuyGap;
-var gold24SellGap;
-var gold18SellGap;
-var gold14SellGap;
-var silverBuyGap;
-var silverSellGap;
+let pegGram;
+let pesGram;
+let pegDon;
+let pesDon;
 
-var pegGram;
-var pesGram;
-var pegDon;
-var pesDon;
+let pegGramLast;
+let pesGramLast;
+let pegDonLast;
+let pesDonLast;
 
-var pegGramLast;
-var pesGramLast;
-var pegDonLast;
-var pesDonLast;
+let pegGramGap;
+let pesGramGap;
+let pegDonGap;
+let pesDonGap;
 
-var pegGramGap;
-var pesGramGap;
-var pegDonGap;
-var pesDonGap;
+let btc;
+let eth;
 
-var btc;
-var eth;
+let btcLast;
+let ethLast;
 
-var btcLast;
-var ethLast;
+let btcGap;
+let ethGap;
 
-var btcGap;
-var ethGap;
+let excRateUSD;
+let excRateJPY;
+let excRateCNY;
+let excRateEUR;
+let interestRateCall;
+let interestRateCD;
+let interestRateUS;
 
-var excRateUSD;
-var excRateJPY;
-var excRateCNY;
-var excRateEUR;
-var interestRateCall;
-var interestRateCD;
-var interestRateUS;
-var dji;
-var nasdaq;
-var wti;
+let excRateUSDGap;
+let excRateJPYGap;
+let excRateCNYGap;
+let excRateEURGap;
+let interestRateCallGap;
+let interestRateCDGap;
+let interestRateUSGap;
 
-var excRateUSDLast;
-var excRateJPYLast;
-var excRateCNYLast;
-var excRateEURLast;
-var interestRateCallLast;
-var interestRateCDLast;
-var interestRateUSLast;
+let dji;
+let nasdaq;
+let wti;
 
-var excRateUSDGap;
-var excRateJPYGap;
-var excRateCNYGap;
-var excRateEURGap;
-var interestRateCallGap;
-var interestRateCDGap;
-var interestRateUSGap;
+let djiGap;
+let nasdaqGap;
+let wtiGap;
 
-var dji;
-var nasdaq;
-var wti;
+let kospi;
+let kosdaq;
 
-var djiLast;
-var nasdaqLast;
-var wtiLast;
+let kospiGap
+let kosdaqGap;
 
-var djiGap;
-var nasdaqGap;
-var wtiGap;
+const regExp = /,/g; // 천단위 쉼표를 찾기 위한 정규식. 
 
-var kospi;
-var kosdaq;
-
-var kospiLast;
-var kosdaqLast;
-
-var kospiGap
-var kosdaqGap;
-
-var regExp = /,/g; // 천단위 쉼표를 찾기 위한 정규식. 
-
-var signVal = "▲";
+let signVal = "▲";
                         
 
 async function getGoldPrice() {
@@ -162,7 +140,7 @@ async function getGoldPrice() {
                     // console.log('statusCode:', response && response.statusCode); 
                     try {
                         // something bad happens here
-                        var result = JSON.parse(convert.xml2json(body, {compact: true, ignoreDeclaration: true, spaces: 4}));
+                        const result = JSON.parse(convert.xml2json(body, {compact: true, ignoreDeclaration: true, spaces: 4}));
                         
                         gold24Buy = Number.parseFloat(result.Xml.data[0].buy.price._text);
                         gold24Sell = Number.parseFloat(result.Xml.data[0].sell.price._text);
@@ -235,24 +213,21 @@ async function getGoldPrice() {
 async function getPegPrice(){
     return new Promise(function(resolve, reject){
         resolve(
-            // console.log("getPegPrice");
-            JSDOM.fromURL(pegPriceOpton).then(dom => {
-                // console.log(dom.window.document.children[0].children[0].childElementCount);
-                if((dom.window.document.children[0].children[0].childElementCount) == 6){
-                    // console.log(dom.window.status);
-                    pegGram = dom.window.document.getElementsByTagName("result")[0].getElementsByTagName("item")[0].getElementsByTagName("v1_gold1")[0].innerHTML.trim();
-                    // console.log(pegGram.replace('<![CDATA[','').replace(']]>',''));
-                    pegGram = pegGram.replace('<![CDATA[','').replace(']]>','');
-                    pegGram = pegGram.replace( regExp , ""); 
-                    pegGram = Math.round(parseInt(pegGram)*1008)/1000;
-                    pegGram = Math.round(parseInt(pegGram)*103)/100;
-                    pegDon = Math.round(parseInt(pegGram)*375)/100;
-                }
-                
-            }).catch(function(err){
-                logger.error(err);
-                // request.end();
-                throw err;
+            request(pegPriceOpton).then(function (html) {
+
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+        
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $item = $('result item v1_gold1');
+        
+                pegGram = $item.html();
+                pegGram = pegGram.replace('<!--[CDATA[','').replace(']]-->','');
+                pegGram = pegGram.replace( regExp , ""); 
+                pegGram = Math.round(parseInt(pegGram)*1008)/1000;
+                pegGram = Math.round(parseInt(pegGram)*103)/100;
+                pegDon = Math.round(parseInt(pegGram)*375)/100;
+        
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed)response.socket.destroy();});
     });
@@ -262,22 +237,21 @@ async function getPesPrice(){
     return new Promise(function(resolve, reject){
         resolve(
             // console.log("getPegPrice");
-            JSDOM.fromURL(pesPriceOpton).then(dom => {
-                if((dom.window.document.children[0].children[0].childElementCount) == 6){
-                    // console.log(dom.window.document.children[0].children[0].childElementCount);
-                    pesGram = dom.window.document.getElementsByTagName("result")[0].getElementsByTagName("item")[0].getElementsByTagName("v1_gold1")[0].innerHTML.trim();
-                    // console.log(pegGram.replace('<![CDATA[','').replace(']]>',''));
-                    pesGram = pesGram.replace('<![CDATA[','').replace(']]>','');
-                    pesGram = pesGram.replace( regExp , ""); 
-                    pesGram = Math.round(parseInt(pesGram)*1013)/1000;
-                    pesGram = Math.round(parseInt(pesGram)*105)/100;
-                    pesDon = Math.round(parseInt(pesGram)*375)/100;
-                }
-                
-            }).catch(function(err){
-                logger.error(err);
-                // request.end();
-                throw err;
+            request(pesPriceOpton).then(function (html) {
+
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+        
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $item = $('result item v1_gold1');
+        
+                pesGram = $item.html();
+                pesGram = pesGram.replace('<!--[CDATA[','').replace(']]-->','');
+                pesGram = pesGram.replace( regExp , ""); 
+                pesGram = Math.round(parseInt(pesGram)*1013)/1000;
+                pesGram = Math.round(parseInt(pesGram)*105)/100;
+                pesDon = Math.round(parseInt(pesGram)*375)/100;
+        
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed)response.socket.destroy();});
     });
@@ -286,10 +260,14 @@ async function getPesPrice(){
 async function getPegLastPrice(){
     return new Promise(function(resolve, reject){
         resolve(
-            // console.log("getPegPrice");
-            JSDOM.fromURL(lastPegPriceOpton).then(dom => {
-                // console.log(dom.window.document.children[0].children[0].childElementCount);
-                pegGramLast = dom.window.document.getElementsByClassName("text2_1")[3].children[5].innerHTML.trim();
+            request(lastPegPriceOpton).then(function (html) {
+
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+                
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $item = $('.text2_1');
+                pegGramLast = $item.eq(3).children().eq(5).text().trim();
                 pegGramLast = pegGramLast.replace( regExp , ""); 
                 pegGramLast = Math.round(parseInt(pegGramLast)*1008)/1000;
                 pegGramLast = Math.round(parseInt(pegGramLast)*103)/100;
@@ -302,12 +280,6 @@ async function getPegLastPrice(){
                 if(pegDon>pegDonLast) pegDonGap = "▲"+new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(Math.abs(pegDon-pegDonLast));
                 else if(pegDon<pegDonLast) pegDonGap = "▼"+new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(Math.abs(pegDon-pegDonLast));
                 else pegDonGap = "0.00";
-
-                
-            }).catch(function(err){
-                logger.error(err);
-                // request.end();
-                throw err;
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed)response.socket.destroy();});
     });
@@ -316,10 +288,14 @@ async function getPegLastPrice(){
 async function getPesLastPrice(){
     return new Promise(function(resolve, reject){
         resolve(
-            // console.log("getPegPrice");
-            JSDOM.fromURL(lastPesPriceOpton).then(dom => {
-                // console.log(dom.window.document.children[0].children[0].childElementCount);
-                pesGramLast = dom.window.document.getElementsByClassName("text2_1")[3].children[5].innerHTML.trim();
+            request(lastPesPriceOpton).then(function (html) {
+
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+                
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $item = $('.text2_1');
+                pesGramLast = $item.eq(3).children().eq(5).text().trim();
                 pesGramLast = pesGramLast.replace( regExp , ""); 
                 pesGramLast = Math.round(parseInt(pesGramLast)*1013)/1000;
                 pesGramLast = Math.round(parseInt(pesGramLast)*105)/100;
@@ -332,12 +308,6 @@ async function getPesLastPrice(){
                 if(pesDon>pesDonLast) pesDonGap = "▲"+new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(Math.abs(pesDon-pesDonLast));
                 else if(pesDon<pesDonLast) pesDonGap = "▼"+new Intl.NumberFormat('ko-KR', { style: 'decimal', maximumFractionDigits: 2}).format(Math.abs(pesDon-pesDonLast));
                 else pesDonGap = "0.00";
-
-                
-            }).catch(function(err){
-                logger.error(err);
-                // request.end();
-                throw err;
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed)response.socket.destroy();});
     });
@@ -356,7 +326,7 @@ async function getBTCPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         btc = Number.parseFloat(result.data.closing_price);
                         btcLast = Number.parseFloat(result.data.prev_closing_price);
 
@@ -389,7 +359,7 @@ async function getETHPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         eth = Number.parseFloat(result.data.closing_price);
                         ethLast = Number.parseFloat(result.data.prev_closing_price);
 
@@ -412,16 +382,16 @@ async function getETHPrice() {
 async function getMKPrice() {
     return new Promise(function(resolve, reject){
         resolve(
+
             // console.log("getBokAssetPrice");
             JSDOM.fromURL(MKOption).then(dom => {
-                var obj = dom.window.document.getElementsByClassName("table_1");
-                // console.log(obj[4].innerHTML);
+                const obj = dom.window.document.getElementsByClassName("table_1");
+                // console.log(obj.innerHTML);
 
                 dji = obj[2].getElementsByTagName("tr")[5].getElementsByTagName("td")[1].innerHTML;
                 dji= Number.parseFloat(dji.replace(',',''));
 
                 djiGap = obj[2].getElementsByTagName("tr")[5].getElementsByTagName("td")[2].getElementsByTagName("span")[0].innerHTML;
-                 
                 // console.log("dji:"+dji);
 
                 nasdaq = obj[2].getElementsByTagName("tr")[6].getElementsByTagName("td")[1].innerHTML;
@@ -499,7 +469,7 @@ async function getKospiPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         // console.log((result.result.areas[0].datas[0].nv)/100);
                         kospi = (result.result.areas[0].datas[0].nv)/100;
                         kospiGap = (result.result.areas[0].datas[0].cv)/100;
@@ -532,7 +502,7 @@ async function getKosdaqPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         kosdaq = (result.result.areas[0].datas[0].nv)/100;
                         kosdaqGap = (result.result.areas[0].datas[0].cv)/100;
                         if(kosdaqGap>0) kosdaqGap = "▲"+ Math.abs(kosdaqGap);
@@ -551,9 +521,9 @@ async function getKosdaqPrice() {
     });
 }
 
-var datum = {};
+let datum = {};
 datum.getData = function (req, res){
-    var ret = [];
+    let ret = [];
     async.waterfall([
         function(callback) {
             callback(null, getGoldPrice());
@@ -591,14 +561,14 @@ datum.getData = function (req, res){
             res.socket.destroy();
             throw err;
         }else {
-            var keys = ["pegGram","pesGram", "pegDon","pesDon","pegGram","pesGram", "gold24Buy","gold24Sell","gold18Sell","gold14Sell","silverBuy","silverSell","interestRateCall","interestRateCD","interestRateUS","kospi","kosdaq","btc","eth","dji","nasdaq","wti","excRateUSD","excRateCNY", "excRateJPY", "excRateEUR"];
-            var values = [pegGram, pesGram, pegDon, pesDon, gold24Buy, gold24Sell, gold18Sell, gold14Sell, silverBuy, silverSell, interestRateCall,interestRateCD, interestRateUS, kospi, kosdaq, btc, eth, dji, nasdaq, wti, excRateUSD, excRateCNY, excRateJPY, excRateEUR];
+            const keys = ["pegGram","pesGram", "pegDon","pesDon","pegGram","pesGram", "gold24Buy","gold24Sell","gold18Sell","gold14Sell","silverBuy","silverSell","interestRateCall","interestRateCD","interestRateUS","kospi","kosdaq","btc","eth","dji","nasdaq","wti","excRateUSD","excRateCNY", "excRateJPY", "excRateEUR"];
+            const values = [pegGram, pesGram, pegDon, pesDon, gold24Buy, gold24Sell, gold18Sell, gold14Sell, silverBuy, silverSell, interestRateCall,interestRateCD, interestRateUS, kospi, kosdaq, btc, eth, dji, nasdaq, wti, excRateUSD, excRateCNY, excRateJPY, excRateEUR];
             // console.log(values);
-            var unit = ["원/g", "원/g", "원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","%","%","%","point","point", "원/btc", "원/eth", "point","point","$/배럴", "원/달러", "원/위안", "원/100엔", "원/유로"];
-            var gap = [pegGramGap, pesGramGap, pegDonGap, pesDonGap, gold24BuyGap, gold24SellGap, gold18SellGap, gold14SellGap, silverBuyGap, silverSellGap, interestRateCallGap,interestRateCDGap, interestRateUSGap, kospiGap, kosdaqGap, btcGap, ethGap, djiGap, nasdaqGap, wtiGap, excRateUSDGap, excRateCNYGap, excRateJPYGap, excRateEURGap];
+            const unit = ["원/g", "원/g", "원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","%","%","%","point","point", "원/btc", "원/eth", "point","point","$/배럴", "원/달러", "원/위안", "원/100엔", "원/유로"];
+            const gap = [pegGramGap, pesGramGap, pegDonGap, pesDonGap, gold24BuyGap, gold24SellGap, gold18SellGap, gold14SellGap, silverBuyGap, silverSellGap, interestRateCallGap,interestRateCDGap, interestRateUSGap, kospiGap, kosdaqGap, btcGap, ethGap, djiGap, nasdaqGap, wtiGap, excRateUSDGap, excRateCNYGap, excRateJPYGap, excRateEURGap];
             
-            for(var i=0; i<keys.length; i++){
-                var data;
+            for(let i=0; i<keys.length; i++){
+                let data;
                 data = {
                     "label":keys[i], 
                     "thisValue":values[i],

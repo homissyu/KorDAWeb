@@ -1,7 +1,10 @@
-const request = require('request');
+'use strict'
+
 const convert = require('xml-js');
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+
+const cheerio = require("cheerio");
+const request = require('request-promise');
+
 const async = require('async');
 
 const logger = require('../utils/logger');
@@ -44,41 +47,51 @@ const ethPriceOption = {
     }
 };
 
-const DaumFinanceOption = { 
-    url: 'http://finance.daum.net/api/global/today/',
-    method : 'GET /api/global/today/ HTTP/1.1',
-    Host: 'finance.daum.net',
-    Connection: 'keep-alive',
-    Pragma: 'no-cache',
-    Accept: 'application/json, text/javascript, */*; q=0.01',
-    Cookie: 'ssab=; _ga=GA1.2.3326601.1583510482; _dfs=OGh6cFFoeGgxRk1td3pkU2Vrb2VuVFRXRkdmeG9MWjl2d0dLRERBNVRkRkFKaGh0MXoxNUZCS0lhVDhENVdZUWNqaThZMTBTNjZ4Zm9kbUJpckN6cUE9PS0tWnJMSndKaDIzemd1R1ZBa3JRa3FkQT09--4f88590e9aca0799b9b67e1cfc573474056fdf1c; TIARA=s155R_LBqM5qFUgp6SfUE8AoaKx3VTEb.WcssqVr58Gqf4HLwJudEJQ.Q-1yKriVe8UQUhZzpaJ35jC.pAynDQ00; _gid=GA1.2.101062231.1583670889; _gat_gtag_UA_128578811_1=1'
+const BOKAssetPriceOption = {
+    url:'https://ecos.bok.or.kr/EIndex.jsp',
+    headers: {
+        'Host': 'ecos.bok.or.kr',
+        'Connection': 'keep-alive',
+        'Pragma': 'no-cache',
+        'Cache-Control': 'no-cache',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4238.2 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+        'Sec-Fetch-Site': 'same-origin',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Dest': 'frame',
+        'Referer': 'https://ecos.bok.or.kr/',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6',
+        'Cookie': 'WMONID=s5XRUvrbiiu; _ga=GA1.3.256423616.1593514878; JSESSIONID=h8sfYiRlCkckMG5rL8hxETQFYoJEOmHbTV9ICZ0aBLJLK5Usv2xA!-1008973829!-1104678362; _gid=GA1.3.65889480.1598254361'
+    }
 };
-
-const BOKAssetPriceOption = "https://ecos.bok.or.kr/EIndex.jsp";
 
 const BizKhanOption = "http://biz.khan.co.kr/";
 
 const KospiPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSPI";
 const KosdaqPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSDAQ";
 
-var goldBuy;
-var goldSell;
-var pegGram;
-var pesGram;
-var pegDon;
-var pesDon;
-var btc;
-var eth;
-var excRateUSD;
-var excRateJPY;
-var excRateCNY;
-var investRate;
-var kospi;
-var kosdaq;
-var dji;
-var nasdaq;
-var s_p500;
-var wti;
+let goldBuy;
+let goldSell;
+let pegGram;
+let pesGram;
+let pegDon;
+let pesDon;
+let btc;
+let eth;
+let excRateUSD;
+let excRateJPY;
+let excRateCNY;
+let investRate;
+let kospi;
+let kosdaq;
+let dji;
+let nasdaq;
+let s_p500;
+let wti;
+
+const regExp = /,/g; // 천단위 쉼표를 찾기 위한 정규식. 
 
 async function getGoldPrice() {
     return new Promise(function(resolve, reject){
@@ -92,7 +105,7 @@ async function getGoldPrice() {
                     // console.log('statusCode:', response && response.statusCode); 
                     try {
                         // something bad happens here
-                        var result = JSON.parse(convert.xml2json(body, {compact: true, ignoreDeclaration: true, spaces: 4}));
+                        const result = JSON.parse(convert.xml2json(body, {compact: true, ignoreDeclaration: true, spaces: 4}));
                         goldBuy = Number.parseFloat(result.Xml.data[0].buy.price._text);
                         goldSell = Number.parseFloat(result.Xml.data[0].sell.price._text);
                     } catch (err) {
@@ -114,22 +127,22 @@ async function getGoldPrice() {
 async function getPegPrice(){
     return new Promise(function(resolve, reject){
         resolve(
-            // console.log("getPegPrice");
-            JSDOM.fromURL(pegPriceOpton).then(dom => {
-                // console.log(dom.window.document.children[0].children[0].childElementCount);
-                if((dom.window.document.children[0].children[0].childElementCount) == 6){
-                    // console.log(dom.window.status);
-                    pegGram = dom.window.document.getElementsByTagName("result")[0].getElementsByTagName("item")[0].getElementsByTagName("v1_gold1")[0].innerHTML.trim();
-                    // console.log(pegGram.replace('<![CDATA[','').replace(']]>',''));
-                    var regExp = /,/g; // 천단위 쉼표를 찾기 위한 정규식. 
-                    pegGram = pegGram.replace('<![CDATA[','').replace(']]>','');
-                    pegGram = pegGram.replace( regExp , ""); 
-                    pegGram = parseInt(pegGram)*1.03;
-                    pegDon = parseInt(pegGram)*3.75;
-                }
-            }).catch(function(err){
-                logger.error(err);
-                throw err;
+            request(pegPriceOpton).then(function (html) {
+
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $item = $('result item v1_gold1');
+
+                pegGram = $item.html();
+               
+                pegGram = pegGram.replace('<!--[CDATA[','').replace(']]-->','');
+                pegGram = pegGram.replace( regExp , ""); 
+                pegGram = Math.round(parseInt(pegGram)*1008)/1000;
+                pegGram = Math.round(parseInt(pegGram)*103)/100;
+                pegDon = Math.round(parseInt(pegGram)*375)/100;
+
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
     });
@@ -138,24 +151,26 @@ async function getPegPrice(){
 async function getPesPrice(){
     return new Promise(function(resolve, reject){
         resolve(
-            // console.log("getPegPrice");
-            JSDOM.fromURL(pesPriceOpton).then(dom => {
-                if((dom.window.document.children[0].children[0].childElementCount) == 6){
-                    // console.log(dom.window.document.children[0].children[0].childElementCount);
-                    pesGram = dom.window.document.getElementsByTagName("result")[0].getElementsByTagName("item")[0].getElementsByTagName("v1_gold1")[0].innerHTML.trim();
-                    // console.log(pegGram.replace('<![CDATA[','').replace(']]>',''));
-                    var regExp = /,/g; // 천단위 쉼표를 찾기 위한 정규식. 
-                    pesGram = pesGram.replace('<![CDATA[','').replace(']]>','');
-                    pesGram = pesGram.replace( regExp , ""); 
-                    pesGram = parseInt(pesGram)*1.05;
-                    pesDon = parseInt(pesGram)*3.75;
-                }
-            }).catch(function(err){
-                logger.error(err);
-                throw err;
+            request(pesPriceOpton).then(function (html) {
+
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+        
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $item = $('result item v1_gold1');
+        
+                pesGram = $item.html();
+                
+                pesGram = pesGram.replace('<!--[CDATA[','').replace(']]-->','');
+                pesGram = pesGram.replace( regExp , ""); 
+                pesGram = Math.round(parseInt(pesGram)*1013)/1000;
+                pesGram = Math.round(parseInt(pesGram)*105)/100;
+                pesDon = Math.round(parseInt(pesGram)*375)/100;
+        
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
     });
+    
 }
 
 async function getBTCPrice() {
@@ -171,7 +186,7 @@ async function getBTCPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         btc = Number.parseFloat(result.data.closing_price);
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
@@ -199,7 +214,7 @@ async function getETHPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         eth = Number.parseFloat(result.data.closing_price);
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
@@ -218,39 +233,27 @@ async function getBokAssetPrice() {
     return new Promise(function(resolve, reject){
         resolve(
             // console.log("getBokAssetPrice");
-            JSDOM.fromURL(BOKAssetPriceOption).then(dom => {
-                var obj = dom.window.document.getElementsByClassName("ESdaily")[0];
-                // console.log(obj.innerHTML);
-                investRate = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+            request(BOKAssetPriceOption).then(function (html) {
+
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+                
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $itemList = $('div.ESdaily');
+
+                investRate = $itemList.children('table').eq(0).children('tbody').eq(0).children('tr').eq(0).children('td').eq(1).text().trim();
                 investRate = Number.parseFloat(investRate.replace(',',''));
 
-                excRateUSD = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[3].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                excRateUSD = $itemList.children('table').eq(0).children('tbody').eq(0).children('tr').eq(3).children('td').eq(1).text().trim();
                 excRateUSD = Number.parseFloat(excRateUSD.replace(',',''));
 
-                excRateJPY = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[5].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                excRateJPY = $itemList.children('table').eq(0).children('tbody').eq(0).children('tr').eq(5).children('td').eq(1).text().trim();
                 excRateJPY = Number.parseFloat(excRateJPY.replace(',',''));
 
-                excRateCNY = obj.getElementsByTagName("table")[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[4].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
+                excRateCNY = $itemList.children('table').eq(0).children('tbody').eq(0).children('tr').eq(4).children('td').eq(1).text().trim();;
                 excRateCNY = Number.parseFloat(excRateCNY.replace(',',''));
-                // nasdaq = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
-                // nasdaq = Number.parseFloat(nasdaq.replace(',',''));
-
-                // dji = obj.getElementsByTagName("table")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
-                // dji = Number.parseFloat(dji.replace(',',''));
-
-                wti = obj.getElementsByTagName("table")[1].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[0].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
-                wti = Number.parseFloat(wti.replace(',',''));
-
-                dubai = obj.getElementsByTagName("table")[1].getElementsByTagName("tbody")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerHTML.trim();
-                dubai = Number.parseFloat(dubai.replace(',',''));
-
-
-                investRate = Number.parseFloat(new Intl.NumberFormat('en-IN', { style: 'decimal'}).format(investRate).trim());
-                
-            }).catch(function(err){
-                logger.error(err);
-                throw err;
             })
+            
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
     });
 }
@@ -259,19 +262,19 @@ async function getGlobalPrice() {
     return new Promise(function(resolve, reject){
         resolve(
             // console.log("getBokAssetPrice");
-            JSDOM.fromURL(BizKhanOption).then(dom => {
-                var obj = dom.window.document.getElementById("stockDisplay");
-                // console.log(obj.getElementsByTagName("li")[3].textContent.split(" ")[1]);
-                nasdaq = obj.getElementsByTagName("li")[3].textContent.split(" ")[1];
-                nasdaq = Number.parseFloat(nasdaq.replace(',',''));
+            request(BizKhanOption).then(function (html) {
 
-                dji = obj.getElementsByTagName("li")[2].textContent.split(" ")[1];
+                // Cheerio 오브젝트 생성
+                const $ = cheerio.load(html);
+        
+                // 셀렉터 캐시로 Cheerio 오브젝트 생성
+                const $itemList = $('ul#stockDisplay');
+                
+                nasdaq = $itemList.children().eq(3).text().split(" ")[1];
+                nasdaq = Number.parseFloat(nasdaq.replace(',',''));
+                
+                dji = $itemList.children().eq(2).text().split(" ")[1];
                 dji = Number.parseFloat(dji.replace(',',''));
-                
-                
-            }).catch(function(err){
-                logger.error(err);
-                throw err;
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
     });
@@ -290,7 +293,7 @@ async function getKospiPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         // console.log((result.result.areas[0].datas[0].nv)/100);
                         kospi = (result.result.areas[0].datas[0].nv)/100;
                     } catch (err) {
@@ -319,7 +322,7 @@ async function getKosdaqPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         kosdaq = (result.result.areas[0].datas[0].nv)/100;
                     } catch (err) {
                         // if(!response.socket.destroyed) response.socket.destroy();
@@ -333,9 +336,9 @@ async function getKosdaqPrice() {
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
     });
 }
-var datum = {};
+let datum = {};
 datum.getData = function (req, res){
-    var ret = [];
+    let ret = [];
     async.waterfall([
         function(callback) {
             callback(null, getGoldPrice());
@@ -370,12 +373,12 @@ datum.getData = function (req, res){
             res.socket.destroy();
             throw err;
         }else {
-            var keys = ["pegDon","pesDon","goldBuy","goldSell","excRateUSD","investRate","kospi","kosdaq","btc","eth","dji","nasdaq","wti","pegGram","pesGram","s_p500", "excRateCNY", "excRateJPY"];
-            var values = [pegDon, pesDon, goldBuy, goldSell, excRateUSD, investRate, kospi, kosdaq, btc, eth, dji, nasdaq, wti, pegGram, pesGram, s_p500, excRateCNY, excRateJPY];
+            const keys = ["pegDon","pesDon","goldBuy","goldSell","excRateUSD","investRate","kospi","kosdaq","btc","eth","dji","nasdaq","wti","pegGram","pesGram","s_p500", "excRateCNY", "excRateJPY"];
+            const values = [pegDon, pesDon, goldBuy, goldSell, excRateUSD, investRate, kospi, kosdaq, btc, eth, dji, nasdaq, wti, pegGram, pesGram, s_p500, excRateCNY, excRateJPY];
             // console.log(values);
-            var unit = ["원/돈","원/돈","원/돈","원/돈","원/달러","%","point","point", "원/btc", "원/eth", "point","point","$/배럴", "원/g", "원/g", "point", "원/위안", "원/엔"];
-            for(var i=0; i<keys.length; i++){
-                var data;
+            const unit = ["원/돈","원/돈","원/돈","원/돈","원/달러","%","point","point", "원/btc", "원/eth", "point","point","$/배럴", "원/g", "원/g", "point", "원/위안", "원/엔"];
+            for(let i=0; i<keys.length; i++){
+                let data;
                 // console.log("values[i]:"+values[i]);
                 data = {
                     "label":keys[i], 

@@ -1,27 +1,27 @@
-var Youtube = require('youtube-node');
-var youTube = new Youtube();
+const Youtube = require('youtube-node');
+const youTube = new Youtube();
 
 const logger = require('../utils/logger');
 
 
-var playListId = 'PLdCdURyEGavxp8mQw-0jJNfC0bkBNKUI2'; // 검색어 지정
-var limit = 5;  // 검색 갯수
+const playListId = 'PLdCdURyEGavxp8mQw-0jJNfC0bkBNKUI2'; // 검색어 지정
+const limit = 5;  // 검색 갯수
 youTube.setKey('AIzaSyAQJHOZJSuvKRJpNBOAeeG3mZ6FB8IIbO0'); // API 키 입력
 
-var datum = {};
+let datum = {};
 
 datum.getData = function (req, res){
-    var DupChecker = new require('../utils/DupChecker');
+    let DupChecker = new require('../utils/DupChecker');
     DupChecker.init('SELECT DISTINCT ID FROM YOUTUBE_LIST');
-    var retArr = new Array();  
+    let retArr = new Array();  
     youTube.getPlayListsItemsById(playListId, limit, (err, res) => {
         if (err) {
             logger.error(err);
         } else {    
-            var objArr = JSON.parse(JSON.stringify(res.items));
-            for(var i=0;i<objArr.length;i++){
+            let objArr = JSON.parse(JSON.stringify(res.items));
+            for(let i=0;i<objArr.length;i++){
                 if(!DupChecker.isDup(objArr[i].id)){
-                    var ret = new Object();
+                    let ret = new Object();
                     ret.ID = objArr[i].id;
                     ret.videoId = objArr[i].contentDetails.videoId;
                     ret.channelId = objArr[i].snippet.channelId;

@@ -52,100 +52,97 @@ const MKOption = "http://vip.mk.co.kr/newSt/rate";
 const KospiPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSPI";
 const KosdaqPriceOption = "https://polling.finance.naver.com/api/realtime.nhn?query=SERVICE_INDEX:KOSDAQ";
 
-var gold24Buy;
-var gold24Sell;
-var gold18Sell;
-var gold14Sell;
-var silverBuy;
-var silverSell;
+let gold24Buy;
+let gold24Sell;
+let gold18Sell;
+let gold14Sell;
+let silverBuy;
+let silverSell;
 
-var gold24BuyLast;
-var gold24SellLast;
-var gold18SellLast;
-var gold14SellLast;
-var silverBuyLast;
-var silverSellLast;
+let gold24BuyLast;
+let gold24SellLast;
+let gold18SellLast;
+let gold14SellLast;
+let silverBuyLast;
+let silverSellLast;
 
-var gold24BuyGap;
-var gold24SellGap;
-var gold18SellGap;
-var gold14SellGap;
-var silverBuyGap;
-var silverSellGap;
+let gold24BuyGap;
+let gold24SellGap;
+let gold18SellGap;
+let gold14SellGap;
+let silverBuyGap;
+let silverSellGap;
 
-var pegGram;
-var pesGram;
-var pegDon;
-var pesDon;
+let pegGram;
+let pesGram;
+let pegDon;
+let pesDon;
 
-var pegGramLast;
-var pesGramLast;
-var pegDonLast;
-var pesDonLast;
+let pegGramLast;
+let pesGramLast;
+let pegDonLast;
+let pesDonLast;
 
-var pegGramGap;
-var pesGramGap;
-var pegDonGap;
-var pesDonGap;
+let pegGramGap;
+let pesGramGap;
+let pegDonGap;
+let pesDonGap;
 
-var btc;
-var eth;
+let btc;
+let eth;
 
-var btcLast;
-var ethLast;
+let btcLast;
+let ethLast;
 
-var btcGap;
-var ethGap;
+let btcGap;
+let ethGap;
 
-var excRateUSD;
-var excRateJPY;
-var excRateCNY;
-var excRateEUR;
-var interestRateCall;
-var interestRateCD;
-var interestRateUS;
-var dji;
-var nasdaq;
-var wti;
+let excRateUSD;
+let excRateJPY;
+let excRateCNY;
+let excRateEUR;
+let interestRateCall;
+let interestRateCD;
+let interestRateUS;
 
-var excRateUSDLast;
-var excRateJPYLast;
-var excRateCNYLast;
-var excRateEURLast;
-var interestRateCallLast;
-var interestRateCDLast;
-var interestRateUSLast;
+let excRateUSDLast;
+let excRateJPYLast;
+let excRateCNYLast;
+let excRateEURLast;
+let interestRateCallLast;
+let interestRateCDLast;
+let interestRateUSLast;
 
-var excRateUSDGap;
-var excRateJPYGap;
-var excRateCNYGap;
-var excRateEURGap;
-var interestRateCallGap;
-var interestRateCDGap;
-var interestRateUSGap;
+let excRateUSDGap;
+let excRateJPYGap;
+let excRateCNYGap;
+let excRateEURGap;
+let interestRateCallGap;
+let interestRateCDGap;
+let interestRateUSGap;
 
-var dji;
-var nasdaq;
-var wti;
+let dji;
+let nasdaq;
+let wti;
 
-var djiLast;
-var nasdaqLast;
-var wtiLast;
+let djiLast;
+let nasdaqLast;
+let wtiLast;
 
-var djiGap;
-var nasdaqGap;
-var wtiGap;
+let djiGap;
+let nasdaqGap;
+let wtiGap;
 
-var kospi;
-var kosdaq;
+let kospi;
+let kosdaq;
 
-var kospiLast;
-var kosdaqLast;
+let kospiLast;
+let kosdaqLast;
 
-var kospiGap
-var kosdaqGap;
+let kospiGap
+let kosdaqGap;
 
-var regExp = /,/g; // 천단위 쉼표를 찾기 위한 정규식. 
+const regExp = /,/g; // 천단위 쉼표를 찾기 위한 정규식. 
 
 async function getGoldPrice() {
     return new Promise(function(resolve, reject){
@@ -159,7 +156,7 @@ async function getGoldPrice() {
                     // console.log('statusCode:', response && response.statusCode); 
                     try {
                         // something bad happens here
-                        var result = JSON.parse(convert.xml2json(body, {compact: true, ignoreDeclaration: true, spaces: 4}));
+                        const result = JSON.parse(convert.xml2json(body, {compact: true, ignoreDeclaration: true, spaces: 4}));
                         
                         gold24Buy = Number.parseFloat(result.Xml.data[0].buy.price._text);
                         gold24Sell = Number.parseFloat(result.Xml.data[0].sell.price._text);
@@ -375,7 +372,7 @@ async function getBTCPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         btc = Number.parseFloat(result.data.closing_price);
                         btcLast = Number.parseFloat(result.data.prev_closing_price);
 
@@ -413,7 +410,7 @@ async function getETHPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         eth = Number.parseFloat(result.data.closing_price);
                         ethLast = Number.parseFloat(result.data.prev_closing_price);
 
@@ -445,9 +442,9 @@ async function getMKPrice() {
         resolve(
             // console.log("getBokAssetPrice");
             JSDOM.fromURL(MKOption).then(dom => {
-                var obj = dom.window.document.getElementsByClassName("table_1");
+                const obj = dom.window.document.getElementsByClassName("table_1");
                 // console.log(obj[4].innerHTML);
-                var manipulVal = 1;
+                let manipulVal = 1;
 
                 dji = obj[2].getElementsByTagName("tr")[5].getElementsByTagName("td")[1].innerHTML;
                 dji= Number.parseFloat(dji.replace(',',''));
@@ -582,7 +579,7 @@ async function getKospiPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         // console.log((result.result.areas[0].datas[0].nv)/100);
                         kospi = (result.result.areas[0].datas[0].nv)/100;
                         kospiGap = (result.result.areas[0].datas[0].cv)/100;
@@ -620,7 +617,7 @@ async function getKosdaqPrice() {
                     // console.log(body);
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         kosdaq = (result.result.areas[0].datas[0].nv)/100;
                         kosdaqGap = (result.result.areas[0].datas[0].cv)/100;
                         kosdaqLast = Math.round((kosdaq-kosdaqGap)*100)/100
@@ -644,9 +641,9 @@ async function getKosdaqPrice() {
     })
 }
 
-var datum = {};
+let datum = {};
 datum.getData = function (req, res){
-    var ret = [];
+    let ret = [];
     async.waterfall([
         function(callback) {
             callback(null, getGoldPrice());
@@ -684,16 +681,16 @@ datum.getData = function (req, res){
             res.socket.destroy();
             throw err;
         }else {
-            var keys = ["pegGram","pesGram","pegDon","pesDon","gold24Buy","gold24Sell","gold18Sell","gold14Sell","silverBuy","silverSell","interestRateCall","interestRateCD","interestRateUS","kospi","kosdaq","btc","eth","dji","nasdaq","wti","excRateUSD","excRateCNY", "excRateJPY", "excRateEUR"];
-            var labels = ["e금(gram)","e은(gram)","e금(돈)","e은(돈)","금(24k) 살 때(VAT별도)","금(24k) 팔 때","금(18k) 팔 때","금(14k) 팔 때","은 살 때(VAT별도)","은 팔 때","콜금리","CD금리(91일)","미국국채(10년물)","코스피","코스닥","비트코인","이더리움","다우존스산업평균","나스닥","국제유가(WTI)","원/달러 환율","원/위안 환율", "원/엔 환율", "원/유로 환율"];
-            var visibilities = [true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
-            var values = [pegGram, pesGram, pegDon, pesDon, gold24Buy, gold24Sell, gold18Sell, gold14Sell, silverBuy, silverSell, interestRateCall,interestRateCD, interestRateUS, kospi, kosdaq, btc, eth, dji, nasdaq, wti, excRateUSD, excRateCNY, excRateJPY, excRateEUR];
+            const keys = ["pegGram","pesGram","pegDon","pesDon","gold24Buy","gold24Sell","gold18Sell","gold14Sell","silverBuy","silverSell","interestRateCall","interestRateCD","interestRateUS","kospi","kosdaq","btc","eth","dji","nasdaq","wti","excRateUSD","excRateCNY", "excRateJPY", "excRateEUR"];
+            const labels = ["e금(gram)","e은(gram)","e금(돈)","e은(돈)","금(24k) 살 때(VAT별도)","금(24k) 팔 때","금(18k) 팔 때","금(14k) 팔 때","은 살 때(VAT별도)","은 팔 때","콜금리","CD금리(91일)","미국국채(10년물)","코스피","코스닥","비트코인","이더리움","다우존스산업평균","나스닥","국제유가(WTI)","원/달러 환율","원/위안 환율", "원/엔 환율", "원/유로 환율"];
+            const visibilities = [true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+            const values = [pegGram, pesGram, pegDon, pesDon, gold24Buy, gold24Sell, gold18Sell, gold14Sell, silverBuy, silverSell, interestRateCall,interestRateCD, interestRateUS, kospi, kosdaq, btc, eth, dji, nasdaq, wti, excRateUSD, excRateCNY, excRateJPY, excRateEUR];
             // console.log(values);
-            var unit = ["원/g", "원/g", "원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","%","%","%","point","point", "원/btc", "원/eth", "point","point","$/배럴", "원/달러", "원/위안", "원/100엔", "원/유로"];
-            var lastVal = [pegGramLast, pesGramLast, pegDonLast, pesDonLast, gold24BuyLast, gold24SellLast, gold18SellLast, gold14SellLast, silverBuyLast, silverSellLast, interestRateCallLast,interestRateCDLast, interestRateUSLast, kospiLast, kosdaqLast, btcLast, ethLast, djiLast, nasdaqLast, wtiLast, excRateUSDLast, excRateCNYLast, excRateJPYLast, excRateEURLast];
-            var gap = [pegGramGap, pesGramGap, pegDonGap, pesDonGap, gold24BuyGap, gold24SellGap, gold18SellGap, gold14SellGap, silverBuyGap, silverSellGap, interestRateCallGap,interestRateCDGap, interestRateUSGap, kospiGap, kosdaqGap, btcGap, ethGap, djiGap, nasdaqGap, wtiGap, excRateUSDGap, excRateCNYGap, excRateJPYGap, excRateEURGap];
-            for(var i=0; i<keys.length; i++){
-                var data;
+            const unit = ["원/g", "원/g", "원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","원/돈","%","%","%","point","point", "원/btc", "원/eth", "point","point","$/배럴", "원/달러", "원/위안", "원/100엔", "원/유로"];
+            const lastVal = [pegGramLast, pesGramLast, pegDonLast, pesDonLast, gold24BuyLast, gold24SellLast, gold18SellLast, gold14SellLast, silverBuyLast, silverSellLast, interestRateCallLast,interestRateCDLast, interestRateUSLast, kospiLast, kosdaqLast, btcLast, ethLast, djiLast, nasdaqLast, wtiLast, excRateUSDLast, excRateCNYLast, excRateJPYLast, excRateEURLast];
+            const gap = [pegGramGap, pesGramGap, pegDonGap, pesDonGap, gold24BuyGap, gold24SellGap, gold18SellGap, gold14SellGap, silverBuyGap, silverSellGap, interestRateCallGap,interestRateCDGap, interestRateUSGap, kospiGap, kosdaqGap, btcGap, ethGap, djiGap, nasdaqGap, wtiGap, excRateUSDGap, excRateCNYGap, excRateJPYGap, excRateEURGap];
+            for(let i=0; i<keys.length; i++){
+                let data;
                 data = {
                     "id":keys[i], 
                     "thisValue":values[i],

@@ -1,33 +1,41 @@
-var express = require('express');
+const express = require('express');
 const asyncify = require('express-asyncify');
  
 const app = asyncify(express());
 
-var compression = require('compression');
+const compression = require('compression');
 app.use(compression());
 
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const request = require('request');
 
 const logger = require('./utils/logger');
 
 // var app = express();
-var PORT= process.env.PORT || 3000;
+const PORT= process.env.PORT || 3000;
 
 // Publishing Version
 const PUB_VER = "";
 
 // https redirect
 
+let from;
+let to;
+let userAgent;
+let protocol;
+let addr;
 app.all('*', (req, res, next) => { 
-    let userAgent = req.headers['User-Agent'] || req.userAgent; 
-    let protocol = req.headers['x-forwarded-proto'] || req.protocol; 
+    userAgent = req.headers['User-Agent'] || req.userAgent; 
+    protocol = req.headers['x-forwarded-proto'] || req.protocol; 
     // console.log(`User-Agent:${userAgent}`);
+    addr = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    
+    // console.log(addr);
     if (req.hostname == 'localhost' || protocol == 'https') { 
         next(); 
     } else { 
-        let from = `${protocol}://${req.hostname}${req.url}`; 
-        let to = `https://www.korda.im${req.url}`; // log and redirect 
+        from = `${protocol}://${req.hostname}${req.url}`; 
+        to = `https://www.korda.im${req.url}`; // log and redirect 
         logger.info(`[${req.method}]: ${from} -> ${to}`); 
         res.redirect(to); 
     } 
@@ -42,7 +50,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname+PUB_VER+"/public"));
 
 //use cache-control
-var   maxAge =  60 * 60 * 24;
+const maxAge =  60 * 60 * 24;
 app.all('/img/*',function(req,res,next){
     res.set('Cache-Control', 'public, max-age=31557600');
     next();

@@ -1,8 +1,8 @@
 const getConnection = require('../config/db');
-var newsDatum = require("../datum/newsDatum.js");
+const newsDatum = require("../datum/newsDatum.js");
 const logger = require('../utils/logger');
 
-var sql = "INSERT INTO NEWS_NAVER (TITLE, LINK, CONTENT, PUB_DATE) VALUES (?,?,?,?)";
+const sql = "INSERT INTO NEWS_NAVER (TITLE, LINK, CONTENT, PUB_DATE) VALUES (?,?,?,?)";
 async function insertData(value){
     await getConnection((conn) => {
     // Use the connection
@@ -21,14 +21,14 @@ async function insertData(value){
     });
 };
 
-var db = {};
+let db = {};
 db.setData = function () {
     // var tempJson = datum.getData();
-    var tempJson = newsDatum.getData();
+    let tempJson = newsDatum.getData();
     logger.info("tempJson[0]:"+JSON.stringify(tempJson)[0].title);
     try{
         if(tempJson.length >0 && tempJson[0].title != undefined){
-            for(var i=0;i<tempJson.length;i++){
+            for(let i=0;i<tempJson.length;i++){
                 // logger.info(tempJson[i].link);
                 insertData(tempJson[i]);
             }

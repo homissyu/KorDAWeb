@@ -1,7 +1,7 @@
 'use strict';
 const logger = require('../utils/logger');
-var DupChecker = {};
-var uqRet = {};
+let DupChecker = {};
+let uqRet = {};
 
 DupChecker.init = function(sql){
     const getConnection = require('../config/db');
@@ -9,8 +9,8 @@ DupChecker.init = function(sql){
         conn.query(
             sql, function(err, rows) {
                 uqRet = rows;
-                logger.info("SQL:"+sql);
-                logger.info("cnt:"+uqRet.length); 
+                // logger.info("SQL:"+sql);
+                // logger.info("cnt:"+uqRet.length); 
                 // logger.info("result:"+JSON.stringify(uqRet));
             }
         );
@@ -21,7 +21,7 @@ DupChecker.isDup = function (id){
     // logger.info("uqRet.length:"+uqRet.length);
     // logger.info("id:"+id);
     if(uqRet.length > 0){
-        for(var i=0;i<uqRet.length;i++){
+        for(let i=0;i<uqRet.length;i++){
             // logger.info("id:"+id+", uqRet["+i+"].ID:"+uqRet[i].ID);
             if(uqRet[i].ID == id){
                 // logger.info("DupChecker isDup:"+true+", id:"+id+", uqRet["+i+"].ID:"+uqRet[i].ID);

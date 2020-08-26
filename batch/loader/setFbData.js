@@ -1,6 +1,6 @@
 const getConnection = require('../config/db');
 const logger = require('../utils/logger');
-var fbDatum = require("../datum/fbDatum.js");
+const fbDatum = require("../datum/fbDatum.js");
 const sql = "INSERT INTO FB_LIST (ID, MESSAGE, PICTURE, PERMALINK_URL, CREATED_TIME, UPDATE_TIME, STATUS_TYPE) VALUES (?,?,?,?,?,?,?)";
 async function insertData(value){
     // console.log(value);
@@ -21,13 +21,13 @@ async function insertData(value){
     });
 };
 
-var db = {};
+let db = {};
 db.setData = function () {
-    var tempJson = fbDatum.getData();
-    var tempLength = tempJson.length;
+    let tempJson = fbDatum.getData();
+    let tempLength = tempJson.length;
     try{
         if(tempLength > 0){
-            for(var i=0;i<tempLength;i++){
+            for(let i=0;i<tempLength;i++){
                 insertData(tempJson[i]);
                 // logger.info("32:tempJson[i]:"+tempJson[i].id); 
             }

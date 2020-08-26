@@ -1,9 +1,9 @@
 const getConnection = require('../config/db');
-var ytDatum = require("../datum/youTubeDatum.js");
+const ytDatum = require("../datum/youTubeDatum.js");
 const logger = require('../utils/logger');
 
-var insertSQL = "INSERT INTO YOUTUBE_LIST (ID, videoId, channelId, title, description, channelTitle, playlistId, position, videoPublishedAt, thumnailMediumUrl, thumnailMaxResUrl) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-var truncateSQL = "TRUNCATE TABLE YOUTUBE_LIST";
+const insertSQL = "INSERT INTO YOUTUBE_LIST (ID, videoId, channelId, title, description, channelTitle, playlistId, position, videoPublishedAt, thumnailMediumUrl, thumnailMaxResUrl) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+const truncateSQL = "TRUNCATE TABLE YOUTUBE_LIST";
 
 async function truncateTable(value){
     // console.log(value);
@@ -41,15 +41,15 @@ async function insertData(value){
     });
 };
 
-var db = {};
+let db = {};
 db.setData = function () {
-    var tempJson = ytDatum.getData();
-    var tempLength = tempJson.length;
+    let tempJson = ytDatum.getData();
+    let tempLength = tempJson.length;
     // logger.info("tempLength:"+tempLength);
     try{
         logger.info(JSON.stringify(tempJson));
         if(tempLength > 0){
-            for(var i=0;i<tempLength;i++){
+            for(let i=0;i<tempLength;i++){
                 if(i==0)truncateTable();
                 insertData(tempJson[i]);
             }

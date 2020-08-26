@@ -9,12 +9,12 @@ const assetOption = {
     url:'https://pennygold.kr/v2/shared/assets/kordaAsset'
 };
 
-var imageUrl = "https://pennygold.kr/v2/shared/image/view/public/";
+const imageUrl = "https://pennygold.kr/v2/shared/image/view/public/";
 
-var type;
-var point;
-var egold;
-var esilver;
+let type;
+let point;
+let egold;
+let esilver;
 
 async function getReview(){
     return new Promise(function(resolve, reject){
@@ -24,7 +24,7 @@ async function getReview(){
                 function(error, response, body) { 
                     try {
                         // something bad happens here
-                        var result = JSON.parse(body);
+                        const result = JSON.parse(body);
                         if(result.length == 2){
                             type = result[1].type;
                             point = Number.parseFloat(result[1].point);
@@ -42,9 +42,9 @@ async function getReview(){
     });
 }
 
-var datum = {};
+let datum = {};
 datum.getData = function (req, res){
-    var ret = [];
+    let data;
     async.waterfall([
         function(callback) {
             callback(null, getReview());

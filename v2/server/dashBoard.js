@@ -1,5 +1,5 @@
 function getDashboard(req, res){
-    var ret;
+    let ret;
     res.render('dashBoard', ret);
 };
 
