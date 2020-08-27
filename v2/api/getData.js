@@ -136,13 +136,13 @@ async function getPegPrice(){
                 const $item = $('result item v1_gold1');
 
                 pegGram = $item.html();
-               
-                pegGram = pegGram.replace('<!--[CDATA[','').replace(']]-->','');
-                pegGram = pegGram.replace( regExp , ""); 
-                pegGram = Math.round(parseInt(pegGram)*1008)/1000;
-                pegGram = Math.round(parseInt(pegGram)*103)/100;
-                pegDon = Math.round(parseInt(pegGram)*375)/100;
-
+                if(pegGram != null){
+                    pegGram = pegGram.replace('<!--[CDATA[','').replace(']]-->','');
+                    pegGram = pegGram.replace( regExp , ""); 
+                    pegGram = Math.round(parseInt(pegGram)*1008)/1000;
+                    pegGram = Math.round(parseInt(pegGram)*103)/100;
+                    pegDon = Math.round(parseInt(pegGram)*375)/100;
+                }
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
     });
@@ -160,12 +160,13 @@ async function getPesPrice(){
                 const $item = $('result item v1_gold1');
         
                 pesGram = $item.html();
-                
-                pesGram = pesGram.replace('<!--[CDATA[','').replace(']]-->','');
-                pesGram = pesGram.replace( regExp , ""); 
-                pesGram = Math.round(parseInt(pesGram)*1013)/1000;
-                pesGram = Math.round(parseInt(pesGram)*105)/100;
-                pesDon = Math.round(parseInt(pesGram)*375)/100;
+                if(pesGram != null){
+                    pesGram = pesGram.replace('<!--[CDATA[','').replace(']]-->','');
+                    pesGram = pesGram.replace( regExp , ""); 
+                    pesGram = Math.round(parseInt(pesGram)*1013)/1000;
+                    pesGram = Math.round(parseInt(pesGram)*105)/100;
+                    pesDon = Math.round(parseInt(pesGram)*375)/100;
+                }
         
             })
         ).reject(new Error('fail')).catch(() => {if(!response.socket.destroyed) response.socket.destroy();});
