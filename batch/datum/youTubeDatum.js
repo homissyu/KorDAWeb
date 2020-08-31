@@ -5,20 +5,20 @@ const logger = require('../utils/logger');
 
 
 const playListId = 'PLdCdURyEGavxp8mQw-0jJNfC0bkBNKUI2'; // 검색어 지정
-const limit = 5;  // 검색 갯수
+const limit = 1000;  // 검색 갯수
 youTube.setKey('AIzaSyAQJHOZJSuvKRJpNBOAeeG3mZ6FB8IIbO0'); // API 키 입력
 
 let datum = {};
-
+let retArr;  
 datum.getData = function (req, res){
     let DupChecker = new require('../utils/DupChecker');
     DupChecker.init('SELECT DISTINCT ID FROM YOUTUBE_LIST');
-    let retArr = new Array();  
     youTube.getPlayListsItemsById(playListId, limit, (err, res) => {
         if (err) {
             logger.error(err);
         } else {    
             let objArr = JSON.parse(JSON.stringify(res.items));
+            retArr = new Array();
             for(let i=0;i<objArr.length;i++){
                 if(!DupChecker.isDup(objArr[i].id)){
                     let ret = new Object();

@@ -47,10 +47,10 @@ db.setData = function () {
     let tempLength = tempJson.length;
     // logger.info("tempLength:"+tempLength);
     try{
-        logger.info(JSON.stringify(tempJson));
+        // logger.info(JSON.stringify(tempJson));
         if(tempLength > 0){
             for(let i=0;i<tempLength;i++){
-                if(i==0)truncateTable();
+                // if(i==0)truncateTable();
                 insertData(tempJson[i]);
             }
         }else{

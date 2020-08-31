@@ -4,9 +4,9 @@ const CronJob = cron.CronJob;
 const logger = require('./utils/logger');
 
 const setNewsData = require("./loader/setNewsData.js");
+const setBlogData = require("./loader/setBlogData.js");
 const setFBData = require("./loader/setFbData.js");
 const setYoutubeData = require("./loader/setYoutubeData.js");
-// var _setNewsData = require("."+PUB_VER+"/batch/_setNewsData.js");
 
 const job1 = new CronJob('*/10 * * * * *', function() {
     setNewsData.setData();
@@ -14,14 +14,14 @@ const job1 = new CronJob('*/10 * * * * *', function() {
 const job2 = new CronJob('* */10 * * * *', function() {
     setFBData.setData();
 }, null, true);
-const job3 = new CronJob('* */60 * * * *', function() {
+const job3 = new CronJob('*/10 * * * * *', function() {
     setYoutubeData.setData();
 }, null, true);
-// var job4 = new CronJob('* */5 * * * *', function() {
-//     _setNewsData.setData();
-// }, null, true);
+const job4 = new CronJob('* */10 * * * *', function() {
+    setBlogData.setData();
+}, null, true);
 
 job1.start();
 job2.start();
 job3.start();
-// job4.start();
+job4.start();

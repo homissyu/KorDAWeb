@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+  <head>
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/css/news/blog.css">
+    <link rel="stylesheet" href="/css/news/font.css">
+    <title>Cengold News</title>
+    <!--//added for search list in document by karl 20200304-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script>
+        //added for search list in document by karl 20200304
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("keyword");
+            filter = input.value.toUpperCase();
+            ul = document.getElementsByClassName("listview")[0];
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+        function getFormatDate(dateStr){
+            var date = new Date(Date.parse(dateStr));
+            var year = date.getFullYear();              //yyyy
+            var month = (1 + date.getMonth());          //M
+            month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+            var day = date.getDate();                   //d
+            day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+            var hour = date.getHours();
+            hour = hour >= 10 ? hour : '0' + hour;          //hour 두자리로 저장
+            var min = date.getMinutes();
+            min = min >= 10 ? min : '0' + min;          //min 두자리로 저장
+            var sec = date.getSeconds();
+            sec = sec >= 10 ? sec : '0' + sec;          //sec 두자리로 저장
+            var ret = year + '.' + month + '.' + day + ' ' + hour + ':' + min;
+            return  ret;
+        }
+
+        function htmlEntities(str) {
+            return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+        }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top">
+    <div class="search_top">
+        <div id="topsearch">
+            <!--form name="MultiSearchForm" onsubmit="return SearchCheck(this)" action="./search.php" title="통합검색폼"-->
+            <input type="hidden" name="" value="">
+            <input type="hidden" name="" value="">
+            <input type="text" name="keyword" id="keyword" value="" title="키워드입력" placeholder="검색어를 입력해주세요" class="tt" onKeyup=myFunction();>
+            <input type="image" src="/img/ic_search@2x.png" title="검색질의보내기" alt="검색하기" class="bt" onClick=myFunction();>
+            <!--/form-->
+        </div>
+    </div>
+    </nav>
+    <div class="wrap">
+        <div class="list_wrap">
+            <ul class="listview">
+	        <%
+                for(var i=0; i < ret.length; i++) { 
+            %>
+<li><a href="<%=ret[i].LINK%>" class="btn_view_tit"><h2><script type="text/javascript">document.write(htmlEntities('<%=ret[i].TITLE%>'))</script><br></h2><h3><script type="text/javascript">document.write(htmlEntities('<%=ret[i].CONTENT.substr(0,80)%>'))</script>...<br><br><div><script type="text/javascript">document.write(getFormatDate('<%=ret[i].PUB_DATE%>'));</script></div></h3></a></li>
+            <%     
+                } 
+            %>
+            
+            </ul>
+<!-- //리스트끝 -->
+        </div>
+        <!--a href="https://www.korda.im" target="_blank"><button type="button">팝업</button></a-->
+    </div>
+  </body>
+</html>
+
+
+

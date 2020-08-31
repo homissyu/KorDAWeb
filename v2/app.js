@@ -59,6 +59,9 @@ app.all('/img/*',function(req,res,next){
 // //Page for News Tab
 app.use("/news", require(__dirname+PUB_VER+"/server/news"));
 
+// //Page for blog Tab
+app.use("/blog", require(__dirname+PUB_VER+"/server/blog"));
+
 // //use routes
 // // app.use("/event", require(__dirname+"/routes/event"));
 // app.use("/event_coupon", require(__dirname+PUB_VER+"/routes/event_coupon"));
