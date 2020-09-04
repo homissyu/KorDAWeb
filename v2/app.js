@@ -7,7 +7,7 @@ const compression = require('compression');
 app.use(compression());
 
 const bodyParser = require('body-parser');
-const request = require('request');
+// const request = require('request');
 
 const logger = require('./utils/logger');
 
@@ -41,6 +41,8 @@ app.all('*', (req, res, next) => {
     } 
 });
 
+app.use(express.json());
+
 //urlEncode
 app.use(bodyParser.urlencoded({extended : true}));
 
@@ -61,6 +63,9 @@ app.use("/news", require(__dirname+PUB_VER+"/server/news"));
 
 // //Page for blog Tab
 app.use("/blog", require(__dirname+PUB_VER+"/server/blog"));
+
+// //Page for blog Tab
+app.use("/4Jandi", require(__dirname+PUB_VER+"/server/4Jandi"));
 
 // //use routes
 // // app.use("/event", require(__dirname+"/routes/event"));

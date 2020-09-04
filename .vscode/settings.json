@@ -1,3 +1,44 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "sqltools.connections": [
+        {
+            "database": "dbblog",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "db.blog.korda.im",
+            "password": "korda0326!",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "db.blog.korda.im",
+            "username": "blog"
+        },
+        {
+            "database": "dbkorda",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "db.korda.im",
+            "password": "korda0326!",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "db.korda.im",
+            "username": "korda"
+        },
+        {
+            "database": "korea_gold_ex",
+            "driver": "MySQL",
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "name": "kgex",
+            "password": "!!korea_gold_ex_pass_0401!!",
+            "port": 3306,
+            "previewLimit": 50,
+            "server": "mysqlbeta.chekjkhkoiex.ap-northeast-2.rds.amazonaws.com",
+            "username": "korea_gold_ex"
+        }
+    ]
 }
