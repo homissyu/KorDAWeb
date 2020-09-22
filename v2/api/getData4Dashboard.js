@@ -583,7 +583,6 @@ datum.getData = function (req, res){
             }
             res.setHeader('Content-Type', 'application/json');
             res.render('apiWraper', {ret:ret});
-            
         }  // 7
     });
 };

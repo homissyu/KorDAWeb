@@ -25,7 +25,7 @@ let db = {};
 db.setData = function () {
     // var tempJson = datum.getData();
     let tempJson = newsDatum.getData();
-    logger.info("tempJson[0]:"+JSON.stringify(tempJson)[0].title);
+    // logger.info("tempJson[0]:"+JSON.stringify(tempJson)[0].title);
     try{
         if(tempJson.length >0 && tempJson[0].title != undefined){
             for(let i=0;i<tempJson.length;i++){

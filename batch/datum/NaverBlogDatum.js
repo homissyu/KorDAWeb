@@ -32,7 +32,7 @@ var removeJsonTextAttribute = function(value, parentElement) {
     var keyName = Object.keys(parentElement._parent)[keyNo - 1];
     parentElement._parent[keyName] = nativeType(value);
   } catch (e) {}
-}
+};
 
 var xml_js_options = {
   compact: true,

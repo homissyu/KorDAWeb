@@ -17,6 +17,7 @@ datum.getData = function (req, res){
         if (err) {
             logger.error(err);
         } else {    
+            // logger.info("JSON.stringify(res.items):"+JSON.stringify(res.items));
             let objArr = JSON.parse(JSON.stringify(res.items));
             retArr = new Array();
             for(let i=0;i<objArr.length;i++){

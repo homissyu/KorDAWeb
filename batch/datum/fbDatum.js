@@ -50,7 +50,8 @@ function getFbFeedList() {
 }
 
 let datum = {};
-datum.getData = function (req, res){
+datum.getData = function (needDupChk){
+    // logger.info("flag:"+needDupChk);
     let retObj = new Array();
     let DupChecker = new require('../utils/DupChecker');
     DupChecker.init('SELECT DISTINCT TRIM(ID)`ID` FROM FB_LIST ORDER BY CREATED_TIME');
@@ -75,16 +76,20 @@ datum.getData = function (req, res){
             
             let j=0;
             for(let i=0;i<retArr.length;i++){
-                if(!DupChecker.isDup(retArr[i].id.trim())) {
-                    retObj[j] = retArr[i];
-                    j++;
-                    // logger.info("retArr["+i+"].id.trim():"+retArr[i].id.trim());
-                }
+                if(needDupChk){
+                    if(!DupChecker.isDup(retArr[i].id.trim())) {
+                        retObj[j] = retArr[i];
+                        j++;
+                        // logger.info("retArr["+i+"].id.trim():"+retArr[i].id.trim());
+                    }
+                }else retObj[j] = retArr[i];
             }
             DupChecker = null;
             // logger.info("85:"+JSON.stringify(retObj));
-            logger.info("[ FB ] Before dup check:"+retArr.length);
-            logger.info("[ FB ] After dup check:"+retObj.length);
+            if(needDupChk){
+                logger.info("[ FB ] Before dup check:"+retArr.length);
+                logger.info("[ FB ] After dup check:"+retObj.length);
+            }
             // res.render('index', {goldBuy:goldBuy, goldSell:goldSell, pegGram:pegGram, pesGram:pesGram, btc:btc, excRate:excRate, investRate:investRate, kospi:kospi, kosdaq:kosdaq,fbNews:retArr.
         }  // 7
     });
