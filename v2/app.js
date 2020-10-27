@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncify = require('express-asyncify');
- 
+const cors = require('cors'); 
 const app = asyncify(express());
 
 const compression = require('compression');
@@ -16,6 +16,9 @@ const PORT= process.env.PORT || 3000;
 
 // Publishing Version
 const PUB_VER = "";
+
+// CORS 설정
+app.use(cors());
 
 // https redirect
 
@@ -65,7 +68,7 @@ app.use("/news", require(__dirname+PUB_VER+"/server/news"));
 app.use("/blog", require(__dirname+PUB_VER+"/server/blog"));
 
 // //Page for blog Tab
-app.use("/4Jandi", require(__dirname+PUB_VER+"/server/4Jandi"));
+// app.use("/4Jandi", require(__dirname+PUB_VER+"/server/4Jandi"));
 
 // //use routes
 // // app.use("/event", require(__dirname+"/routes/event"));

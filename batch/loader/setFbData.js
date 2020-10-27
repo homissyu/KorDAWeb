@@ -28,7 +28,7 @@ db.setData = function () {
     try{
         if(tempLength > 0){
             for(let i=0;i<tempLength;i++){
-                // insertData(tempJson[i]);
+                insertData(tempJson[i]);
                 // logger.info("32:tempJson[i]:"+tempJson[i].id); 
             }
         }else{

@@ -19,6 +19,8 @@ function getData(req, res){
             "videoId, ID, channelId, title, description, channelTitle, playlistId, `position`, videoPublishedAt, thumnailMediumUrl, thumnailMaxResUrl, REG_DATETIME "+
           "FROM "+ 
             "dbkorda.YOUTUBE_LIST "+
+          "WHERE "+
+            "PLAYLISTID = 'PLdCdURyEGavx9GxzS8tofor9mDgSAo9wi' "+
           "ORDER BY "+ 
             "dbkorda.YOUTUBE_LIST.`position` LIMIT "+ytCnt;
   getConnection((conn) => {

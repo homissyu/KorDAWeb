@@ -9,8 +9,9 @@ const yesterday = new Date(new Date().setDate(new Date().getDate()-3));
 // console.log(new Date().setDate(new Date().getDate()-1));
 // console.log(yesterday);
 const timeStampVal = Math.round(yesterday.getTime()/1000); 
-// console.log("timeStampVal:"+timeStampVal)
+logger.info("timeStampVal:"+timeStampVal);
 const feedCnt = 100;
+logger.info("feedCnt:"+feedCnt);
 
 const fbFeedListOption = { 
     method:'GET', 
@@ -51,10 +52,12 @@ function getFbFeedList() {
 
 let datum = {};
 datum.getData = function (needDupChk){
-    // logger.info("flag:"+needDupChk);
+    logger.info("flag:"+needDupChk);
+    // logger.info("[ FB ] Before dup check:"+retArr.length);
     let retObj = new Array();
     let DupChecker = new require('../utils/DupChecker');
     DupChecker.init('SELECT DISTINCT TRIM(ID)`ID` FROM FB_LIST ORDER BY CREATED_TIME');
+    let statusArr = ["added_photos", "added_video", "shared_story", "wall_post"];
     async.waterfall([
         function(callback) {
             callback(null, getFbFeedList());
@@ -66,8 +69,11 @@ datum.getData = function (needDupChk){
             res.socket.destroy();
         }else {
             retArr.sort(custom_sort);
+            // console.log(retArr.length);
+                
             for(let i=0;i<retArr.length;i++){
-                if("wall_post"==JSON.parse(JSON.stringify(retArr[i])).status_type || !(JSON.parse(JSON.stringify(retArr[i])).hasOwnProperty("permalink_url"))){
+                if(statusArr.indexOf(JSON.parse(JSON.stringify(retArr[i])).status_type) == -1|| 
+                !(JSON.parse(JSON.stringify(retArr[i])).hasOwnProperty("permalink_url"))){
                     // console.log(JSON.parse(JSON.stringify(retArr[i])));
                     removeItem(retArr,i,1);
                 }

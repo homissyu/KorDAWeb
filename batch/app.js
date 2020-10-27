@@ -15,7 +15,7 @@ const job1 = new CronJob('* */7 * * * *', function() {
 const job2 = new CronJob('* */11 * * * *', function() {
     setFBData.setData();
 }, null, true);
-const job3 = new CronJob('* */59 * * * *', function() {
+const job3 = new CronJob('* */59 * * * *', function() { //59분
     setYoutubeData.setData();
 }, null, true);
 const job4 = new CronJob('* */13 * * * *', function() {
