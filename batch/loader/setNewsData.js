@@ -2,12 +2,12 @@ const getConnection = require('../config/db');
 const newsDatum = require("../datum/newsDatum.js");
 const logger = require('../utils/logger');
 
-const sql = "INSERT INTO NEWS_NAVER (TITLE, LINK, CONTENT, PUB_DATE) VALUES (?,?,?,?)";
+const sql = "INSERT INTO NEWS_NAVER2 (TITLE, LINK, CONTENT, PUB_DATE, HASHED_CONTENT) VALUES (?,?,?,?,sha2(LEFT(?,30),256))";
 async function insertData(value){
     await getConnection((conn) => {
     // Use the connection
         conn.query(
-            sql, [value.title.replace(/<(\/b|b)([^>]*)>/gi,""), value.link, value.description.replace(/<(\/b|b)([^>]*)>/gi,""), new Date(value.pubDate)], 
+            sql, [value.title.replace(/<(\/b|b)([^>]*)>/gi,""), value.link, value.description.replace(/<(\/b|b)([^>]*)>/gi,""), new Date(value.pubDate), value.description.replace(/<(\/b|b)([^>]*)>/gi,"")], 
             function(error, result) {
                 if(error) {
                     logger.error(error);

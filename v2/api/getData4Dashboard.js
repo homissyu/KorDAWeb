@@ -13,7 +13,7 @@ const priceOption = {
 
 const goldPriceOption = {
     method:'POST', 
-    url:'http://api.koreagoldx.co.kr/api/price/lineUp/list',
+    url:'http://apiserver.koreagoldx.co.kr/api/price/lineUp/list',
     headers: {
         'Host': 'api.koreagoldx.co.kr',
         'Connection': 'keep-alive',

@@ -4,30 +4,24 @@ const removeItem = require('remove-array-items');
 const logger = require('../utils/logger');
 
 
-const yesterday = new Date(new Date().setDate(new Date().getDate()-3));
-// console.log(new Date().getDate()-1);
-// console.log(new Date().setDate(new Date().getDate()-1));
-// console.log(yesterday);
-const timeStampVal = Math.round(yesterday.getTime()/1000); 
-logger.info("timeStampVal:"+timeStampVal);
-const feedCnt = 100;
-logger.info("feedCnt:"+feedCnt);
-
-const fbFeedListOption = { 
-    method:'GET', 
-    url:'https://graph.facebook.com/v6.0/2819705001436386/feed?limit='+feedCnt+'&since='+timeStampVal+'&fields=permalink_url,picture,updated_time,created_time,message,status_type&access_token=EAAEzBReT07oBACI0CKYjH5k7LqkN5JRgR9L2Kq3i8v7zvo3LCocacciWHVl3bfNOz5zd0MqDNAFPyZConsxEJmB6L2IfHNPrcAZA5TVnZADplEXJuKZCXgAPGXkcdGKU8ORSFqJOVHC0sSNONuxNqNc7K0jG7iKQqLaXUZBVDQlzRt2ZC2uU9d'
-    // url:'https://graph.facebook.com/v6.0/2819705001436386/feed?limit='+feedCnt+'&fields=permalink_url,picture,updated_time,created_time,message,status_type&access_token=EAAEzBReT07oBACI0CKYjH5k7LqkN5JRgR9L2Kq3i8v7zvo3LCocacciWHVl3bfNOz5zd0MqDNAFPyZConsxEJmB6L2IfHNPrcAZA5TVnZADplEXJuKZCXgAPGXkcdGKU8ORSFqJOVHC0sSNONuxNqNc7K0jG7iKQqLaXUZBVDQlzRt2ZC2uU9d'
-};
-
 let retArr = new Array();
 
 function custom_sort(a, b) {
     return new Date(b.created_time).getTime() - new Date(a.created_time).getTime();
 }
 
-function getFbFeedList() {
+function generateFbOption(feedCnt, timeStampVal){
+    let fbFeedListOption = { 
+        method:'GET', 
+        url:'https://graph.facebook.com/v6.0/2819705001436386/feed?limit='+feedCnt+'&since='+timeStampVal+'&fields=permalink_url,picture,updated_time,created_time,message,status_type&access_token=EAAEzBReT07oBACI0CKYjH5k7LqkN5JRgR9L2Kq3i8v7zvo3LCocacciWHVl3bfNOz5zd0MqDNAFPyZConsxEJmB6L2IfHNPrcAZA5TVnZADplEXJuKZCXgAPGXkcdGKU8ORSFqJOVHC0sSNONuxNqNc7K0jG7iKQqLaXUZBVDQlzRt2ZC2uU9d'
+        // url:'https://graph.facebook.com/v6.0/2819705001436386/feed?limit='+feedCnt+'&fields=permalink_url,picture,updated_time,created_time,message,status_type&access_token=EAAEzBReT07oBACI0CKYjH5k7LqkN5JRgR9L2Kq3i8v7zvo3LCocacciWHVl3bfNOz5zd0MqDNAFPyZConsxEJmB6L2IfHNPrcAZA5TVnZADplEXJuKZCXgAPGXkcdGKU8ORSFqJOVHC0sSNONuxNqNc7K0jG7iKQqLaXUZBVDQlzRt2ZC2uU9d'
+    };
+    return fbFeedListOption;
+}
+
+function getFbFeedList(feedCnt, timeStampVal) {
     rp(
-        fbFeedListOption
+        generateFbOption(feedCnt, timeStampVal)
     ).then(
         function (body) { 
             let objArr = JSON.parse(body);
@@ -51,8 +45,9 @@ function getFbFeedList() {
 }
 
 let datum = {};
-datum.getData = function (needDupChk){
+datum.getData = function (needDupChk, feedCnt, timeVal){
     logger.info("flag:"+needDupChk);
+    timeStampVal = timeVal;
     // logger.info("[ FB ] Before dup check:"+retArr.length);
     let retObj = new Array();
     let DupChecker = new require('../utils/DupChecker');
@@ -60,7 +55,9 @@ datum.getData = function (needDupChk){
     let statusArr = ["added_photos", "added_video", "shared_story", "wall_post"];
     async.waterfall([
         function(callback) {
-            callback(null, getFbFeedList());
+            logger.info("feedCnt:"+feedCnt);
+            logger.info("timeVal:"+timeVal);
+            callback(null, getFbFeedList(feedCnt, timeVal));
         }
     ], function (err, result) {
         // res.writeHead(200, {'Cache-Control': 'public, max-age=31536000'});
@@ -88,7 +85,10 @@ datum.getData = function (needDupChk){
                         j++;
                         // logger.info("retArr["+i+"].id.trim():"+retArr[i].id.trim());
                     }
-                }else retObj[j] = retArr[i];
+                }else{
+                    retObj[j] = retArr[i];
+                    j++;
+                } 
             }
             DupChecker = null;
             // logger.info("85:"+JSON.stringify(retObj));

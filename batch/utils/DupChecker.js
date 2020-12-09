@@ -20,16 +20,19 @@ DupChecker.init = function(sql){
 DupChecker.isDup = function (id){
     // logger.info("uqRet.length:"+uqRet.length);
     // logger.info("id:"+id);
+    var ret = false;
     if(uqRet.length > 0){
         for(let i=0;i<uqRet.length;i++){
             // logger.info("id:"+id+", uqRet["+i+"].ID:"+uqRet[i].ID);
             if(uqRet[i].ID == id){
                 // logger.info("DupChecker isDup:"+true+", id:"+id+", uqRet["+i+"].ID:"+uqRet[i].ID);
                 // logger.info("DupChecker isDup:"+true);
-                return true;
+                ret = true;
+                break;
             }
         }
-    }else return false;
+    }
+    return ret;
     // logger.info("result:"+Object.values(uqRet)[0]);
     // return (Object.values(uqRet)).includes(id);
 };

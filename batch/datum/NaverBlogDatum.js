@@ -55,7 +55,7 @@ function getBlogList() {
         // retObj 
         retObj = JSON.parse(convert.xml2json(body, xml_js_options)).rss.channel.item;
         // logger.info("retObj:"+retObj.length);
-        return retObj;
+        // return retObj;
       }
   ).catch(function(err){
       logger.error(err);

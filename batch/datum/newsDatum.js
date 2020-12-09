@@ -22,7 +22,7 @@ function getNewsList() {
   ).then(
       function (body) { 
         retObj = (JSON.parse(body)).items;
-        return retObj;
+        // return retObj;
       }
   ).catch(function(err){
       logger.error(err);
@@ -50,7 +50,7 @@ datum.getData = function (req, res){
       for(let i=0;i<retObj.length;i++){
         // console.log(retObj[i].link);
         if(!DupChecker.isDup(retObj[i].link.trim())) {
-          // logger.info("DupChecker:"+false);
+          logger.info("DupChecker:"+false);
           retArr[j] = retObj[i];
           j++;
         }

@@ -23,7 +23,15 @@ async function updateData(value){
 
 let db = {};
 db.setData = function () {
-    let tempJson = fbDatum.getData(false);
+    let yesterday = new Date(new Date().setDate(new Date().getDate()-40));
+    // console.log(new Date().getDate()-1);
+    // console.log(new Date().setDate(new Date().getDate()-1));
+    // console.log(yesterday);
+    let timeStampVal = Math.round(yesterday.getTime()/1000); 
+    logger.info("timeStampVal:"+timeStampVal);
+    let feedCnt = 100;
+    // logger.info("feedCnt:"+feedCnt);
+    let tempJson = fbDatum.getData(false, feedCnt, timeStampVal);
     let tempLength = tempJson.length;
     try{
         if(tempLength > 0){
