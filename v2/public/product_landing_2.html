@@ -1,0 +1,327 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
+    <!--[if lte IE 8]>
+    <script src="https://koreada.kr:443/home/js/html5.js"></script>
+    <![endif]-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title>센골드 | 세상 편한 모바일 금투자</title>
+    <script src="./js/jquery-3.4.1.min.js"></script> 
+    <link rel="stylesheet" href="css/event.css">
+    <script>
+        //하단 모바일 앱다운 버튼
+        // When the user scrolls down 20px from the top of the document, slide down the navbar
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("navbar").style.bottom = "0";
+            document.getElementById("navbar").style.left = "0";
+            document.getElementById("navbar").style.right = "0";
+            document.getElementById("gotoTop").style.display = "block";
+        } else {
+            document.getElementById("navbar").style.bottom = "30px";
+            document.getElementById("navbar").style.left = "30px";
+            document.getElementById("navbar").style.right = "30px";
+            document.getElementById("gotoTop").style.display = "none";
+        }
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            document.getElementById("right_wraps").style.opacity = "0.9";
+        } else {
+            document.getElementById("right_wraps").style.opacity = "1";
+        }
+        }
+    </script>
+    
+    <!--START : added by karl. 2020121 for Appsflyer-->
+    <script>
+        //Returns the value of a parameter existing in the page's URL or ' ' if not exists.
+        function getParameterFromURL(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
+
+        function getMobileOperatingSystem() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (userAgent) {
+                if (/android/i.test(userAgent)) {
+                return "Android";
+                }
+
+                // iOS detection from: http://stackoverflow.com/a/9039885/177710
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+                }
+            }
+            return "unknown";
+        }
+
+        function isAFLink() {
+            return getParameterFromURL('af_redirect');
+        }
+
+        function isFacebook() {
+            if (document.referrer && document.referrer != "") {
+                return document.referrer.toLowerCase().includes('facebook');
+            } else {
+                return false;
+            }
+        }
+
+        // generateUrl returns the URL to use behind the iOS and Android "Download" buttons on a landing page, based on the source of the page visitor.
+        // By default these buttons should direct to the apps' pages on iTunes and Google Play.
+        // If these links should be kept with no change, generateUrl returns ' '.
+        // Otherwise, generateUrl returns the URL to be used under BOTH buttons (a single app download button could also be used in this case).
+        // Parameters: isDebug - if true, alerts are issued for each of the cases, otherwise not.  	 
+        function generateUrl(isDebug) {
+            var oneLinkURL = 'https://heynews.onelink.me';   // **** Replace with your own basic OneLink URL ****
+            var webFormURL = 'https://www.korda.im'; // **** Replace with your own web form URL for getting the user's email or SMS ****
+            var finalURL = "";
+            var partnerIDParam = '?pid=';
+
+            var campaignValue;
+            if (getParameterFromURL('af_c')) {
+                campaignValue = getParameterFromURL('af_c');
+            } else if (getParameterFromURL('utm_campaign')) {
+                campaignValue = getParameterFromURL('utm_campaign');
+            } else if (document.getElementsByTagName('title')[0]) {
+                campaignValue = document.getElementsByTagName('title')[0].innerText;
+            } else {
+                campaignValue = 'unknown';
+            }
+            var campaignParam = '&af_redirect=true&c=';
+            var gclidParam = '&af_sub1=';
+            var gclidValue = getParameterFromURL('gclid');
+            var kwParam = '&af_keywords=';
+            var pidValue;
+            var kwValue = getParameterFromURL('keyword');
+                    
+            if (getParameterFromURL('af_pid')) {
+                pidValue = getParameterFromURL('af_pid');
+            } else if (getParameterFromURL('utm_source')) {
+                pidValue = getParameterFromURL('utm_source');
+            }
+            
+            // Prevent the use of real SRN names. Remove this part after you are done testing the script.
+            var SRNs = [
+                'twitter_int',
+                'facebook_int',
+                'snapchat_int',
+                'doubleclick_int',
+                'yahoogemini_int',
+                'yahoojapan_int',
+            ];
+
+            if (SRNs.includes(pidValue)) {
+                alert("DO NOT USE NAMES OF SRNS IN af_pid or utm_source - use the names listed in Other SRNs: Add Parameter section in the landing page article\nhttps://support.appsflyer.com/hc/en-us/articles/360000677217#other-srns-add-parameter");
+                return;
+            }
+
+            //Desktop user
+            if (!isMobileDevice()) {
+                return webFormURL;
+            }
+
+            // User was redirected using af_r parameter on an AppsFlyer attribution link
+            if (isAFLink()) {
+                if (isDebug) {
+                alert("This user comes from AppsFlyer by redirection and is ready to be attributed. \nKeep direct app store links.");
+                }
+                return; // in this case, the original store links in the install buttons stay the same
+
+                /*
+                If you want one install button in the landing page that serves both iOS and Android, uncomment the code below
+                The code identifies the operating system and returns the relevant direct link to Google Play or iTunes
+            
+                if (getMobileOperatingSystem() === 'Android') {
+                return 'direct link to Google Play';
+                } 
+            
+                if (getMobileOperatingSystem() === 'iOS') {
+                return 'direct link to iTunes';
+                }
+                */
+            }
+
+            // Google Ads
+            if (gclidValue) {
+                partnerIDParam += 'google_lp';
+                campaignParam += campaignValue;
+                gclidParam += gclidValue
+                if (!kwValue) {
+                finalURL = oneLinkURL + partnerIDParam + campaignParam + gclidParam;
+                if (isDebug) {
+                    alert("This user comes from Google AdWords\n " + finalURL);
+                }
+                return finalURL;
+
+                } else { // Google Ads with KW
+                kwParam += kwValue;
+                finalURL = oneLinkURL + partnerIDParam + campaignParam + gclidParam + kwParam;
+                if (isDebug) {
+                    alert("This user comes from Google AdWords - there is a keyword associated with the ad\n " + finalURL);
+                }
+                return finalURL;
+                }
+
+            // Other SRNs and custom networks  
+            } else if (pidValue) {
+                campaignParam += campaignValue;
+                partnerIDParam += pidValue;
+                finalURL = oneLinkURL + partnerIDParam + campaignParam;
+                if (isDebug) {
+                    alert("This user comes the SRN or custom network " + pidValue + "\n" + finalURL);
+                }
+                return finalURL;
+            } else if (isFacebook()) {
+                if (isDebug) {
+                alert("This user comes from a paid Facebook ad - don't do anything. \nKeep direct app store links.");
+                }
+                return ' ';
+                
+            } else { // organic mobile user
+                campaignParam += campaignValue;
+                // console.log("campaignParam:"+campaignParam);
+                partnerIDParam += 'website'; //**** Replace value if you wish organic users to be attributed to another media source than 'website' ****
+                // console.log("partnerIDParam:"+partnerIDParam);
+                finalURL = oneLinkURL + partnerIDParam + campaignParam;
+                // console.log("oneLinkURL:"+oneLinkURL);
+                if (isDebug) {
+                    alert("This user comes from an unknown mobile source.\n The user would be attributed to media source 'website' and to the campaign " + campaignParam + "\n" + finalURL);
+                }
+                // console.log("finalURL:"+oneLinkURL);
+                return finalURL;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var url = generateUrl(false);
+            console.log("generateUrl:"+url);
+            // onelink is generated
+            if (url) {
+                // document.getElementById('andrd_link').setAttribute('href', url);
+                // document.getElementById('ios_link').setAttribute('href', url);
+                // document.getElementById('andrd_link_wrap').setAttribute('href', url);
+                // document.getElementById('ios_link_wrap').setAttribute('href', url);
+            }
+        
+            //otherwise, if onelink is not generated it means that the user is redirected
+            // and the store links in the buttons stay the same
+        
+            /* for the one button solution for both Android and iOS, use the code below instead
+        
+            document.getElementById('store_link').setAttribute('href', url);
+        
+            */
+        };
+      </script>
+      <!--END : added by karl. 2020121 for Appsflyer-->
+</head>
+  <body class="app_down landing">
+    <!--하단 앱다운로드 버튼-->
+    <div class="m_view">
+        <div id="navbar">
+            <a id="andrd_link" href="https://play.google.com/store/apps/details?id=com.cengold.korda&amp;hl=ko"><img src="images/img_store_1_w2_mobile.png" alt="금방금방 플레이 스토어"></a>
+            <a id="ios_link" href="https://apps.apple.com/kr/app/%EC%84%BC%EA%B3%A8%EB%93%9C-cengold/id1484761981"><img src="images/img_store_2_w2_mobile.png" alt="금방금방 앱스토어"></a>
+        </div>
+    </div>
+    <!--//gnb only for Mobile-->
+    <div class="main">
+       
+        <img src="./images/img_product_landing_00.png" class="w100" alt="센골드 세상편한 모바일 금투자 이미지" >
+        <!-- <div class="m_box">
+            <div class="mtit_01 bold MT30">각종 포인트 전환하기(feat. 머니트리) </div><br><br>
+            <div class="stit_01">
+                카드사, 간편결제, 멤버십 포인트 등등, …<br><br>
+                센골드에서 금으로 바꾸실 수 있고,<br>
+                매도 시 현금으로 인출하실 수 있습니다.<br>
+                <span class="blue">#100원부터</span><br><br>
+                내 피 같은 포인트.<br>
+                버리지 말고, 센골드와 함께 스마트한 포인트 생활해보세요!<br><br></div>
+            </div> -->
+            <img src="./images/img_product_landing_01_tt.png" class="w100 m120" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <img src="./images/img_product_landing_02_tt.png" class="w100 m120" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <img src="./images/img_product_landing_01.png" class="w100" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <img src="./images/img_product_landing_03_tt.png" class="w100 m120" alt="센골드 세상편한 모바일 금투자 이미지" >
+
+            <img src="./images/img_product_landing_02.png" class="w100" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <img src="./images/img_product_landing_04_tt.png" class="w100 m120" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <img src="./images/img_product_landing_02_2.png" class="w100" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <img src="./images/img_product_landing_05_tt.png" class="w100 m120" alt="센골드 세상편한 모바일 금투자 이미지" >
+
+            <img src="./images/img_product_landing_03.png" class="w100" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <br> <br>
+            <img src="./images/img_product_landing_05.png" class="w100" alt="센골드 세상편한 모바일 금투자 이미지" >
+            <br> <br>
+            <img src="./images/img_product_landing_04.png" class="w100 MB60" alt="센골드 세상편한 모바일 금투자 이미지" >
+           
+
+            <!-- <a href="https://korda.im/product_ooddy.html" target="_blank" class="col_1">
+                <img src="./images/buddycoin_qr_img_05.jpg" class="w100" alt="버디코인 키오스트 부착 QR 센골드 신규가입 이미지5" ></a> -->
+
+
+
+                 <!-- S:wrap_con -->
+     <div class="wrap_con">
+        <div class="down_area box01">
+            
+            <p class="tit">센골드 앱 다운로드 받기</p>
+            <a id="andrd_link_wrap" href="market://details?id=com.cengold.korda" class="col_2 left"><img src="./images/img_store_1_w2_mobile.png" alt="센골드 플레이 스토어"></a>
+            <a id="ios_link_wrap" href="itms-apps://itunes.apple.com/kr/app/apple-store/id1484761981" class="col_2"><img src="./images/img_store_2_w2_mobile.png" alt="센골드 앱스토어"></a>
+        </div>
+        <div class="down_area box03">
+            <a href="https://korda.im" target="_blank" class="col_1">회사 사이트 바로가기 ></a>
+        </div>
+    </div>
+    <!-- E:wrap_con -->
+
+
+    </div>
+    <!-- E:main -->
+    
+    
+    
+    
+    
+    
+    
+ 
+
+
+        <footer id="footer" class="dark">
+            <!-- Copyrights
+            ============================================= -->
+            <div id="copyrights">
+                <div class="container">
+                    <div >
+                        <div >
+                            <h5>㈜한국금거래소디지털에셋</h5>
+                            대표이사 : 김종인  | 서비스 문의	: 02-1670-8456,  <a href="mailto:help@korda.im" >help@korda.im</a>  | 사업자등록번호 : 764-81-01460 | 통신판매업신고 : 제2019-서울중구-0900호<br>
+                            (03139) 서울특별시 종로구 돈화문로5가길 1 (돈의동, 피카디리플러스) 7-2호
+                            <br>
+                            <span class="coR">Copyrights © 2020 All Rights Reserved by KoreaDA.</span><br>			
+                        </div>
+                    </div>
+                </div>
+            </div><!-- #copyrights end -->
+        </footer>
+
+  </body>
+</html>
+
+
+
+
+
