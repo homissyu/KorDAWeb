@@ -17,7 +17,7 @@
 .down_area.box01:after {content:'';clear:both;display:block}
 .down_area.box01 a {background-color: #a53e27; border:1px solid #fff; color: #fff;transition: 0.3s;}
 .landing .down_area.box01 a {background-color: #5f8af7; border:1px solid #fff; color: #fff;transition: 0.3s;}
-.landing .down_area.box01 a:hover {background-color: #34405c; border:1px solid #34405c; color: #fff;transition: 0.3s;}
+.landing .down_area.box01 a:hover {background-color: #2b2b4c; border:1px solid #2b2b4c; color: #fff;transition: 0.3s;}
 .down_area.box01 a:hover { background-color: #722412;color: #f2f2f2; border-color: #722412;}
 .down_area.box02 {margin-top:35px}
 .down_area.box02:after {content:'';clear:both;display:block}
@@ -37,7 +37,7 @@
 .app_down #copyrights {width:90%;margin:0 auto;padding: 15px 0 25px 0;background-color: rgba(88, 88, 104, 0);font-size: 0.7rem;line-height: 1.8;}
 .app_down #copyrights a {color:#f1f1f1;}
 .app_down #copyrights h5 {font-size: 1em;line-height: 1.2;}
-.landing .main {-webkit-box-sizing: border-box;box-sizing: border-box; box-shadow: rgb(212, 212, 212) 2px 2px 4px 4px;border-color: rgb(216, 216, 216);}
+.landing .main {-webkit-box-sizing: border-box;box-sizing: border-box; overflow:hidden;box-shadow: rgb(212, 212, 212) 2px 2px 4px 4px;border-color: rgb(216, 216, 216);}
 .landing #footer {-webkit-box-sizing: border-box;box-sizing: border-box; box-shadow: rgb(212, 212, 212) 2px 2px 4px 4px;);}
 .main{width:100%;}
 .main img.w100{width:100%;}
@@ -56,6 +56,10 @@
  .app_down #footer.dark {padding-bottom:70px; }
  .app_down.landing .m_box {padding: 0 40px;-webkit-box-sizing: border-box;box-sizing: border-box; }
 .main img.w100.m120 {width:180%;margin-left:-40%}
+.app_down.landing .wrap_con {display:none}
+.app_down.landing #footer {display:none}
+.MB60 {margin-bottom:60px;}
+
 
 @media all and  (min-width: 576px) {
     .app_down.chuseock .main img.w100{width:1000px;margin:0 auto;}
@@ -68,7 +72,7 @@
     .app_down.landing .main img.w100{width:1000px;margin:0 auto;}
     .app_down.landing .main img.w80{width:800px;margin:0 auto;}
     .app_down.landing .main {width:1000px; margin:0 auto; text-align:center;}
-    .app_down.landing .wrap_con {width:1000px; margin:0 auto;  padding: 40px 0 40px 0;}
+    .app_down.landing .wrap_con {display:block;width:1000px; margin:0 auto;  padding: 40px 0 40px 0;}
     .app_down #footer.dark {width:1000px; margin:0 auto; }
     .app_down.landing {background:#fff;}
     #navbar  {display:none !important;}

@@ -1,4 +1,4 @@
-const getConnection = require('../config/db');
+const getConnection = require('../config/db.js');
 const ytDatum = require("../datum/youTubeDatum.js");
 const logger = require('../utils/logger');
 

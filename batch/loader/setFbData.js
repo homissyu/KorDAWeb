@@ -1,4 +1,4 @@
-const getConnection = require('../config/db');
+const getConnection = require('../config/db.js');
 const logger = require('../utils/logger');
 const fbDatum = require("../datum/fbDatum.js");
 const sql = "INSERT INTO FB_LIST (ID, MESSAGE, PICTURE, PERMALINK_URL, CREATED_TIME, UPDATE_TIME, STATUS_TYPE) VALUES (?,?,?,?,?,?,?)";

@@ -1,4 +1,4 @@
-const getConnection = require('../config/db');
+const getConnection = require('../config/db.js');
 const logger = require('../utils/logger');
 const fbDatum = require("../datum/fbDatum.js");
 const sql = "UPDATE FB_LIST SET PICTURE = ? WHERE ID = ?";
@@ -23,7 +23,7 @@ async function updateData(value){
 
 let db = {};
 db.setData = function () {
-    let yesterday = new Date(new Date().setDate(new Date().getDate()-40));
+    let yesterday = new Date(new Date().setDate(new Date().getDate()-365));
     // console.log(new Date().getDate()-1);
     // console.log(new Date().setDate(new Date().getDate()-1));
     // console.log(yesterday);
@@ -32,12 +32,14 @@ db.setData = function () {
     let feedCnt = 100;
     // logger.info("feedCnt:"+feedCnt);
     let tempJson = fbDatum.getData(false, feedCnt, timeStampVal);
+    // logger.info("tempJson:"+tempJson);
     let tempLength = tempJson.length;
+    logger.info("tempJson.length:"+tempJson.length);
     try{
         if(tempLength > 0){
             for(let i=0;i<tempLength;i++){
                 updateData(tempJson[i]);
-                // logger.info("32:tempJson[i]:"+tempJson[i].id); 
+                logger.info("updateData:tempJson["+i+"]:"+tempJson[i].id); 
             }
         }else{
             logger.info("No picture link found to update on FB_LIST"); 

@@ -1,4 +1,4 @@
-const getConnection = require('../config/db');
+const getConnection = require('../config/db.js');
 const newsDatum = require("../datum/newsDatum.js");
 const logger = require('../utils/logger');
 

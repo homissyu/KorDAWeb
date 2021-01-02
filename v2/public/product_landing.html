@@ -34,6 +34,28 @@
             }
         }
     </script>
+    <!--START : added by karl. 2020121 for Appsflyer-->
+    <script src="./js/onelink-smart-script.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+          const onelinkGenerator =  new window.AF.OneLinkUrlGenerator(
+            {oneLinkURL: "https://cengold.onelink.me/ngL9",
+             pidKeysList: ['af_pid', 'utm_source'],
+             campaignKeysList: ['af_c', 'utm_campaign']
+          });
+        //   console.log("getParameterFromURL('utm_medium'):"+getParameterFromURL('utm_medium'));
+          onelinkGenerator.setChannel('af_channel', getParameterFromURL('utm_medium'));
+          const url = onelinkGenerator.generateUrl();
+          // onelink is generated
+          if (url) {
+                document.getElementById('andrd_link').setAttribute('href', url);
+                document.getElementById('ios_link').setAttribute('href', url);
+                document.getElementById('andrd_link_wrap').setAttribute('href', url);
+                document.getElementById('ios_link_wrap').setAttribute('href', url);
+          }
+        };
+    </script>
+    <!--END : added by karl. 2020121 for Appsflyer-->
 </head>
   <body class="app_down landing">
     <!--하단 앱다운로드 버튼-->
@@ -70,8 +92,8 @@
         <div class="down_area box01">
             
             <p class="tit">센골드 앱 다운로드 받기</p>
-            <a id="andrd_link_wrap" href="market://details?id=com.cengold.korda" class="col_2 left"><img src="./images/img_store_1_w2_mobile.png" alt="센골드 플레이 스토어"></a>
-            <a id="ios_link_wrap" href="itms-apps://itunes.apple.com/kr/app/apple-store/id1484761981" class="col_2"><img src="./images/img_store_2_w2_mobile.png" alt="센골드 앱스토어"></a>
+            <a id="andrd_link_wrap" href="https://play.google.com/store/apps/details?id=com.cengold.korda&amp;hl=ko" class="col_2 left"><img src="./images/img_store_1_w2_mobile.png" alt="센골드 플레이 스토어"></a>
+            <a id="ios_link_wrap" href="https://apps.apple.com/kr/app/%EC%84%BC%EA%B3%A8%EB%93%9C-cengold/id1484761981" class="col_2"><img src="./images/img_store_2_w2_mobile.png" alt="센골드 앱스토어"></a>
         </div>
         <div class="down_area box03">
             <a href="https://korda.im" target="_blank" class="col_1">회사 사이트 바로가기 ></a>
