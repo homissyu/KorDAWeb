@@ -185,9 +185,15 @@ gtag('config', 'UA-169617054-4');
 		const buttonIDPrep = "showModal";
 		const dataTargetPrep = "popupModal";
 		
+		
+
 		function generateModal(){
 			let popupArray = new Array();
 			let bodyObj = document.getElementsByTagName("BODY")[0];
+			if(images.length < popupCnt){
+				console.log("Popup Image 수가 부족합니다.\nPopup을 띄울 수 없습니다.");
+				return;
+			}
 			for(let i=0;i<popupCnt;i++){
 				let popupObj = new Object();
 				popupObj.cookieName = cookiesPrep + i;
