@@ -22,7 +22,7 @@ function getData(req, res){
           "WHERE "+
             "PLAYLISTID = 'PLdCdURyEGavx9GxzS8tofor9mDgSAo9wi' "+
           "ORDER BY "+ 
-            "dbkorda.YOUTUBE_LIST.`position` LIMIT "+ytCnt;
+            "dbkorda.YOUTUBE_LIST.`REG_DATETIME` DESC, dbkorda.YOUTUBE_LIST.`position` LIMIT "+ytCnt;
   getConnection((conn) => {
     conn.query(
       fbSql, function(err, rows) {
