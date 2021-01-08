@@ -20,7 +20,7 @@ function getData(req, res){
           "FROM "+ 
             "dbkorda.YOUTUBE_LIST "+
           "WHERE "+
-            "PLAYLISTID = 'PLdCdURyEGavx9GxzS8tofor9mDgSAo9wi' "+
+            "PLAYLISTID = 'PLdCdURyEGavxp8mQw-0jJNfC0bkBNKUI2' "+
           "ORDER BY "+ 
             "dbkorda.YOUTUBE_LIST.`REG_DATETIME` DESC, dbkorda.YOUTUBE_LIST.`position` LIMIT "+ytCnt;
   getConnection((conn) => {
